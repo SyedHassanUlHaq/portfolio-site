@@ -6,6 +6,7 @@ import SeoHead from "@/components/SeoHead";
 import Navbar from "@/components/Navbar";
 import MouseParticles from "@/components/MouseParticles";
 import ParallaxWrapper from "@/components/ParallaxWrapper";
+import GSoCSection from "@/components/GSoCSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <SeoHead />
         <Navbar />
         <Hero />
+        <GSoCSection />
         <Projects />
         <About />
         <Contact />
