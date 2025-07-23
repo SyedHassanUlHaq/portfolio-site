@@ -7,8 +7,12 @@ import { Parallax } from "react-scroll-parallax";
 export default function Hero() {
   return (
     <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden bg-gradient-to-br from-purple-800 via-indigo-900 to-black">
-      
-      {/* Pink floating blob with parallax */}
+
+      {/* === Neon Blobs (Animated with @keyframes) === */}
+      <div className="absolute animate-[blob_22s_infinite] bg-purple-600 opacity-25 w-[30rem] h-[30rem] rounded-full filter blur-3xl top-[-15%] left-[60%] z-0" />
+      <div className="absolute animate-[blob_28s_infinite] bg-pink-500 opacity-20 w-[25rem] h-[25rem] rounded-full filter blur-2xl top-[50%] left-[-10%] z-0" />
+
+      {/* === Parallax Blobs === */}
       <Parallax speed={-20}>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -18,7 +22,6 @@ export default function Hero() {
         />
       </Parallax>
 
-      {/* Cyan bouncing blob with parallax */}
       <Parallax speed={10}>
         <motion.div
           initial={{ opacity: 0, y: -40 }}
@@ -28,7 +31,7 @@ export default function Hero() {
         />
       </Parallax>
 
-      {/* Heading */}
+      {/* === Content === */}
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -38,7 +41,6 @@ export default function Hero() {
         Hey, I&apos;m <span className="text-pink-400">Hassan</span>
       </motion.h1>
 
-      {/* Subheading */}
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -48,7 +50,6 @@ export default function Hero() {
         I build creative, intelligent, and immersive web experiences using AI, Next.js, and a splash of chaos.
       </motion.p>
 
-      {/* Buttons */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -63,7 +64,6 @@ export default function Hero() {
         </a>
       </motion.div>
 
-      {/* Social Icons */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
