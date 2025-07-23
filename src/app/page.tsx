@@ -4,11 +4,12 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import SeoHead from "@/components/SeoHead";
 import Navbar from "@/components/Navbar";
+import MouseParticles from "@/components/MouseParticles";
 
 export default function Home() {
   return (
-    <main className="relative bg-black text-white">
-      <SeoHead />
+    <main className="bg-black text-white relative overflow-hidden">
+      <MouseParticles />
       <Navbar />
       <Hero />
       <Projects />
