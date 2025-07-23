@@ -11,7 +11,7 @@ export default function Contact() {
         <div className="relative z-10 max-w-xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">📬 Get in Touch</h2>
           <p className="text-gray-300 mb-10">
-            Want to work together or just say hi? Drop me a message — I'm always open to new ideas and collabs.
+            Want to work together or just say hi? Drop me a message — I&apos;m always open to new ideas and collabs.
           </p>
   
           <form
