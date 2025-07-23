@@ -8,14 +8,14 @@ import Blob3D from "@/components/Blob3D";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex flex-col justify-center items-center text-white dark:text-white bg-gradient-to-br from-purple-800 via-indigo-900 to-black overflow-hidden">
+    <section className="relative h-screen flex flex-col justify-center items-center bg-[var(--background)] text-[var(--foreground)] font-mono overflow-hidden">
 
-    <Blob3D />
-    <InteractiveBlob />
+      <Blob3D />
+      <InteractiveBlob />
 
       {/* === Neon Blobs (Animated with @keyframes) === */}
-      <div className="absolute animate-[blob_22s_infinite] bg-purple-600 opacity-25 w-[30rem] h-[30rem] rounded-full filter blur-3xl top-[-15%] left-[60%] z-0" />
-      <div className="absolute animate-[blob_28s_infinite] bg-pink-500 opacity-20 w-[25rem] h-[25rem] rounded-full filter blur-2xl top-[50%] left-[-10%] z-0" />
+      <div className="absolute animate-[blob_22s_infinite] bg-purple-600 opacity-20 w-[30rem] h-[30rem] rounded-full filter blur-3xl top-[-15%] left-[60%] z-0" />
+      <div className="absolute animate-[blob_28s_infinite] bg-pink-500 opacity-15 w-[25rem] h-[25rem] rounded-full filter blur-2xl top-[50%] left-[-10%] z-0" />
 
       {/* === Parallax Blobs === */}
       <Parallax speed={-20}>
@@ -43,16 +43,16 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="text-6xl font-extrabold tracking-tight z-10"
       >
-        Hey, I&apos;m <span className="text-pink-400">Hassan</span>
+        Hey, I&apos;m <span className="text-green-400">Hassan</span>
       </motion.h1>
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.2 }}
-        className="text-lg mt-4 max-w-xl text-center z-10"
+        className="text-lg mt-4 max-w-xl text-center z-10 text-[var(--foreground)]"
       >
-        I design systems that think, automate, and scale—from backend APIs to AI agents and post-quantum silicon cores
+        I design systems that think, automate, and scale — from backend APIs to AI agents and post-quantum silicon cores
       </motion.p>
 
       <motion.div
@@ -61,10 +61,10 @@ export default function Hero() {
         transition={{ duration: 1.3, delay: 0.4 }}
         className="flex gap-6 mt-8 z-10"
       >
-        <a href="#projects" className="px-6 py-2 bg-white text-black font-bold rounded-full shadow-lg hover:scale-105 transition">
+        <a href="#projects" className="px-6 py-2 bg-green-400 text-black font-bold rounded-full shadow-lg hover:scale-105 transition">
           View Projects
         </a>
-        <a href="#contact" className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition">
+        <a href="#contact" className="px-6 py-2 border border-[var(--foreground)] rounded-full hover:bg-green-400 hover:text-black transition">
           Contact Me
         </a>
       </motion.div>
@@ -75,8 +75,8 @@ export default function Hero() {
         transition={{ duration: 1.2, delay: 0.6 }}
         className="flex gap-4 mt-6 z-10"
       >
-        <a href="https://github.com/SyedHassanUlHaq" target="_blank"><FaGithub size={24} /></a>
-        <a href="https://linkedin.com/in/syed-hassan-ul-haq" target="_blank"><FaLinkedin size={24} /></a>
+        <a href="https://github.com/SyedHassanUlHaq" target="_blank" className="hover:text-green-400"><FaGithub size={24} /></a>
+        <a href="https://linkedin.com/in/syed-hassan-ul-haq" target="_blank" className="hover:text-green-400"><FaLinkedin size={24} /></a>
       </motion.div>
     </section>
   );

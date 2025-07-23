@@ -9,7 +9,7 @@ import ParallaxWrapper from "@/components/ParallaxWrapper";
 
 export default function Home() {
   return (
-    <main className="bg-black text-white relative overflow-hidden">
+    <main className="relative overflow-hidden min-h-screen bg-[var(--background)] text-[var(--foreground)] font-mono">
       <ParallaxWrapper>
         <MouseParticles />
         <SeoHead />

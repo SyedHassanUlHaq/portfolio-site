@@ -21,19 +21,19 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md transition-all duration-300 ${
-        scrolled ? "bg-black/70 shadow-lg" : "bg-transparent"
+      className={`fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md font-mono transition-all duration-300 ${
+        scrolled ? "bg-black/80 shadow-xl" : "bg-transparent"
       }`}
     >
       <Link href="/">
-        <span className="text-2xl font-extrabold text-pink-400 tracking-wide hover:scale-105 transition cursor-pointer">
+        <span className="text-2xl font-bold text-green-400 tracking-widest hover:scale-105 transition cursor-pointer">
           Syed Hassan Ul Haq
         </span>
       </Link>
 
-      <div className="flex items-center gap-6 text-white text-sm font-semibold">
-        <Link href="#projects" className="hover:text-pink-400 transition">Projects</Link>
-        <Link href="#contact" className="hover:text-pink-400 transition">Contact</Link>
+      <div className="flex items-center gap-6 text-[var(--foreground)] text-sm font-semibold">
+        <Link href="#projects" className="hover:text-green-300 transition">Projects</Link>
+        <Link href="#contact" className="hover:text-green-300 transition">Contact</Link>
         <ThemeToggle />
       </div>
     </motion.nav>
@@ -55,7 +55,7 @@ function ThemeToggle() {
   };
 
   return (
-    <button onClick={toggleTheme} className="text-xl hover:text-yellow-300 transition">
+    <button onClick={toggleTheme} className="text-xl hover:text-green-300 transition">
       {dark ? <FaSun /> : <FaMoon />}
     </button>
   );

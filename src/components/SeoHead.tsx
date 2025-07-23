@@ -8,10 +8,10 @@ type SeoProps = {
 };
 
 export default function SeoHead({
-  title = "Hassan Ul Haq – Portfolio",
-  description = "I build creative, intelligent, and immersive web experiences using AI, Next.js, and a splash of chaos.",
+  title = "Syed Hassan Ul Haq – Portfolio",
+  description = "I design systems that think, automate, and scale — from backend APIs to AI agents and post-quantum silicon cores",
   image = "/preview.png", // Replace with actual image path
-  url = "https://yourdomain.com", // Replace with your real URL
+  url = "https://syedhassanulhaq.github.io/portfolio-site/", // Replace with your real URL
 }: SeoProps) {
   return (
     <Head>
