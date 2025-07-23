@@ -3,13 +3,15 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+const prefix = "/portfolio-site"; // Required for GitHub Pages
+
 const images = [
   {
-    src: "/images/gsoc/certificate.png",
+    src: `${prefix}/images/gsoc/certificate.png`,
     alt: "GSoC 2024 Certificate",
   },
   {
-    src: "/images/gsoc/mentor-review.png",
+    src: `${prefix}/images/gsoc/mentor-review.png`,
     alt: "Mentor Feedback",
   }
 ];
@@ -27,7 +29,7 @@ export default function GSoCSection() {
         {/* GSoC Logo */}
         <div className="flex justify-center mb-6">
           <Image
-            src="/images/gsoc/gsoc-logo.png"
+            src={`${prefix}/images/gsoc/gsoc-logo.png`}
             alt="Google Summer of Code Logo"
             width={140}
             height={60}
