@@ -18,7 +18,7 @@ export const projects = [
         description: "A warehouse logistics system supporting FBA/FBM operations with full inventory, employee, and customer management.",
         image: "/arch-logistics.png",
         link: "https://github.com/SyedHassanUlHaq/ConversationalRAG_A.R.C.H.-Labs",
-        tech: ["React", "Django REST Framework", "PostgreSQL"]
+        tech: ["React", "Django REST Framework", "PostgreSQL", "Redis", "APIs: Shopify, Ebay, Amazon"]
     },
     {
       title: "FinChat Scraper",

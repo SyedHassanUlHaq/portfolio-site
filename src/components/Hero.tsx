@@ -44,7 +44,7 @@ export default function Hero() {
         className="relative z-10 bg-black/50 backdrop-blur-md p-8 rounded-xl shadow-lg text-center max-w-2xl w-full border border-white/10"
       >
         <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
-          Hey, I&apos;m <span className="text-green-300">Hassan</span>
+          Hey, I&apos;m <span className="text-green-400">Hassan</span>
         </h1>
         <p className="text-lg text-gray-200">
           I design systems that think, automate, and scale — from backend APIs to AI agents and post-quantum silicon cores
@@ -53,7 +53,7 @@ export default function Hero() {
         <div className="flex gap-6 justify-center mt-6 flex-wrap">
           <a
             href="#projects"
-            className="px-6 py-2 bg-green-400 text-black font-semibold rounded-full shadow-md hover:scale-105 transition"
+            className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/30 to-green-400/20 text-green-300 hover:from-green-400/50 hover:to-green-300/30 hover:text-white backdrop-blur-md border border-green-300/30"
           >
             View Projects
           </a>
