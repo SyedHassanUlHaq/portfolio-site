@@ -43,14 +43,15 @@ export default function Navbar() {
 function ThemeToggle() {
   const [dark, setDark] = useState(true);
 
+  useEffect(() => {
+    const html = document.documentElement;
+    setDark(html.classList.contains("dark"));
+  }, []);
+
   const toggleTheme = () => {
     const html = document.documentElement;
-    if (dark) {
-      html.classList.remove("dark");
-    } else {
-      html.classList.add("dark");
-    }
-    setDark(!dark);
+    html.classList.toggle("dark");
+    setDark(html.classList.contains("dark"));
   };
 
   return (
