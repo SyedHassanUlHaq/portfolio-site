@@ -20,9 +20,11 @@ function InteractiveCamera() {
   }, []);
 
   useFrame(() => {
-    // Smooth camera follow
-    camera.position.x += (mouse.current.x * 1.5 - camera.position.x) * 0.05;
-    camera.position.y += (mouse.current.y * 1.5 - camera.position.y) * 0.05;
+    const sensitivity = 4;
+    const lerpSpeed = 0.1;
+  
+    camera.position.x += (mouse.current.x * sensitivity - camera.position.x) * lerpSpeed;
+    camera.position.y += (mouse.current.y * sensitivity - camera.position.y) * lerpSpeed;
     camera.lookAt(0, 0, 0);
   });
 
