@@ -1,27 +1,35 @@
 'use client';
 
-import { Canvas, useFrame, extend } from '@react-three/fiber';
-import { useRef } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Environment, MeshWobbleMaterial, Points, PointMaterial, Effects } from '@react-three/drei';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
+import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import { Environment, Points, PointMaterial } from '@react-three/drei';
 
+function InteractiveCamera() {
+  const { camera } = useThree();
+  const mouse = useRef({ x: 0, y: 0 });
 
-function CoreSphere({ scale, color, opacity }: { scale: number; color: string; opacity: number }) {
-  return (
-    <mesh scale={scale}>
-      <sphereGeometry args={[1, 64, 64]} />
-      <meshStandardMaterial
-        color={color}
-        transparent
-        opacity={opacity}
-        emissive={color}
-        emissiveIntensity={1.5}
-        roughness={0.2}
-        metalness={1}
-      />
-    </mesh>
-  );
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      mouse.current.x = (event.clientX / window.innerWidth - 0.5) * 2;
+      mouse.current.y = -(event.clientY / window.innerHeight - 0.5) * 2;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useFrame(() => {
+    const sensitivity = 3;
+    const lerpSpeed = 0.06;
+
+    camera.position.x += (mouse.current.x * sensitivity - camera.position.x) * lerpSpeed;
+    camera.position.y += (mouse.current.y * sensitivity - camera.position.y) * lerpSpeed;
+    camera.lookAt(0, 0, 0);
+  });
+
+  return null;
 }
 
 function GalaxyParticles() {
@@ -39,31 +47,58 @@ function GalaxyParticles() {
 
   return (
     <Points ref={points} positions={new Float32Array(particles.flat())} stride={3}>
-    <PointMaterial transparent color="#00ffff" size={0.03} sizeAttenuation depthWrite={false} />
+      <PointMaterial
+        transparent
+        color="#00ffff"
+        size={0.03}
+        sizeAttenuation
+        depthWrite={false}
+      />
     </Points>
   );
 }
 
-export default function GalaxyCore3D() {
+export default function GalaxyCore() {
+  const glowColor = new THREE.Color('#00ffff');
+  const baseColor = new THREE.Color('#ec4899');
+  const blendColor = baseColor.clone().lerp(glowColor, 0.4); // softer mix
+
   return (
     <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-        <ambientLight intensity={0.2} />
-        <pointLight position={[0, 0, 0]} intensity={3} color="#00ffff" />
+      <Canvas camera={{ position: [0, 0, 3] }}>
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[3, 3, 3]} intensity={1.0} />
 
-        {/* Glowing Core */}
-        <CoreSphere scale={1.0} color="#ec4899" opacity={0.5} />
-        <CoreSphere scale={1.3} color="#00ffff" opacity={0.3} />
-        <CoreSphere scale={1.6} color="#ffffff" opacity={0.2} />
+        {/* Pulsing Core */}
+        <mesh scale={1.3}>
+          <icosahedronGeometry args={[1, 6]} />
+          <MeshWobbleMaterial
+            factor={1.1}
+            speed={1.7}
+            color={blendColor}
+            emissive={glowColor}
+            emissiveIntensity={0.7} // ⬅️ Dimmed
+            transparent
+            opacity={0.45}         // ⬅️ Dimmed
+            roughness={0.25}
+            metalness={1}
+          />
+        </mesh>
 
-        {/* Particle Halo */}
+        {/* Galaxy Particles */}
         <GalaxyParticles />
 
-        {/* Lighting & FX */}
-        <Environment preset="sunset" />
+        {/* Bloom Effect */}
         <EffectComposer>
-          <Bloom intensity={1.2} luminanceThreshold={0.1} />
+          <Bloom
+            luminanceThreshold={0.2}
+            luminanceSmoothing={0.9}
+            intensity={0.4} // ⬅️ Dimmed bloom
+          />
         </EffectComposer>
+
+        <Environment preset="sunset" />
+        <InteractiveCamera />
       </Canvas>
     </div>
   );
