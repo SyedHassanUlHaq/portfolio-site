@@ -52,7 +52,7 @@ export default function Hero() {
         transition={{ duration: 1.2, delay: 0.2 }}
         className="text-lg mt-4 max-w-xl text-center z-10"
       >
-        I build creative, intelligent, and immersive web experiences using AI, Next.js, and a splash of chaos.
+        I design systems that think, automate, and scale—from backend APIs to AI agents and post-quantum silicon cores
       </motion.p>
 
       <motion.div
