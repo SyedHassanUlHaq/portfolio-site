@@ -1,4 +1,5 @@
-// layout.tsx
+'use client'; // ✅ Add this to make it a Client Component
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ParallaxProvider } from "react-scroll-parallax";
