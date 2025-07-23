@@ -59,7 +59,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="px-6 py-2 border border-gray-300 text-gray-100 rounded-full hover:bg-green-300 hover:text-black transition"
+            className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/20 to-green-400/10 text-green-300 hover:from-green-400/40 hover:to-green-300/20 hover:text-white backdrop-blur-md border border-green-300/20"
           >
             Contact Me
           </a>
