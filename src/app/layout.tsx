@@ -1,8 +1,6 @@
-'use client'; // ✅ Add this to make it a Client Component
-
+// ✅ Server Layout: app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ParallaxProvider } from "react-scroll-parallax";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -19,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ParallaxProvider>{children}</ParallaxProvider>
+        {children}
       </body>
     </html>
   );
