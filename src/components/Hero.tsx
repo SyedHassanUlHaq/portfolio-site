@@ -3,10 +3,13 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Parallax } from "react-scroll-parallax";
+import InteractiveBlob from "@/components/InteractiveBlob";
+
 
 export default function Hero() {
   return (
     <section className="relative h-screen flex flex-col justify-center items-center text-white overflow-hidden bg-gradient-to-br from-purple-800 via-indigo-900 to-black">
+    <InteractiveBlob />
 
       {/* === Neon Blobs (Animated with @keyframes) === */}
       <div className="absolute animate-[blob_22s_infinite] bg-purple-600 opacity-25 w-[30rem] h-[30rem] rounded-full filter blur-3xl top-[-15%] left-[60%] z-0" />
