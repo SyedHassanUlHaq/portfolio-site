@@ -20,7 +20,7 @@ export default function About() {
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-6">🧠 About Me</h2>
         <p className="text-lg text-gray-300 leading-relaxed">
-          I'm Hassan, a creative technologist focused on building intelligent systems with personality.
+          I&apos;m Hassan, a creative technologist focused on building intelligent systems with personality.
           I specialize in AI Agents, Full Stack web apps, and anything that makes users go “whoa.”
         </p>
 
