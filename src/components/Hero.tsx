@@ -70,7 +70,7 @@ export default function Hero() {
             href="https://github.com/SyedHassanUlHaq"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-green-400 transition"
+            className="text-[#ffffff] hover:text-[#cccccc] transition"
           >
             <FaGithub size={24} />
           </a>
@@ -78,7 +78,7 @@ export default function Hero() {
             href="https://linkedin.com/in/syed-hassan-ul-haq"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-green-400 transition"
+            className="text-[#0077B5] hover:text-[#3399cc] transition"
           >
             <FaLinkedin size={24} />
           </a>
