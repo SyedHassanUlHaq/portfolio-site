@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Parallax } from "react-scroll-parallax";
 import InteractiveBlob from "@/components/InteractiveBlob";
-import Blob3D from "@/components/Blob3D";
+import GalaxyCore3D from "@/components/GalaxyCore3D";
 
 export default function Hero() {
   return (
     <section className="relative h-screen flex flex-col justify-center items-center bg-[var(--background)] text-[var(--foreground)] font-mono overflow-hidden z-0">
 
 
-      <Blob3D />
+      <GalaxyCore3D />
       <InteractiveBlob />
 
       {/* === Neon Blobs (Animated with @keyframes) === */}
