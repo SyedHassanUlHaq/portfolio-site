@@ -11,11 +11,7 @@ const images = [
   {
     src: "/images/gsoc/mentor-review.png",
     alt: "Mentor Feedback",
-  },
-  {
-    src: "/images/gsoc/announcement.png",
-    alt: "Selection Announcement",
-  },
+  }
 ];
 
 export default function GSoCSection() {
