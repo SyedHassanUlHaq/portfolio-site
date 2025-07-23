@@ -3,8 +3,9 @@
 import { useEffect, useState, createContext, useContext } from 'react';
 
 const ThemeContext = createContext<any>(null);
+import { ReactNode } from "react";
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   useEffect(() => {
