@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SiGooglescholar } from "react-icons/si";
 
 const images = [
   {
@@ -29,8 +28,15 @@ export default function GSoCSection() {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto text-center bg-black/40 backdrop-blur-md p-10 rounded-xl border border-white/10 shadow-xl"
       >
+        {/* GSoC Logo */}
         <div className="flex justify-center mb-6">
-          <SiGooglescholar size={48} className="text-[#4285F4]" />
+          <Image
+            src="/images/gsoc/gsoc-logo.png"
+            alt="Google Summer of Code Logo"
+            width={140}
+            height={60}
+            className="object-contain"
+          />
         </div>
 
         <h2 className="text-4xl font-bold text-white mb-4">
