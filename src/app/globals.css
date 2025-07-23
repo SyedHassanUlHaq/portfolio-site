@@ -4,8 +4,11 @@
   --background: #ffffff;
   --foreground: #171717;
   --accent: #00ffae;
+  --accent-soft: #80ffe0;
   --code-bg: #111111;
   --code-border: #2f2f2f;
+  --glass-bg: rgba(0, 0, 0, 0.6);
+  --glass-border: rgba(0, 255, 174, 0.2);
 }
 
 @theme inline {
@@ -20,6 +23,9 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --accent: #00ffaa;
+    --accent-soft: #80ffe0;
+    --glass-bg: rgba(0, 0, 0, 0.7);
+    --glass-border: rgba(0, 255, 170, 0.25);
   }
 }
 
@@ -40,12 +46,13 @@ a {
 }
 
 a:hover {
-  color: #80ffe0;
+  color: var(--accent-soft);
   text-shadow: 0 0 6px var(--accent);
 }
 
 /* Code block aesthetic */
-pre, code {
+pre,
+code {
   background-color: var(--code-bg);
   color: var(--accent);
   font-family: var(--font-mono), monospace;
@@ -56,7 +63,8 @@ pre, code {
 
 /* Blob animation keyframes */
 @keyframes blob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0px, 0px) scale(1);
   }
   33% {
@@ -65,4 +73,42 @@ pre, code {
   66% {
     transform: translate(-20px, 20px) scale(0.9);
   }
+}
+
+/* Glitch animation for logo and text */
+@layer utilities {
+  .hover\:glitch:hover {
+    animation: glitch 400ms infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow: 1px 0 red, -1px 0 blue;
+    }
+    20% {
+      text-shadow: -1px -1px red, 1px 1px blue;
+    }
+    40% {
+      text-shadow: 1px 1px red, -1px -1px blue;
+    }
+    60% {
+      text-shadow: 0 1px red, 0 -1px blue;
+    }
+    80% {
+      text-shadow: 1px 0 blue, -1px 0 red;
+    }
+    100% {
+      text-shadow: 0 0 transparent;
+    }
+  }
+}
+
+/* Optional: Glassmorphic border for nav or cards */
+.glass-border {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
