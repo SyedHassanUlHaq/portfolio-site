@@ -27,7 +27,7 @@ export default function Navbar() {
     >
       <Link href="/">
         <span className="text-2xl font-extrabold text-pink-400 tracking-wide hover:scale-105 transition cursor-pointer">
-          Hassan
+          Syed Hassan Ul Haq
         </span>
       </Link>
 
