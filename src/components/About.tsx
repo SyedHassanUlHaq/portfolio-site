@@ -30,12 +30,32 @@ export default function About() {
         <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl shadow-lg p-10">
           <h2 className="text-4xl font-bold mb-6 text-green-400">🧠 About Me</h2>
           <p className="text-lg leading-relaxed text-gray-300">
-            I&apos;m Hassan, a creative technologist focused on building intelligent systems with personality.
-            I specialize in AI Agents, Full Stack web apps, and anything that makes users go “whoa.”
+            I&apos;m Hassan — an AI-native developer crafting intelligent systems that scrape, sense, and speak.
+            From deepfake detection pipelines to LLM-powered data tools and embedded RISC-V hardware, I build across the stack — and below it.
+            If it’s weird, smart, or sparks curiosity, I’m probably already on it.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {["AI", "LLMs", "Next.js", "Tailwind", "Framer Motion", "Supabase", "VAPI", "Node.js"].map((tech, i) => (
+            {[
+              "AI",
+              "LLMs",
+              "LangChain",
+              "Next.js",
+              "Python",
+              "GO",
+              "FastAPI",
+              "Playwright",
+              "React",
+              "Node.js",
+              "TypeScript",
+              "Django REST",
+              "Fast API",
+              "PostgreSQL",
+              "Redis",
+              "MongoDB",
+              "Chisel",
+              "Scala"
+            ].map((tech, i) => (
               <span
                 key={i}
                 className="bg-[var(--foreground)]/10 text-[var(--foreground)] px-4 py-2 rounded-full text-sm hover:bg-[var(--foreground)]/20 transition"
