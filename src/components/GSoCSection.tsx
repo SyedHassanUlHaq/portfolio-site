@@ -57,14 +57,14 @@ export default function GSoCSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="overflow-hidden rounded-lg border border-white/10 shadow-md hover:scale-105 hover:shadow-xl transition-transform duration-300"
+              className="relative aspect-video overflow-hidden rounded-lg border border-white/10 shadow-md hover:scale-105 hover:shadow-xl transition-transform duration-300"
             >
               <Image
                 src={src}
                 alt={alt}
-                width={500}
-                height={300}
-                className="w-full h-auto object-cover rounded-lg"
+                fill
+                className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
           ))}
