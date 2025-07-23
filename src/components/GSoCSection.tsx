@@ -9,10 +9,14 @@ const images = [
   {
     src: `${prefix}/images/gsoc/certificate.png`,
     alt: "GSoC 2024 Certificate",
+    width: 800, // ✅ Update this if needed
+    height: 565,
   },
   {
     src: `${prefix}/images/gsoc/mentor-review.png`,
     alt: "Mentor Feedback",
+    width: 640, // ✅ Use actual size here
+    height: 450,
   }
 ];
 
@@ -50,21 +54,21 @@ export default function GSoCSection() {
         </p>
 
         {/* Images */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {images.map(({ src, alt }, i) => (
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+          {images.map(({ src, alt, width, height }, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="relative aspect-video overflow-hidden rounded-lg border border-white/10 shadow-md hover:scale-105 hover:shadow-xl transition-transform duration-300"
+              className="rounded-lg border border-white/10 shadow-md hover:scale-105 hover:shadow-xl transition-transform duration-300"
             >
               <Image
                 src={src}
                 alt={alt}
-                fill
-                className="object-cover rounded-lg"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                width={width}
+                height={height}
+                className="rounded-lg"
               />
             </motion.div>
           ))}
