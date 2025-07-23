@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
+import { Parallax } from "react-scroll-parallax";
 
 export default function About() {
   const [mounted, setMounted] = useState(false);
@@ -11,10 +12,18 @@ export default function About() {
       id="about"
       className="relative py-24 px-6 bg-gradient-to-b from-black to-purple-950 text-white overflow-hidden"
     >
-      {/* Abstract blob background */}
-      <div className="absolute -top-32 left-1/3 w-[30rem] h-[30rem] bg-indigo-500 opacity-20 rounded-full filter blur-3xl" />
-      <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500 opacity-10 rounded-full filter blur-2xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-fuchsia-700 opacity-10 rounded-full filter blur-2xl" />
+      {/* Abstract parallax blobs */}
+      <Parallax speed={-10}>
+        <div className="absolute -top-32 left-1/3 w-[30rem] h-[30rem] bg-indigo-500 opacity-20 rounded-full filter blur-3xl" />
+      </Parallax>
+
+      <Parallax speed={15}>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500 opacity-10 rounded-full filter blur-2xl" />
+      </Parallax>
+
+      <Parallax speed={8}>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-fuchsia-700 opacity-10 rounded-full filter blur-2xl" />
+      </Parallax>
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-center">
