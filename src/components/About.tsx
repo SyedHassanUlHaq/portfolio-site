@@ -26,24 +26,27 @@ export default function About() {
       </Parallax>
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">🧠 About Me</h2>
-        <p className="text-lg text-gray-300 leading-relaxed">
-          I&apos;m Hassan, a creative technologist focused on building intelligent systems with personality.
-          I specialize in AI Agents, Full Stack web apps, and anything that makes users go “whoa.”
-        </p>
-
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          {["AI", "LLMs", "Next.js", "Tailwind", "Framer Motion", "Supabase", "VAPI", "Node.js"].map((tech, i) => (
-            <span
-              key={i}
-              className="bg-white/10 px-4 py-2 rounded-full text-sm hover:bg-white/20 transition"
-            >
-              {tech}
-            </span>
-          ))}
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <div className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl shadow-lg p-10">
+            <h2 className="text-4xl font-bold mb-6">🧠 About Me</h2>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              I&apos;m Hassan, a creative technologist focused on building intelligent systems with personality.
+              I specialize in AI Agents, Full Stack web apps, and anything that makes users go “whoa.”
+            </p>
+        
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              {["AI", "LLMs", "Next.js", "Tailwind", "Framer Motion", "Supabase", "VAPI", "Node.js"].map((tech, i) => (
+                <span
+                  key={i}
+                  className="bg-white/10 px-4 py-2 rounded-full text-sm hover:bg-white/20 transition"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+
     </section>
   );
 }
