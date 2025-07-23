@@ -44,7 +44,7 @@ export default function GSoCSection() {
         </h2>
 
         <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-          Selected as a <span className="text-[#00ffaa] font-semibold">GSoC 2024 Mentee</span> under <strong>RISC-V International</strong>, contributing to cutting-edge open-source tooling for chip design and silicon development.
+          Selected as a <span className="text-[#00ffaa] font-semibold">GSoC 2024 Mentee</span> under <strong>Chips Alliance</strong> for the project <strong>Support Zvk in T1 (RISC-V Vector coprocessor)</strong>, contributing to cutting-edge open-source tooling for chip design and silicon development.
         </p>
 
         <p className="text-sm text-gray-400 mt-3">
