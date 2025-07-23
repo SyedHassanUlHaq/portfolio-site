@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-400 opacity-20 rounded-full filter blur-2xl animate-bounce"></div>
 
       <h1 className="text-6xl font-extrabold tracking-tight z-10">
-        Hey, I'm <span className="text-pink-400">Hassan</span>
+        Hey, I&apos;m <span className="text-pink-400">Hassan</span>
       </h1>
       <p className="text-lg mt-4 max-w-xl text-center z-10">
         I build creative, intelligent, and immersive web experiences using AI, Next.js, and a splash of chaos.
