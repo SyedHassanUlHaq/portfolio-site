@@ -8,7 +8,8 @@ import Blob3D from "@/components/Blob3D";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex flex-col justify-center items-center bg-[var(--background)] text-[var(--foreground)] font-mono overflow-hidden">
+    <section className="relative h-screen flex flex-col justify-center items-center bg-[var(--background)] text-[var(--foreground)] font-mono overflow-hidden z-0">
+
 
       <Blob3D />
       <InteractiveBlob />

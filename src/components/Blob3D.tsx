@@ -37,7 +37,7 @@ export default function Blob3D() {
   const blendColor = baseColor.clone().lerp(glowColor, 0.5);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full z-[-10] pointer-events-none">
+    <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 3] }}>
         <ambientLight intensity={0.7} />
         <directionalLight position={[3, 3, 3]} intensity={1.5} />
