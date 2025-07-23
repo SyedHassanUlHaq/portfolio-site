@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <main className="bg-black text-white relative overflow-hidden">
       <MouseParticles />
+      <SeoHead />
       <Navbar />
       <Hero />
       <Projects />

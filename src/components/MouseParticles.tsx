@@ -1,11 +1,12 @@
 "use client";
 
 import Particles from "react-tsparticles";
+import { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 
 export default function MouseParticles() {
-  async function particlesInit(main: any) {
-    await loadFull(main);
+  async function particlesInit(engine: Engine): Promise<void> {
+    await loadFull(engine);
   }
 
   return (
