@@ -22,7 +22,7 @@ const images = [
 
 export default function GSoCSection() {
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-[#0a0a0a] to-black text-[var(--foreground)] z-10">
+    <section id="gsocsection" className="relative py-20 px-6 bg-gradient-to-b from-[#0a0a0a] to-black text-[var(--foreground)] z-10">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -110,14 +110,16 @@ export default function Hero() {
           </a>
         </div>
       </motion.div>
+      <a href="#gsocsection" className="absolute bottom-6 z-10">
       <motion.div
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 0.6, y: [10, 20, 10] }}
-  transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-  className="absolute bottom-6 z-10 text-green-300 bg-white/5 backdrop-blur-sm p-2 rounded-full shadow-inner shadow-green-400/10 border border-green-300/10"
->
-  <BsChevronDown size={28} />
-</motion.div>
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 0.6, y: [10, 20, 10] }}
+        transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+        className="text-green-300 bg-white/5 backdrop-blur-sm p-2 rounded-full shadow-inner shadow-green-400/10 border border-green-300/10 hover:scale-105 transition"
+      >
+        <BsChevronDown size={28} />
+      </motion.div>
+      </a>
 
     </section>
   );
