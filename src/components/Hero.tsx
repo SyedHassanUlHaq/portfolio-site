@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Parallax } from "react-scroll-parallax";
 import InteractiveBlob from "@/components/InteractiveBlob";
 import GalaxyCore3D from "@/components/GalaxyCore3D";
+import { Typewriter } from 'react-simple-typewriter';
 
 export default function Hero() {
   return (
@@ -47,8 +48,16 @@ export default function Hero() {
           Hey, I&apos;m <span className="text-green-400">Hassan</span>
         </h1>
         <p className="text-lg text-gray-200">
-          I design systems that think, automate, and scale — from backend APIs to AI agents and post-quantum silicon cores
-        </p>
+          <Typewriter
+            words={[ 'I design systems that think', 'automate, and scale', 'from backend APIs to AI agents and post-quantum silicon cores']}
+        loop
+        cursor
+        cursorStyle="_"
+        typeSpeed={45}
+        deleteSpeed={30}
+        delaySpeed={2000}
+      />
+    </p>
 
         <div className="flex gap-6 justify-center mt-6 flex-wrap">
           <a
