@@ -44,20 +44,36 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="relative z-10 bg-black/50 backdrop-blur-md p-8 rounded-xl shadow-lg text-center max-w-2xl w-full border border-white/10"
       >
-        <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-2 leading-tight">
           Hey, I&apos;m <span className="text-green-400">Hassan</span>
         </h1>
-        <p className="text-lg text-gray-200">
+        <h2 className="text-xl text-gray-300 mb-4">
+          AI Engineer & Systems Architect
+        </h2>
+
+        <p className="text-lg text-gray-200 mb-2">
           <Typewriter
-            words={[ 'I design systems that think', 'automate, and scale', 'from backend APIs to AI agents and post-quantum silicon cores']}
-        loop
-        cursor
-        cursorStyle="_"
-        typeSpeed={45}
-        deleteSpeed={30}
-        delaySpeed={2000}
-      />
-    </p>
+            words={[
+              'I design systems that think',
+              'automate complex decisions',
+              'scale intelligently across platforms',
+            ]}
+            loop
+            cursor
+            cursorStyle="_"
+            typeSpeed={45}
+            deleteSpeed={30}
+            delaySpeed={2000}
+          />
+        </p>
+
+        <p className="text-sm text-gray-400 italic mb-2">
+          I craft scalable APIs, build AI agents, and more cool stuff.
+        </p>
+
+        <p className="text-sm text-green-400 mt-1">
+          Currently open to collaborations & freelance opportunities.
+        </p>
 
         <div className="flex gap-6 justify-center mt-6 flex-wrap">
           <a
