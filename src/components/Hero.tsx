@@ -6,6 +6,7 @@ import { Parallax } from "react-scroll-parallax";
 import InteractiveBlob from "@/components/InteractiveBlob";
 import GalaxyCore3D from "@/components/GalaxyCore3D";
 import { Typewriter } from 'react-simple-typewriter';
+import { BsChevronDown } from 'react-icons/bs'; // Add this near other imports
 
 export default function Hero() {
   return (
@@ -109,6 +110,15 @@ export default function Hero() {
           </a>
         </div>
       </motion.div>
+      <motion.div
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 0.6, y: [10, 20, 10] }}
+  transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+  className="absolute bottom-6 z-10 text-green-300 bg-white/5 backdrop-blur-sm p-2 rounded-full shadow-inner shadow-green-400/10 border border-green-300/10"
+>
+  <BsChevronDown size={28} />
+</motion.div>
+
     </section>
   );
 }
