@@ -2,16 +2,15 @@
 
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { BsChevronDown } from "react-icons/bs";
 import { Parallax } from "react-scroll-parallax";
 import InteractiveBlob from "@/components/InteractiveBlob";
 import GalaxyCore3D from "@/components/GalaxyCore3D";
 import { Typewriter } from 'react-simple-typewriter';
-import { BsChevronDown } from 'react-icons/bs'; // Add this near other imports
 
 export default function Hero() {
   return (
     <section className="relative h-screen flex flex-col justify-center items-center bg-[var(--background)] text-[var(--foreground)] font-mono overflow-hidden z-0">
-
       <GalaxyCore3D />
       <InteractiveBlob />
 
@@ -38,89 +37,102 @@ export default function Hero() {
         />
       </Parallax>
 
-      {/* === Content Overlay === */}
+      {/* === Content Overlay with Avatar === */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="relative z-10 bg-black/50 backdrop-blur-md p-8 rounded-xl shadow-lg text-center max-w-2xl w-full border border-white/10"
+        className="relative z-10 bg-black/50 backdrop-blur-md p-8 rounded-xl shadow-lg text-center md:text-left max-w-4xl w-full border border-white/10 flex flex-col md:flex-row items-center gap-6"
       >
-        <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-2 leading-tight">
-          Hey, I&apos;m <span className="text-green-400">Hassan</span>
-        </h1>
-        <h2 className="text-xl text-gray-300 mb-4">
-          AI Engineer & Systems Architect
-        </h2>
-
-        <p className="text-lg text-gray-200 mb-2">
-          <Typewriter
-            words={[
-              'I design systems that think',
-              'automate complex decisions',
-              'scale intelligently across platforms',
-            ]}
-            loop
-            cursor
-            cursorStyle="_"
-            typeSpeed={45}
-            deleteSpeed={30}
-            delaySpeed={2000}
+        {/* === Avatar === */}
+        <div className="shrink-0">
+          <img
+            src="/portfolio-site/images/gsoc/hassan-avatar.png"
+            alt="Hassan"
+            className="w-32 h-32 rounded-full object-cover border-4 border-green-400/30 shadow-lg shadow-green-400/20"
           />
-        </p>
-
-        <p className="text-sm text-gray-400 italic mb-2">
-          I craft scalable APIs, build AI agents, and more cool stuff.
-        </p>
-
-        <p className="text-sm text-green-400 mt-1">
-          Currently open to collaborations & freelance opportunities.
-        </p>
-
-        <div className="flex gap-6 justify-center mt-6 flex-wrap">
-          <a
-            href="#projects"
-            className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/30 to-green-400/20 text-green-300 hover:from-green-400/50 hover:to-green-300/30 hover:text-white backdrop-blur-md border border-green-300/30"
-          >
-            View Projects
-          </a>
-          <a
-            href="#contact"
-            className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/20 to-green-400/10 text-green-300 hover:from-green-400/40 hover:to-green-300/20 hover:text-white backdrop-blur-md border border-green-300/20"
-          >
-            Contact Me
-          </a>
         </div>
 
-        <div className="flex justify-center gap-4 mt-6">
-          <a
-            href="https://github.com/SyedHassanUlHaq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#ffffff] hover:text-[#cccccc] transition"
-          >
-            <FaGithub size={24} />
-          </a>
-          <a
-            href="https://linkedin.com/in/syed-hassan-ul-haq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#0077B5] hover:text-[#3399cc] transition"
-          >
-            <FaLinkedin size={24} />
-          </a>
+        {/* === Text Content === */}
+        <div className="flex-1">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-2 leading-tight">
+            Hey, I&apos;m <span className="text-green-400">Hassan</span>
+          </h1>
+          <h2 className="text-xl text-gray-300 mb-4">
+            AI Engineer & Systems Architect
+          </h2>
+
+          <p className="text-lg text-gray-200 mb-2">
+            <Typewriter
+              words={[
+                'I design systems that think',
+                'automate complex decisions',
+                'scale intelligently across platforms',
+              ]}
+              loop
+              cursor
+              cursorStyle="_"
+              typeSpeed={45}
+              deleteSpeed={30}
+              delaySpeed={2000}
+            />
+          </p>
+
+          <p className="text-sm text-gray-400 italic mb-2">
+            I craft scalable APIs, build AI agents, and more cool stuff.
+          </p>
+
+          <p className="text-sm text-green-400 mt-1">
+            Currently open to collaborations & freelance opportunities.
+          </p>
+
+          <div className="flex gap-6 justify-center md:justify-start mt-6 flex-wrap">
+            <a
+              href="#projects"
+              className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/30 to-green-400/20 text-green-300 hover:from-green-400/50 hover:to-green-300/30 hover:text-white backdrop-blur-md border border-green-300/30"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/20 to-green-400/10 text-green-300 hover:from-green-400/40 hover:to-green-300/20 hover:text-white backdrop-blur-md border border-green-300/20"
+            >
+              Contact Me
+            </a>
+          </div>
+
+          <div className="flex justify-center md:justify-start gap-4 mt-6">
+            <a
+              href="https://github.com/SyedHassanUlHaq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#ffffff] hover:text-[#cccccc] transition"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a
+              href="https://linkedin.com/in/syed-hassan-ul-haq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#0077B5] hover:text-[#3399cc] transition"
+            >
+              <FaLinkedin size={24} />
+            </a>
+          </div>
         </div>
       </motion.div>
+
+      {/* === Scroll Cue === */}
       <a href="#gsocsection" className="absolute bottom-6 z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 0.6, y: [10, 20, 10] }}
-        transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-        className="text-green-300 bg-white/5 backdrop-blur-sm p-2 rounded-full shadow-inner shadow-green-400/10 border border-green-300/10 hover:scale-105 transition"
-      >
-        <BsChevronDown size={28} />
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 0.6, y: [10, 20, 10] }}
+          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          className="text-green-300 bg-white/5 backdrop-blur-sm p-2 rounded-full shadow-inner shadow-green-400/10 border border-green-300/10 hover:scale-105 transition"
+        >
+          <BsChevronDown size={28} />
+        </motion.div>
       </a>
-
     </section>
   );
 }
