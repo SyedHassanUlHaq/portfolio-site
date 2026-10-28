@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "deepfake-audio-classifier",
+  "title": "Synthetic Audio Detection Pipeline",
+  "summary": "A deep-learning pipeline that classifies audio as real or synthetic.",
+  "types": ["machine-learning"],
+  "industries": ["media"],
+  "tech": ["python", "tensorflow", "librosa"],
+  "keywords": ["deepfake", "audio", "deep learning"],
+  "links": [{ "label": "Source on GitHub", "url": "https://github.com/SyedHassanUlHaq/deepfake-audio-classifier" }]
+}

@@ -1,138 +1,78 @@
-'use client';
-
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { BsChevronDown } from "react-icons/bs";
-import { Parallax } from "react-scroll-parallax";
-import InteractiveBlob from "@/components/InteractiveBlob";
-import GalaxyCore3D from "@/components/GalaxyCore3D";
-import { Typewriter } from 'react-simple-typewriter';
+import { site } from "../../content/site";
+import { ev } from "@/lib/analytics";
+import { mailto } from "@/lib/contact";
+import { loomId } from "@/lib/loom";
+import { youtubeId } from "@/lib/video";
+import { withBase } from "@/lib/url";
+import { Arrow } from "./Icons";
+import VideoFacade from "./VideoFacade";
 
 export default function Hero() {
+  const { hero, introVideo, trust, contact } = site;
+  const id = loomId(introVideo.url);
+  const yt = youtubeId(introVideo.url);
+  const hasVideo = !!(introVideo.src || id || yt);
+
   return (
-    <section className="relative h-screen flex flex-col justify-center items-center bg-[var(--background)] text-[var(--foreground)] font-mono overflow-hidden z-0">
-      <GalaxyCore3D />
-      <InteractiveBlob />
+    <div className="bg-grid border-b border-line">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_1fr] lg:gap-x-14 lg:gap-y-0 lg:py-24">
+        <div className="lg:col-start-1 lg:row-start-1 lg:self-end lg:pb-10">
+          <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-sm text-muted">
+            <span className="h-2 w-2 rounded-full bg-accent" aria-hidden /> Available for new projects
+          </p>
+          <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">{hero.headline}</h1>
+          <p className="mt-5 max-w-xl text-lg text-muted">{hero.sub}</p>
 
-      {/* === Neon Blobs === */}
-      <div className="absolute animate-[blob_22s_infinite] bg-purple-600 opacity-20 w-[30rem] h-[30rem] rounded-full filter blur-3xl top-[-15%] left-[60%] z-0" />
-      <div className="absolute animate-[blob_28s_infinite] bg-pink-500 opacity-15 w-[25rem] h-[25rem] rounded-full filter blur-2xl top-[50%] left-[-10%] z-0" />
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#work" {...ev("cta-click", { where: "hero-work" })} className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-accent px-6 font-medium text-accent-ink transition hover:brightness-110">
+              {hero.primaryCta} <Arrow className="h-4 w-4" />
+            </a>
+            <a
+              href={contact.upwork || mailto("Project inquiry")}
+              {...(contact.upwork ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              {...ev("cta-click", { where: "hero-contact" })}
+              className="inline-flex h-12 items-center justify-center rounded-md border border-line bg-surface px-6 font-medium text-ink transition hover:border-accent/60"
+            >
+              {contact.upwork ? "View my Upwork profile" : hero.secondaryCta}
+            </a>
+          </div>
+        </div>
 
-      {/* === Parallax Blobs === */}
-      <Parallax speed={-20}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.3, scale: 1 }}
-          transition={{ duration: 2, ease: 'easeOut' }}
-          className="absolute -top-32 -left-32 w-[40rem] h-[40rem] bg-pink-500 rounded-full filter blur-3xl animate-pulse"
-        />
-      </Parallax>
-
-      <Parallax speed={10}>
-        <motion.div
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 0.2, y: 0 }}
-          transition={{ duration: 2, ease: 'easeOut', delay: 0.5 }}
-          className="absolute top-0 right-0 w-64 h-64 bg-cyan-400 rounded-full filter blur-2xl animate-bounce"
-        />
-      </Parallax>
-
-      {/* === Content Overlay with Avatar === */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 bg-black/50 backdrop-blur-md p-8 rounded-xl shadow-lg text-center md:text-left max-w-4xl w-full border border-white/10 flex flex-col md:flex-row items-center gap-6"
-      >
-        {/* === Avatar === */}
-        <div className="shrink-0">
-          <img
-            src="/portfolio-site/images/gsoc/hassan-avatar.png"
-            alt="Hassan"
-            className="w-32 h-32 rounded-full object-cover border-4 border-green-400/30 shadow-lg shadow-green-400/20"
+        <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+        {hasVideo ? (
+          <VideoFacade
+            src={introVideo.src ? withBase(introVideo.src) : undefined}
+            loomId={introVideo.src ? undefined : id}
+            youtubeId={introVideo.src ? undefined : yt}
+            shareUrl={introVideo.src ? undefined : introVideo.url}
+            posterHasPlay={introVideo.posterHasPlay}
+            title={introVideo.title}
+            duration={introVideo.duration}
+            posterSrc={introVideo.poster ? withBase(introVideo.poster) : undefined}
+            label="intro"
           />
+        ) : (
+          <div className="flex items-center gap-5 rounded-xl border border-line bg-surface p-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={withBase("/images/hassan-avatar.webp")} alt={site.name} width={96} height={96} className="h-24 w-24 rounded-full border border-line object-cover" />
+            <div>
+              <p className="text-lg font-semibold text-ink">{site.name}</p>
+              <p className="text-sm text-muted">{site.role}</p>
+            </div>
+          </div>
+        )}
         </div>
 
-        {/* === Text Content === */}
-        <div className="flex-1">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-2 leading-tight">
-            Hey, I&apos;m <span className="text-green-400">Hassan</span>
-          </h1>
-          <h2 className="text-xl text-gray-300 mb-4">
-            AI Engineer & Systems Architect
-          </h2>
-
-          <p className="text-lg text-gray-200 mb-2">
-            <Typewriter
-              words={[
-                'I design systems that think',
-                'automate complex decisions',
-                'scale intelligently across platforms',
-              ]}
-              loop
-              cursor
-              cursorStyle="_"
-              typeSpeed={45}
-              deleteSpeed={30}
-              delaySpeed={2000}
-            />
-          </p>
-
-          <p className="text-sm text-gray-400 italic mb-2">
-            I craft scalable APIs, build AI agents, and more cool stuff.
-          </p>
-
-          <p className="text-sm text-green-400 mt-1">
-            Currently open to collaborations & freelance opportunities.
-          </p>
-
-          <div className="flex gap-6 justify-center md:justify-start mt-6 flex-wrap">
-            <a
-              href="#projects"
-              className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/30 to-green-400/20 text-green-300 hover:from-green-400/50 hover:to-green-300/30 hover:text-white backdrop-blur-md border border-green-300/30"
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-2 rounded-full font-semibold shadow-md transition bg-gradient-to-br from-green-500/20 to-green-400/10 text-green-300 hover:from-green-400/40 hover:to-green-300/20 hover:text-white backdrop-blur-md border border-green-300/20"
-            >
-              Contact Me
-            </a>
-          </div>
-
-          <div className="flex justify-center md:justify-start gap-4 mt-6">
-            <a
-              href="https://github.com/SyedHassanUlHaq"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#ffffff] hover:text-[#cccccc] transition"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a
-              href="https://linkedin.com/in/syed-hassan-ul-haq"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#0077B5] hover:text-[#3399cc] transition"
-            >
-              <FaLinkedin size={24} />
-            </a>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* === Scroll Cue === */}
-      <a href="#gsocsection" className="absolute bottom-6 z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 0.6, y: [10, 20, 10] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-          className="text-green-300 bg-white/5 backdrop-blur-sm p-2 rounded-full shadow-inner shadow-green-400/10 border border-green-300/10 hover:scale-105 transition"
-        >
-          <BsChevronDown size={28} />
-        </motion.div>
-      </a>
-    </section>
+          <dl className="grid max-w-xl grid-cols-3 gap-4 border-t border-line pt-6 lg:col-start-1 lg:row-start-2 lg:self-start">
+            {trust.map((t) => (
+              <div key={t.label}>
+                <dt className="sr-only">{t.label}</dt>
+                <dd className="text-2xl font-semibold tracking-tight text-ink">{t.value}</dd>
+                <p className="mt-0.5 text-xs leading-snug text-muted">{t.label}</p>
+              </div>
+            ))}
+          </dl>
+      </div>
+    </div>
   );
 }

@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "finchat-scraper",
+  "title": "Financial Data Scraping Pipeline for Equity Analysis",
+  "summary": "Automated pipeline that collects financial data from FinChat and stores it in MongoDB for large-scale equity analysis.",
+  "types": ["data-pipelines"],
+  "industries": ["finance"],
+  "tech": ["python", "playwright", "mongodb", "cloudflare"],
+  "keywords": ["nlp", "natural language processing", "scraping"],
+  "links": [{ "label": "Source on GitHub", "url": "https://github.com/SyedHassanUlHaq/finchat-scrapper" }]
+}

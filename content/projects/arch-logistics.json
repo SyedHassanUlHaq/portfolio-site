@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "arch-logistics",
+  "title": "Warehouse Logistics Platform for FBA/FBM Operations",
+  "summary": "Full inventory, employee and customer management for a warehouse handling Amazon FBA and FBM fulfilment, connected to Shopify, eBay and Amazon.",
+  "types": ["full-stack", "integrations"],
+  "industries": ["logistics", "ecommerce"],
+  "tech": ["react", "django", "postgresql", "redis", "shopify", "amazon-sp-api", "ebay-api"],
+  "featured": 1,
+  "links": [{ "label": "Source on GitHub", "url": "https://github.com/SyedHassanUlHaq/ConversationalRAG_A.R.C.H.-Labs" }]
+}

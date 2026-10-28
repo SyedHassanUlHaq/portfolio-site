@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Portfolio project",
+  "type": "object",
+  "required": [
+    "slug",
+    "title",
+    "summary",
+    "types",
+    "industries",
+    "tech"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Must match the file name. Becomes /projects/<slug>"
+    },
+    "title": {
+      "type": "string",
+      "description": "Outcome-oriented, e.g. 'AI Voice Receptionist for Real Estate Lead Qualification'"
+    },
+    "summary": {
+      "type": "string",
+      "description": "One line. Shown on cards and link previews."
+    },
+    "types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "ai-agents",
+          "ai-automation",
+          "voice-ai",
+          "rag",
+          "integrations",
+          "data-pipelines",
+          "full-stack",
+          "machine-learning"
+        ]
+      }
+    },
+    "industries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "real-estate",
+          "healthcare",
+          "ecommerce",
+          "logistics",
+          "marketing",
+          "finance",
+          "saas",
+          "restaurants",
+          "professional-services",
+          "media",
+          "other"
+        ]
+      }
+    },
+    "tech": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "openai",
+          "anthropic",
+          "langchain",
+          "langgraph",
+          "crewai",
+          "vapi",
+          "retell",
+          "elevenlabs",
+          "twilio",
+          "tensorflow",
+          "pytorch",
+          "n8n",
+          "make",
+          "zapier",
+          "python",
+          "fastapi",
+          "django",
+          "nodejs",
+          "go",
+          "react",
+          "nextjs",
+          "typescript",
+          "react-native",
+          "postgresql",
+          "supabase",
+          "mongodb",
+          "redis",
+          "playwright",
+          "librosa",
+          "docker",
+          "aws",
+          "cloudflare",
+          "shopify",
+          "amazon-sp-api",
+          "ebay-api",
+          "hubspot",
+          "gohighlevel"
+        ]
+      }
+    },
+    "featured": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Homepage order (1 = first). Omit if not featured."
+    },
+    "draft": {
+      "type": "boolean",
+      "description": "Hidden in production builds"
+    },
+    "unlisted": {
+      "type": "boolean",
+      "description": "Reachable by URL only; noindex; not in lists or sitemap"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "problem": {
+      "type": "string"
+    },
+    "solution": {
+      "type": "string"
+    },
+    "highlights": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "role": {
+      "type": "string",
+      "description": "What YOU personally handled"
+    },
+    "results": {
+      "type": "array",
+      "description": "Real numbers only. If there's no metric, describe the practical outcome and omit value.",
+      "items": {
+        "type": "object",
+        "required": [
+          "label"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "loom": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "poster": {
+          "type": "string"
+        }
+      }
+    },
+    "screenshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "src",
+          "alt"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "src": {
+            "type": "string",
+            "description": "File in public/projects/<slug>/"
+          },
+          "alt": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "ui",
+              "workflow",
+              "architecture",
+              "docs",
+              "before-after",
+              "other"
+            ]
+          },
+          "blur": {
+            "type": "boolean",
+            "description": "CSS blur only — pre-blur the file for real confidentiality"
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "label",
+          "url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "confidentiality": {
+      "enum": [
+        "public",
+        "anonymized",
+        "nda"
+      ],
+      "description": "anonymized: hides client name + links. nda: also hides screenshots and Loom."
+    },
+    "clientAlias": {
+      "type": "string",
+      "description": "e.g. 'US real-estate brokerage'"
+    },
+    "clientName": {
+      "type": "string"
+    },
+    "testimonial": {
+      "type": "object",
+      "required": [
+        "quote"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "quote": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
