@@ -1,0 +1,28 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "sample-real-estate-voice-agent",
+  "title": "SAMPLE: AI Voice Receptionist for Real Estate Lead Qualification",
+  "summary": "Sample entry that shows every field. It is a draft, so it never appears in a production build. Copy it, or delete it.",
+  "types": ["voice-ai", "ai-agents", "integrations"],
+  "industries": ["real-estate"],
+  "tech": ["python", "fastapi", "vapi", "twilio", "openai", "supabase", "n8n"],
+  "draft": true,
+  "featured": 4,
+  "year": 2025,
+  "duration": "3 weeks",
+  "problem": "Placeholder: what was the client struggling with? Keep it about their business, not your tech.",
+  "solution": "Placeholder: what you built and how it fixed the problem, in plain language.",
+  "highlights": ["Placeholder feature one", "Placeholder feature two"],
+  "role": "Placeholder: e.g. Designed and built the whole system solo, from call flow to CRM sync.",
+  "results": [{ "value": "00%", "label": "Placeholder metric. Only use real numbers" }, { "label": "Or describe the practical outcome, without a number" }],
+  "loom": { "url": "https://www.loom.com/share/0123456789abcdef0123456789abcdef", "duration": "2:40", "title": "project walkthrough" },
+  "screenshots": [
+    { "src": "dashboard.webp", "alt": "Call dashboard", "kind": "ui", "caption": "Call dashboard" },
+    { "src": "workflow.webp", "alt": "n8n workflow", "kind": "workflow", "caption": "Automation workflow" },
+    { "src": "transcript.webp", "alt": "Tall screenshot", "kind": "docs", "blur": true }
+  ],
+  "confidentiality": "anonymized",
+  "clientAlias": "US real-estate brokerage",
+  "clientName": "Never shown while anonymized",
+  "testimonial": { "quote": "Placeholder testimonial", "author": "Client" }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "coherent-composer",
+  "title": "LLM-Powered Data Extraction from Diverse Structured Datasets",
+  "summary": "Uses LLMs to pull consistent, usable data out of datasets that all look different.",
+  "types": ["ai-automation", "data-pipelines"],
+  "industries": ["other"],
+  "tech": ["python", "langchain", "openai"],
+  "featured": 2,
+  "keywords": ["nlp", "natural language processing", "extraction"],
+  "links": [{ "label": "Source on GitHub", "url": "https://github.com/SyedHassanUlHaq/CoherentComposer" }]
+}

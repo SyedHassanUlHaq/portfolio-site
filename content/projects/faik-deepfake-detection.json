@@ -1,0 +1,12 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "faik-deepfake-detection",
+  "title": "fAIk: Mobile App for Detecting AI-Generated Video",
+  "summary": "A mobile app and backend that use deep learning to tell whether a video is AI-generated.",
+  "types": ["machine-learning", "full-stack"],
+  "industries": ["media"],
+  "tech": ["react-native", "python", "fastapi"],
+  "featured": 3,
+  "keywords": ["deepfake", "deep learning", "video", "mobile app"],
+  "links": [{ "label": "Source on GitHub", "url": "https://github.com/SyedHassanUlHaq/fAIk-App" }]
+}

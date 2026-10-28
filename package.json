@@ -5,27 +5,20 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "lint": "next lint"
+    "postbuild": "node scripts/postbuild.mjs",
+    "start": "npx serve out",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "schema": "tsx scripts/gen-schema.ts",
+    "new-project": "tsx scripts/new-project.ts",
+    "images": "tsx scripts/optimize-images.ts"
   },
   "dependencies": {
-    "@react-three/drei": "^10.5.2",
-    "@react-three/fiber": "^9.2.0",
-    "@react-three/postprocessing": "^3.0.4",
-    "@tsparticles/all": "^3.8.1",
-    "@tsparticles/engine": "^3.8.1",
-    "@tsparticles/react": "^3.0.0",
-    "@tsparticles/slim": "^3.8.1",
-    "drei": "^2.2.21",
-    "framer-motion": "^12.23.6",
+    "image-size": "^2.0.4",
     "next": "15.4.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-icons": "^5.5.0",
-    "react-scroll-parallax": "^3.4.5",
-    "react-simple-typewriter": "^5.0.1",
-    "three": "^0.178.0"
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -35,7 +28,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
