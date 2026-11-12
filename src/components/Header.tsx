@@ -2,19 +2,22 @@ import Link from "next/link";
 import { site } from "../../content/site";
 import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
+import { withBase } from "@/lib/url";
 
 const nav = [
   { href: "/#work", label: "Work" },
-  { href: "/#capabilities", label: "What I build" },
+  { href: "/#capabilities", label: "What I can do" },
   { href: "/#about", label: "About" },
 ];
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur supports-[backdrop-filter]:bg-bg/70">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="font-semibold tracking-tight text-ink">
-          {site.name}
+    <header className="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="flex items-center gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={withBase("/images/hassan-avatar.webp")} alt="" width={36} height={36} className="h-9 w-9 rounded-full border border-line object-cover" />
+          <span className="font-display text-lg font-medium tracking-tight text-ink">{site.name}</span>
         </Link>
         <nav aria-label="Primary" className="flex items-center gap-1 sm:gap-2">
           {nav.map((n) => (
@@ -25,7 +28,7 @@ export default function Header() {
           <a
             href={mailto("Project inquiry")}
             {...ev("cta-click", { where: "header" })}
-            className="ml-1 inline-flex h-9 items-center rounded-md bg-accent px-3.5 text-sm font-medium text-accent-ink transition hover:brightness-110"
+            className="ml-1 inline-flex h-10 items-center rounded-full bg-ink px-4 text-sm font-medium text-bg transition hover:bg-accent"
           >
             Get in touch
           </a>

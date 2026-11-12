@@ -22,7 +22,7 @@ export default function ShareButtons({ slug }: { slug: string }) {
     setTimeout(() => setDone(null), 1800);
   };
 
-  const btn = "inline-flex h-9 items-center gap-2 rounded-md border border-line bg-surface px-3 text-sm text-muted transition hover:border-accent/50 hover:text-ink";
+  const btn = "inline-flex h-10 items-center gap-2 rounded-full border border-line bg-surface px-4 text-sm text-muted transition hover:border-accent/50 hover:text-ink";
   return (
     <div className="flex flex-wrap gap-2">
       <button className={btn} onClick={() => copy()}>

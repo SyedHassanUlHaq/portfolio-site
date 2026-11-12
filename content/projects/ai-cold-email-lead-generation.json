@@ -1,0 +1,94 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "ai-cold-email-lead-generation",
+  "featured": 3,
+  "title": "AI Cold Email & Lead Generation System, End to End",
+  "summary": "Finds and enriches leads, researches each company, writes personalised emails, enrolls prospects in email campaigns, manages follow-ups and sends campaign reports.",
+  "headline": "Cold email on autopilot, from lead to report",
+  "needs": [
+    "leads"
+  ],
+  "types": [
+    "ai-automation",
+    "crm-automation",
+    "integrations"
+  ],
+  "industries": [
+    "marketing"
+  ],
+  "tech": [
+    "n8n",
+    "apollo",
+    "instantly",
+    "anthropic",
+    "google-sheets",
+    "wordpress"
+  ],
+  "problem": "Outbound sales meant a lot of manual work: finding prospects, researching them, writing emails, loading campaigns and chasing replies.",
+  "solution": "I built the whole outbound pipeline in n8n. Leads are discovered and enriched through Apollo, each company is researched, Claude writes a personalised email, and prospects are enrolled in Instantly campaigns. Leads are then categorised by behaviour (opened, clicked, ignored) so follow-ups match what they did, and a report is generated for each campaign.",
+  "highlights": [
+    "Lead discovery and enrichment from Apollo.io",
+    "Company research from the prospect's website",
+    "Personalised email generation with Claude",
+    "Automatic enrollment in Instantly campaigns",
+    "Behaviour-based follow-ups: clicked, opened, not opened",
+    "Campaign reports by email, plus WordPress REST API integration"
+  ],
+  "role": "Sole engineer. I designed the system, built every workflow, wrote the prompts and connected Apollo, Claude, Google Sheets, WordPress and Instantly.",
+  "results": [
+    {
+      "label": "Complete outbound workflow automated, from lead to report"
+    },
+    {
+      "label": "Each email personalised from real company research"
+    },
+    {
+      "label": "Follow-ups chosen by how each lead behaved"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "lead-extraction-workflow.webp",
+      "alt": "n8n workflow extracting and enriching leads from Apollo",
+      "caption": "Lead extraction and enrichment",
+      "kind": "workflow"
+    },
+    {
+      "src": "email-generation-workflow.webp",
+      "alt": "n8n workflow that researches companies and generates emails",
+      "caption": "Company research and AI email generation",
+      "kind": "workflow"
+    },
+    {
+      "src": "lead-categorisation-workflow.webp",
+      "alt": "n8n workflow that categorises leads by clicked, opened or not opened",
+      "caption": "Lead categorisation by behaviour",
+      "kind": "workflow"
+    },
+    {
+      "src": "report-generator-workflow.webp",
+      "alt": "n8n workflow that compiles campaign reports and emails them",
+      "caption": "Campaign report generator",
+      "kind": "workflow"
+    },
+    {
+      "src": "follow-up-trigger.webp",
+      "alt": "Instantly automation that triggers a follow-up seven days after a campaign",
+      "caption": "Delayed follow-up trigger",
+      "kind": "workflow"
+    },
+    {
+      "src": "campaigns-overview.webp",
+      "alt": "Instantly campaigns list with sent, replied and progress columns",
+      "caption": "Campaigns running in Instantly",
+      "kind": "ui"
+    },
+    {
+      "src": "campaign-analytics.webp",
+      "alt": "Instantly campaign analytics showing opens, clicks and replies",
+      "caption": "Campaign analytics",
+      "kind": "ui"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

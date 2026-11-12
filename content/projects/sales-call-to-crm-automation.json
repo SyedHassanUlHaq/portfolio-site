@@ -1,0 +1,73 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "sales-call-to-crm-automation",
+  "title": "Sales Call Recording to CRM Pipeline Automation",
+  "summary": "Every discovery and sales call is recorded, classified and turned into an up-to-date CRM opportunity automatically.",
+  "headline": "Every sales call lands in your CRM",
+  "needs": [
+    "crm",
+    "connect"
+  ],
+  "types": [
+    "crm-automation",
+    "integrations"
+  ],
+  "industries": [
+    "professional-services",
+    "marketing"
+  ],
+  "tech": [
+    "fathom",
+    "zapier",
+    "gohighlevel",
+    "n8n",
+    "supabase"
+  ],
+  "problem": "Call outcomes, pricing discussions and objections were not reliably making it into the CRM.",
+  "solution": "When a call finishes in Fathom, a Zapier flow updates the contact in GoHighLevel. A CRM automation then creates or updates the opportunity, and an n8n workflow classifies the call as discovery or sales and records the lead status, pricing and objections in Supabase.",
+  "highlights": [
+    "Calls from Fathom synced to the CRM automatically",
+    "Split by call type and call length",
+    "Opportunities created and updated without data entry",
+    "Outcomes, pricing and objections stored for reporting"
+  ],
+  "role": "Sole engineer. I designed the pipeline across all four tools and built every automation in it.",
+  "results": [
+    {
+      "label": "No call data lost between recording and CRM"
+    },
+    {
+      "label": "Accurate pipeline stages and lead accountability"
+    },
+    {
+      "label": "Sales analytics fed automatically"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "call-classification-workflow.webp",
+      "alt": "n8n workflow classifying sales and discovery calls",
+      "caption": "Sales vs discovery call classification",
+      "kind": "workflow"
+    },
+    {
+      "src": "transcript-to-crm-zap.webp",
+      "alt": "Zapier flow adding a Fathom transcript to the CRM",
+      "caption": "Transcript to CRM",
+      "kind": "workflow"
+    },
+    {
+      "src": "call-summary-zap.webp",
+      "alt": "Zapier flow splitting call summaries by call type",
+      "caption": "Call summary routing",
+      "kind": "workflow"
+    },
+    {
+      "src": "crm-opportunity-workflow.webp",
+      "alt": "CRM workflow reacting to opportunity changes",
+      "caption": "CRM opportunity workflow",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

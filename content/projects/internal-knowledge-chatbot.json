@@ -1,0 +1,65 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "internal-knowledge-chatbot",
+  "title": "Internal Knowledge Chatbot That Answers From Company SOPs",
+  "summary": "An AI chatbot for employees that searches company documents by meaning, answers accurately, and can take actions such as sending emails.",
+  "headline": "A chatbot that knows your company playbook",
+  "needs": [
+    "knowledge"
+  ],
+  "types": [
+    "ai-agents",
+    "rag"
+  ],
+  "industries": [
+    "professional-services"
+  ],
+  "tech": [
+    "openai",
+    "supabase",
+    "postgresql",
+    "n8n",
+    "gmail"
+  ],
+  "problem": "Employees depended on manually searching documents for the right procedure, which was slow and inconsistent.",
+  "solution": "I built a chatbot on top of the SOP knowledge base. It runs semantic search over Supabase vector embeddings to find the relevant passages, answers with an OpenAI model, and uses n8n tools to do things for the user, such as drafting and sending an email.",
+  "highlights": [
+    "Semantic search over pgvector embeddings",
+    "Context-aware answers from the SOP library",
+    "Tool use: send emails to employees on request",
+    "Orchestrated end to end in n8n"
+  ],
+  "role": "Sole engineer. I designed the agent, built the retrieval and tool workflows and the chat front end.",
+  "results": [
+    {
+      "label": "Staff get accurate procedure answers instantly"
+    },
+    {
+      "label": "Less time spent searching documents"
+    },
+    {
+      "label": "Routine communication tasks handled from the chat"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "chat-interface.webp",
+      "alt": "Internal chatbot interface",
+      "caption": "Chat interface",
+      "kind": "ui"
+    },
+    {
+      "src": "agent-workflow.webp",
+      "alt": "n8n workflow with AI agents, vector store and memory",
+      "caption": "Agent with vector store and memory",
+      "kind": "workflow"
+    },
+    {
+      "src": "email-tool-workflow.webp",
+      "alt": "n8n email workflow with information tools",
+      "caption": "Email action workflow",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

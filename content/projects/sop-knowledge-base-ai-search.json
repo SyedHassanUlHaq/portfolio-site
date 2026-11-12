@@ -1,0 +1,78 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "sop-knowledge-base-ai-search",
+  "title": "Internal SOP Knowledge Base with AI Search",
+  "summary": "A Notion-style document system for SOPs with folders, version history, a recycle bin, roles, and automatic embeddings so every document is searchable by meaning.",
+  "headline": "A company knowledge base you can actually search",
+  "needs": [
+    "knowledge",
+    "app"
+  ],
+  "types": [
+    "full-stack",
+    "rag"
+  ],
+  "industries": [
+    "professional-services"
+  ],
+  "tech": [
+    "react",
+    "typescript",
+    "vite",
+    "tailwind",
+    "tiptap",
+    "supabase",
+    "postgresql",
+    "n8n",
+    "openai"
+  ],
+  "problem": "The team's SOPs lived in scattered documents that were hard to search, with no history of changes, and nothing ready to power an AI assistant.",
+  "solution": "I built a full-stack rich-content editor with nested folders, media embedding, auto-save, role-based access and a recycle bin. Every save triggers an n8n workflow that creates or refreshes the document's embeddings, and deleting a document removes them, so AI search never goes stale.",
+  "highlights": [
+    "Rich text editor with images, videos and links",
+    "Nested folders and fast search",
+    "Version history with restore",
+    "Recycle bin with a retention window",
+    "Supabase auth, role-based permissions and row-level security",
+    "Automatic embedding create, update and delete through n8n"
+  ],
+  "role": "Sole engineer. I built the frontend, the database and permissions, and the embedding workflows, and set it up as the knowledge source for an AI chatbot.",
+  "results": [
+    {
+      "label": "A single source of truth for company procedures"
+    },
+    {
+      "label": "Every document instantly searchable by meaning, not just keywords"
+    },
+    {
+      "label": "Foundation in place for an internal AI assistant"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "document-editor.webp",
+      "alt": "Rich text document editor with folder tree and table of contents",
+      "caption": "Editor with folders and contents",
+      "kind": "ui"
+    },
+    {
+      "src": "workspace-home.webp",
+      "alt": "Knowledge base workspace with folder sidebar",
+      "caption": "Workspace and folder structure",
+      "kind": "ui"
+    },
+    {
+      "src": "recycle-bin.webp",
+      "alt": "Recycle bin listing deleted folders and files",
+      "caption": "Recycle bin",
+      "kind": "ui"
+    },
+    {
+      "src": "embedding-sync-workflow.webp",
+      "alt": "n8n workflow that creates, updates and deletes document embeddings",
+      "caption": "Embedding sync workflow",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

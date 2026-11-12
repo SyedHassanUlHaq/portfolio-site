@@ -1,0 +1,50 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "event-data-vector-embeddings-sync",
+  "title": "Event Data Sync and Vector Embeddings for AI Search",
+  "summary": "Keeps event data in sync between Google Sheets and Supabase and maintains up-to-date embeddings for AI retrieval.",
+  "headline": "Event data that keeps AI search fresh",
+  "needs": [
+    "knowledge",
+    "connect"
+  ],
+  "types": [
+    "rag",
+    "ai-automation",
+    "integrations"
+  ],
+  "industries": [
+    "events"
+  ],
+  "tech": [
+    "n8n",
+    "supabase",
+    "openai",
+    "google-sheets"
+  ],
+  "problem": "AI answers depend on fresh data, but event details changed in a spreadsheet and had to be reflected in the database and search index.",
+  "solution": "A scheduled n8n workflow reads new and changed events, detects duplicates, updates rows, builds combined text from titles, descriptions, venues and SEO data, creates OpenAI embeddings and refreshes them in the Supabase vector store.",
+  "highlights": [
+    "Duplicate detection and row updates",
+    "Embeddings refreshed when content changes",
+    "Combined semantic text from many fields"
+  ],
+  "role": "Sole engineer. I designed the sync logic and built the workflow.",
+  "results": [
+    {
+      "label": "Event data and search index stay in sync automatically"
+    },
+    {
+      "label": "Less manual event data management"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "embedding-sync-workflow.webp",
+      "alt": "n8n workflow syncing events and creating embeddings",
+      "caption": "Event sync and embedding workflow",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

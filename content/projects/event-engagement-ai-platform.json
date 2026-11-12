@@ -1,0 +1,54 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "event-engagement-ai-platform",
+  "title": "AI Event Engagement Platform with Instagram Replies and Vector Search",
+  "summary": "An end-to-end system that syncs event data, embeds it for semantic search and uses it to answer Instagram comments, with a dashboard to control it all.",
+  "headline": "AI that answers your audience around the clock",
+  "needs": [
+    "social",
+    "knowledge"
+  ],
+  "types": [
+    "ai-agents",
+    "rag",
+    "ai-automation"
+  ],
+  "industries": [
+    "events",
+    "marketing"
+  ],
+  "tech": [
+    "n8n",
+    "supabase",
+    "openai",
+    "instagram-api",
+    "google-sheets",
+    "browserless"
+  ],
+  "problem": "Answering a high volume of audience comments about events took manual effort, and the answers depended on event details that changed often.",
+  "solution": "I built the ecosystem from three connected parts: automated event ingestion and embeddings, an AI workflow that replies to Instagram comments using retrieval, and a dashboard to monitor and moderate everything.",
+  "highlights": [
+    "Event data synced from Google Sheets to Supabase",
+    "Semantic retrieval from a vector store",
+    "AI replies to Instagram comments",
+    "Moderation and workflow monitoring dashboard"
+  ],
+  "role": "Sole engineer. I designed the architecture and built all three parts.",
+  "results": [
+    {
+      "label": "Audience questions answered automatically with current event details"
+    },
+    {
+      "label": "Central control over all automations"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "workflow-list.webp",
+      "alt": "n8n workflows powering the event engagement platform",
+      "caption": "Workflows in the platform",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

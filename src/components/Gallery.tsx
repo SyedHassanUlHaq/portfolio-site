@@ -47,7 +47,7 @@ export default function Gallery({ slug, shots }: { slug: string; shots: Resolved
     <>
       <ul className="columns-1 gap-4 sm:columns-2">
         {shots.map((s, i) => {
-          const ratio = Math.min(Math.max(s.width / s.height, 0.8), 2);
+          const ratio = Math.min(Math.max(s.width / s.height, 0.5), 2);
           return (
             <li key={s.src} className="mb-4 break-inside-avoid">
               <button
@@ -70,7 +70,7 @@ export default function Gallery({ slug, shots }: { slug: string; shots: Resolved
                 </span>
                 {(s.caption || s.kind) && (
                   <span className="block border-t border-line px-3 py-2 text-xs text-muted">
-                    {s.kind && s.kind !== "other" && <span className="mr-2 font-mono uppercase tracking-wider text-faint">{KIND_LABEL[s.kind]}</span>}
+                    {s.kind && s.kind !== "other" && <span className="mr-2 uppercase tracking-wider text-faint">{KIND_LABEL[s.kind]}</span>}
                     {s.caption}
                   </span>
                 )}
@@ -90,7 +90,7 @@ export default function Gallery({ slug, shots }: { slug: string; shots: Resolved
         {cur && (
           <div className="flex flex-col gap-3 p-3 sm:p-6">
             <div className="flex items-center justify-between text-sm text-muted">
-              <span className="font-mono">{open! + 1} / {shots.length}</span>
+              <span>{open! + 1} / {shots.length}</span>
               <button onClick={() => setOpen(null)} className="flex h-10 w-10 items-center justify-center rounded-full bg-surface hover:text-ink" aria-label="Close">
                 <Close className="h-5 w-5" />
               </button>

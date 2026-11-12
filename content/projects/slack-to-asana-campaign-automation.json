@@ -1,0 +1,53 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "slack-to-asana-campaign-automation",
+  "title": "Slack-to-Asana Marketing Campaign Setup Automation",
+  "summary": "A request in Slack becomes a fully scheduled Asana campaign, with deadlines, email drafts and documents, built from the right template.",
+  "headline": "From a Slack message to a full campaign plan",
+  "needs": [
+    "connect"
+  ],
+  "types": [
+    "ai-automation",
+    "integrations"
+  ],
+  "industries": [
+    "marketing",
+    "events"
+  ],
+  "tech": [
+    "n8n",
+    "openai",
+    "slack",
+    "asana",
+    "gmail",
+    "google-drive",
+    "browserless"
+  ],
+  "problem": "Setting up a campaign for every event by hand was slow and inconsistent.",
+  "solution": "n8n listens to a Slack channel, reads the event details from the message and the event website, duplicates the correct Asana template, generates a schedule, sets subtask deadlines, drafts the emails and attaches the right package documents.",
+  "highlights": [
+    "Event data extracted from the message and website",
+    "Template chosen by package type",
+    "Schedule and deadlines generated automatically",
+    "Email drafts and documents prepared"
+  ],
+  "role": "Sole engineer. I built the whole workflow and the AI prompts.",
+  "results": [
+    {
+      "label": "Consistent campaign setup for every event"
+    },
+    {
+      "label": "Manual project setup and human error reduced"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "campaign-setup-workflow.webp",
+      "alt": "Large n8n workflow with branches per package type",
+      "caption": "Campaign setup workflow",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

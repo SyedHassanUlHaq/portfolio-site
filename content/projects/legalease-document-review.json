@@ -1,0 +1,48 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "legalease-document-review",
+  "title": "AI Legal Document Review: Key Terms and Summaries in Seconds",
+  "summary": "Upload a contract as PDF or Word and get back its key terms and a plain-language summary of the clauses that matter.",
+  "headline": "Contracts summarised in plain English",
+  "needs": [
+    "knowledge",
+    "app"
+  ],
+  "types": [
+    "ai-automation",
+    "full-stack"
+  ],
+  "industries": [
+    "legal"
+  ],
+  "tech": [
+    "python"
+  ],
+  "draft": true,
+  "problem": "Reading long contracts, agreements and legal opinions is slow, and the important clauses are easy to miss, especially for non-lawyers.",
+  "solution": "LegalEase uses natural language processing to extract and summarise the key details from legal documents. Users upload a PDF or DOCX and receive concise summaries that highlight the critical clauses and terms.",
+  "highlights": [
+    "Upload PDF or DOCX files",
+    "Key terms pulled out automatically",
+    "Short summaries of critical clauses",
+    "Designed for both professionals and non-experts"
+  ],
+  "role": "Sole engineer.",
+  "results": [
+    {
+      "label": "Complex documents reviewed in a fraction of the time"
+    },
+    {
+      "label": "Critical clauses and terms surfaced instead of buried"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "document-analysis.webp",
+      "alt": "LegalEase showing extracted key terms and a summary for an uploaded PDF",
+      "caption": "Key terms and summary for an uploaded document",
+      "kind": "ui"
+    }
+  ],
+  "confidentiality": "public"
+}

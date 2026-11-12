@@ -1,0 +1,51 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "dairy-company-ai-chatbot",
+  "title": "AI Chatbot That Finds Matching Providers and Replies With Their Details",
+  "summary": "A chatbot for a dairy company that finds the right providers for each message, gathers their details automatically and replies with a ready answer.",
+  "headline": "A chatbot that researches before it replies",
+  "needs": [
+    "social",
+    "data"
+  ],
+  "types": [
+    "ai-agents",
+    "data-pipelines"
+  ],
+  "industries": [
+    "other"
+  ],
+  "tech": [
+    "n8n",
+    "apify",
+    "google-sheets",
+    "openai"
+  ],
+  "problem": "Every customer message needed someone to work out which providers were relevant and collect their details before replying.",
+  "solution": "When the chatbot receives a message, an Apify actor discovers the providers that fit it, a second actor extracts their relevant information, and the results are stored in a new Google Sheet. A reply to the original message is then generated from that data.",
+  "highlights": [
+    "Triggered by each incoming chat message",
+    "Providers discovered automatically with an Apify actor",
+    "Details extracted with a second actor",
+    "Results saved to a fresh Google Sheet",
+    "Reply written from the collected data"
+  ],
+  "role": "Sole engineer. I designed and built the whole workflow.",
+  "results": [
+    {
+      "label": "Each message answered with researched, relevant provider details"
+    },
+    {
+      "label": "No manual searching or copying of provider information"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "chat-workflow.webp",
+      "alt": "n8n chat workflow that fetches data and responds",
+      "caption": "Chat workflow",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

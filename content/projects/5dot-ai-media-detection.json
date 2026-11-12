@@ -1,0 +1,85 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "5dot-ai-media-detection",
+  "title": "5dot: A Mobile App That Checks If Audio, Video or Lip-Sync Is AI-Generated",
+  "headline": "Know what's real: check any clip in minutes",
+  "summary": "Upload a file or paste a link from YouTube, TikTok, Instagram, Facebook or X, and get a clear verdict on whether the voice, the video and the lip-sync are real.",
+  "needs": [
+    "models",
+    "app"
+  ],
+  "types": [
+    "machine-learning",
+    "full-stack"
+  ],
+  "industries": [
+    "media"
+  ],
+  "tech": [
+    "react-native",
+    "python",
+    "fastapi"
+  ],
+  "problem": "AI-generated and edited media spreads fast, and ordinary people have no simple way to check whether a clip is genuine.",
+  "solution": "5dot is a mobile app backed by deep-learning detection. Users upload a video or audio file, or paste a link, and get one verdict built from three separate checks: AI voice, AI-generated video and lip-sync mismatch. Each check shows a score against its threshold and a per-segment chart over time, and the result can be exported as a PDF.",
+  "highlights": [
+    "Three signals, one verdict: AI voice, AI video and lip-sync",
+    "Upload a file or paste a link from YouTube, TikTok, Instagram, Facebook or X",
+    "Plain-language result with technical details one tap away",
+    "Score over time for every segment of the clip",
+    "PDF export and a \"Wrong?\" button to report bad results",
+    "Sign in with Google or email, with a free plan and usage tracking"
+  ],
+  "results": [
+    {
+      "label": "Anyone can check a suspicious clip from their phone"
+    },
+    {
+      "label": "A clear verdict, with the evidence behind it, instead of a bare score"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "home.webp",
+      "alt": "5dot home screen with quick analysis options for audio, video and lip-sync",
+      "caption": "Home: pick what to check",
+      "kind": "ui"
+    },
+    {
+      "src": "verdict-result.webp",
+      "alt": "5dot verdict screen showing a lip-sync mismatch with scores for voice, video and lip-sync",
+      "caption": "A verdict with the evidence behind it",
+      "kind": "ui"
+    },
+    {
+      "src": "new-analysis.webp",
+      "alt": "5dot new analysis screen for uploading a video or pasting a link",
+      "caption": "Upload a file or paste a link",
+      "kind": "ui"
+    },
+    {
+      "src": "dashboard.webp",
+      "alt": "5dot dashboard with weekly analyses and plan usage",
+      "caption": "Dashboard and plan usage",
+      "kind": "ui"
+    },
+    {
+      "src": "sign-in.webp",
+      "alt": "5dot sign-in screen with Google and email options",
+      "caption": "Sign in",
+      "kind": "ui"
+    }
+  ],
+  "links": [
+    {
+      "label": "Source on GitHub",
+      "url": "https://github.com/SyedHassanUlHaq/fAIk-App"
+    }
+  ],
+  "keywords": [
+    "deepfake",
+    "deep learning",
+    "video",
+    "mobile app"
+  ]
+}

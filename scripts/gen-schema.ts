@@ -1,6 +1,6 @@
 /** Regenerates content/schema/project.schema.json so editors autocomplete taxonomy ids. Run: npm run schema */
 import fs from "node:fs";
-import { INDUSTRIES, PROJECT_TYPES, TECH } from "../content/taxonomy";
+import { INDUSTRIES, NEEDS, PROJECT_TYPES, TECH } from "../content/taxonomy";
 
 const ids = (t: object) => ({ type: "array", minItems: 1, items: { enum: Object.keys(t) } });
 const str = { type: "string" };
@@ -8,13 +8,15 @@ const schema = {
   $schema: "http://json-schema.org/draft-07/schema#",
   title: "Portfolio project",
   type: "object",
-  required: ["slug", "title", "summary", "types", "industries", "tech"],
+  required: ["slug", "title", "summary", "needs", "types", "industries", "tech"],
   additionalProperties: false,
   properties: {
     $schema: str,
     slug: { type: "string", pattern: "^[a-z0-9]+(-[a-z0-9]+)*$", description: "Must match the file name. Becomes /projects/<slug>" },
     title: { ...str, description: "Outcome-oriented, e.g. 'AI Voice Receptionist for Real Estate Lead Qualification'" },
     summary: { ...str, description: "One line. Shown on cards and link previews." },
+    headline: { ...str, description: "Short benefit-first hook printed on the thumbnail, e.g. An AI receptionist that never misses a call" },
+    needs: { ...ids(NEEDS), description: "What the client wanted (first one sets the cover colour and icon)" },
     types: ids(PROJECT_TYPES),
     industries: ids(INDUSTRIES),
     tech: ids(TECH),

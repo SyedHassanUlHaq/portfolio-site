@@ -6,6 +6,7 @@
     "slug",
     "title",
     "summary",
+    "needs",
     "types",
     "industries",
     "tech"
@@ -28,6 +29,29 @@
       "type": "string",
       "description": "One line. Shown on cards and link previews."
     },
+    "headline": {
+      "type": "string",
+      "description": "Short benefit-first hook printed on the thumbnail, e.g. An AI receptionist that never misses a call"
+    },
+    "needs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "calls",
+          "leads",
+          "crm",
+          "reports",
+          "knowledge",
+          "social",
+          "connect",
+          "data",
+          "app",
+          "models"
+        ]
+      },
+      "description": "What the client wanted (first one sets the cover colour and icon)"
+    },
     "types": {
       "type": "array",
       "minItems": 1,
@@ -39,6 +63,7 @@
           "rag",
           "integrations",
           "data-pipelines",
+          "crm-automation",
           "full-stack",
           "machine-learning"
         ]
@@ -57,6 +82,9 @@
           "finance",
           "saas",
           "restaurants",
+          "legal",
+          "events",
+          "construction",
           "professional-services",
           "media",
           "other"
@@ -103,6 +131,34 @@
           "shopify",
           "amazon-sp-api",
           "ebay-api",
+          "apollo",
+          "instantly",
+          "google-sheets",
+          "google-apps-script",
+          "google-drive",
+          "gmail",
+          "outlook",
+          "microsoft-teams",
+          "slack",
+          "asana",
+          "monday",
+          "smartsuite",
+          "wordpress",
+          "instagram-api",
+          "facebook-api",
+          "linkedin-api",
+          "webinarjam",
+          "fathom",
+          "apify",
+          "browserless",
+          "beautifulsoup",
+          "spacy",
+          "mistral",
+          "lakera",
+          "vite",
+          "tailwind",
+          "tiptap",
+          "vercel",
           "hubspot",
           "gohighlevel"
         ]

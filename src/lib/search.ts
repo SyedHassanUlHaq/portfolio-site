@@ -71,9 +71,9 @@ export function score(card: ProjectCardData, query: string): number {
 
 /* ---------- filters ---------- */
 
-export type Facet = "types" | "industries" | "tech";
+export type Facet = "needs" | "industries" | "tech";
 export type Filters = Record<Facet, string[]>;
-export const emptyFilters = (): Filters => ({ types: [], industries: [], tech: [] });
+export const emptyFilters = (): Filters => ({ needs: [], industries: [], tech: [] });
 
 /** OR within a facet, AND across facets. */
 export function matchesFilters(card: ProjectCardData, filters: Filters, skip?: Facet): boolean {

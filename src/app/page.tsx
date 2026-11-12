@@ -1,7 +1,8 @@
-import { PROJECT_TYPES, TECH } from "../../content/taxonomy";
+import { NEEDS, PROJECT_TYPES } from "../../content/taxonomy";
 import { site } from "../../content/site";
 import Hero from "@/components/Hero";
-import { Arrow } from "@/components/Icons";
+import { Arrow, NeedIcon } from "@/components/Icons";
+import { TONE } from "@/lib/tones";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectExplorer from "@/components/ProjectExplorer";
 import { Section, SectionHead } from "@/components/Section";
@@ -15,13 +16,10 @@ export default function Home() {
   const cards = projects.map(toCard);
   const featured = getFeatured().map(toCard);
 
-  const capabilities = Object.entries(PROJECT_TYPES)
-    .map(([id, t]) => {
-      const mine = projects.filter((p) => p.types.includes(id));
-      const tech = [...new Set(mine.flatMap((p) => p.tech))].slice(0, 4).map((x) => TECH[x].label);
-      return { id, ...t, count: mine.length, tech };
-    })
+  const capabilities = Object.entries(NEEDS)
+    .map(([id, n]) => ({ id, ...n, count: projects.filter((p) => p.needs.includes(id)).length }))
     .filter((c) => c.count > 0);
+  const availableNeeds = capabilities.map((c) => c.id);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -37,11 +35,11 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Hero />
+      <Hero availableNeeds={availableNeeds} />
 
       {featured.length > 0 && (
         <Section id="featured">
-          <SectionHead eyebrow="Selected work" title="Recent projects, in detail" sub="Each one has the problem, what I built, my exact role and the stack behind it." />
+          <SectionHead eyebrow="Selected work" title="A few things I've built" sub="Each one explains the problem, what I made, and exactly what I did." />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {featured.map((p, i) => (
               <ProjectCard key={p.slug} p={p} priority={i === 0} />
@@ -54,27 +52,29 @@ export default function Home() {
         <SectionHead
           eyebrow="Explore my work"
           title="Find work like yours"
-          sub="Search by industry, use case or technology. Any filtered view has its own link you can share."
+          sub="Pick what you need, or search. Every filtered view has its own link you can share."
         />
         <ProjectExplorer projects={cards} />
       </Section>
 
       <Section id="capabilities" className="border-t border-line">
-        <SectionHead eyebrow="What I build" title="One engineer, the whole system" sub="Each capability links to the projects where I've actually delivered it." />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHead eyebrow="What I can do" title="What could I take off your plate?" sub="Each one opens the projects where I've actually done it." />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((c) => (
             <a
               key={c.id}
-              href={withBase(`/?types=${c.id}#work`)}
-              {...ev("capability-click", { type: c.id })}
-              className="group flex flex-col rounded-xl border border-line bg-surface p-5 transition hover:border-accent/50"
+              href={withBase(`/?needs=${c.id}#work`)}
+              {...ev("capability-click", { need: c.id })}
+              className={`group flex flex-col rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-[0_12px_32px_-12px_rgb(60_40_20/0.25)] ${TONE[c.tone].bg}`}
             >
-              <h3 className="font-semibold text-ink">{c.label}</h3>
-              <p className="mt-2 text-sm text-muted">{c.blurb}</p>
-              <p className="mt-auto flex items-center gap-1.5 pt-5 text-sm text-accent">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/80 text-ink">
+                <NeedIcon id={c.id} className="h-6 w-6" />
+              </span>
+              <h3 className="mt-5 font-display text-2xl font-medium tracking-tight text-ink">{c.label}</h3>
+              <p className="mt-2 text-[15px] text-ink/70">{c.blurb}</p>
+              <p className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium text-ink">
                 {c.count} {c.count === 1 ? "project" : "projects"} <Arrow className="h-4 w-4 transition group-hover:translate-x-1" />
               </p>
-              {c.tech.length > 0 && <p className="mt-1 font-mono text-xs text-faint">{c.tech.join(" · ")}</p>}
             </a>
           ))}
         </div>
@@ -83,8 +83,10 @@ export default function Home() {
       <Section id="about" className="border-t border-line">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-accent">About</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{site.about.heading}</h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={withBase("/images/hassan-avatar.webp")} alt={site.name} width={160} height={160} loading="lazy" className="h-32 w-32 rounded-3xl border border-line object-cover shadow-sm sm:h-40 sm:w-40" />
+            <p className="mt-8 text-xs font-semibold uppercase tracking-widest text-accent">About</p>
+            <h2 className="mt-3 font-display text-3xl font-medium tracking-tight text-ink sm:text-[2.6rem] sm:leading-[1.1]">{site.about.heading}</h2>
             <div className="mt-5 space-y-4 text-muted">
               {site.about.paragraphs.map((t) => (
                 <p key={t}>{t}</p>
@@ -100,7 +102,7 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={withBase(site.about.credential.image)} alt={site.about.credential.imageAlt} width={1200} height={848} loading="lazy" decoding="async" className="w-full border-b border-line" />
             <div className="p-5">
-              <h3 className="font-semibold text-ink">{site.about.credential.title}</h3>
+              <h3 className="font-display text-lg font-medium text-ink">{site.about.credential.title}</h3>
               <p className="mt-1 text-sm text-muted">{site.about.credential.text}</p>
             </div>
           </a>
@@ -108,20 +110,20 @@ export default function Home() {
       </Section>
 
       <Section id="contact" className="border-t border-line">
-        <div className="rounded-2xl border border-line bg-surface p-8 text-center sm:p-14">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{site.cta.heading}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted">{site.cta.text}</p>
+        <div className="rounded-3xl bg-tone-peach p-8 text-center sm:p-16">
+          <h2 className="font-display text-3xl font-medium tracking-tight text-ink sm:text-5xl">{site.cta.heading}</h2>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-ink/70">{site.cta.text}</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href={mailto("Project inquiry")} {...ev("cta-click", { where: "footer" })} className="inline-flex h-12 items-center justify-center rounded-md bg-accent px-6 font-medium text-accent-ink hover:brightness-110">
+            <a href={mailto("Project inquiry")} {...ev("cta-click", { where: "footer" })} className="inline-flex h-12 items-center justify-center rounded-full bg-ink px-7 font-medium text-bg hover:bg-accent">
               Email me
             </a>
             {site.contact.calendly && (
-              <a href={site.contact.calendly} target="_blank" rel="noopener noreferrer" {...ev("cta-click", { where: "footer-calendly" })} className="inline-flex h-12 items-center justify-center rounded-md border border-line px-6 font-medium text-ink hover:border-accent/60">
+              <a href={site.contact.calendly} target="_blank" rel="noopener noreferrer" {...ev("cta-click", { where: "footer-calendly" })} className="inline-flex h-12 items-center justify-center rounded-full border-2 border-ink/15 bg-white/60 px-7 font-medium text-ink hover:border-ink">
                 Book a call
               </a>
             )}
             {site.contact.upwork && (
-              <a href={site.contact.upwork} target="_blank" rel="noopener noreferrer" {...ev("cta-click", { where: "footer-upwork" })} className="inline-flex h-12 items-center justify-center rounded-md border border-line px-6 font-medium text-ink hover:border-accent/60">
+              <a href={site.contact.upwork} target="_blank" rel="noopener noreferrer" {...ev("cta-click", { where: "footer-upwork" })} className="inline-flex h-12 items-center justify-center rounded-full border-2 border-ink/15 bg-white/60 px-7 font-medium text-ink hover:border-ink">
                 Hire me on Upwork
               </a>
             )}

@@ -1,0 +1,49 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "sheets-monday-two-way-sync",
+  "title": "Two-Way Google Sheets and Monday.com Deal Sync",
+  "summary": "Deal and transaction data stays in sync between Google Sheets and Monday.com, triggered from a custom Sheets menu.",
+  "headline": "Sheets and Monday.com, always in sync",
+  "needs": [
+    "connect",
+    "crm"
+  ],
+  "types": [
+    "integrations",
+    "crm-automation"
+  ],
+  "industries": [
+    "real-estate"
+  ],
+  "tech": [
+    "google-apps-script",
+    "google-sheets",
+    "monday"
+  ],
+  "problem": "The same deal data was kept in two places and updated by hand.",
+  "solution": "Using Apps Script and the Monday.com GraphQL API, I built a bidirectional sync with batch processing and API retries, plus custom menus in Sheets so users run updates themselves.",
+  "highlights": [
+    "Both directions",
+    "Batch processing and retries",
+    "Custom Sheets menu",
+    "Financial, escrow, deposit, notes and status fields"
+  ],
+  "role": "Sole engineer. I built the whole integration.",
+  "results": [
+    {
+      "label": "Less manual data entry"
+    },
+    {
+      "label": "More accurate deal data across both tools"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "monday-board.webp",
+      "alt": "Monday CRM board with deal fields",
+      "caption": "Monday.com board kept in sync",
+      "kind": "ui"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "marketing-sales-analytics-dashboard",
+  "title": "Unified Marketing & Sales Analytics Dashboard",
+  "summary": "One dashboard that brings webinars, email campaigns, social posts and sales calls together so leadership can see performance in one place.",
+  "headline": "Every marketing and sales number on one screen",
+  "needs": [
+    "reports",
+    "app"
+  ],
+  "types": [
+    "full-stack",
+    "integrations"
+  ],
+  "industries": [
+    "professional-services",
+    "marketing"
+  ],
+  "tech": [
+    "react",
+    "vite",
+    "supabase",
+    "postgresql",
+    "n8n",
+    "webinarjam",
+    "gohighlevel",
+    "facebook-api",
+    "linkedin-api",
+    "fathom",
+    "zapier"
+  ],
+  "problem": "Performance data was spread across webinar, email, social and call tools, so getting a clear picture meant manual tracking.",
+  "solution": "I built a Vite and React dashboard on Supabase that aggregates data from each channel. n8n and Zapier workflows keep the data fresh, and the dashboard turns it into clear KPIs and charts for each department.",
+  "highlights": [
+    "Overview of webinars, registrations, emails sent and revenue",
+    "Email performance over time with open and click rates",
+    "Social post impressions and reactions for Facebook and LinkedIn",
+    "Sales and discovery call tracking",
+    "Secure login with Supabase Auth"
+  ],
+  "role": "Sole engineer. I built the dashboard and database, and the integrations and automations that feed it.",
+  "results": [
+    {
+      "label": "One view of marketing, email, social and sales performance"
+    },
+    {
+      "label": "Manual reporting replaced by automatic data collection"
+    },
+    {
+      "label": "A base to add more reports as the business grows"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "overview.webp",
+      "alt": "Dashboard overview with webinars, registrations, emails and revenue",
+      "caption": "Overview",
+      "kind": "ui"
+    },
+    {
+      "src": "email-performance.webp",
+      "alt": "Email performance charts",
+      "caption": "Email performance",
+      "kind": "ui"
+    },
+    {
+      "src": "social-posts.webp",
+      "alt": "Social posts analytics for Facebook and LinkedIn",
+      "caption": "Social posts",
+      "kind": "ui"
+    }
+  ],
+  "confidentiality": "anonymized"
+}
