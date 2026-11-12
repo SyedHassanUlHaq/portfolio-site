@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { analytics, site } from "../../content/site";
 import Footer from "@/components/Footer";
+import AssistantWidget from "@/components/AssistantWidget";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <AssistantWidget />
         {analytics.umamiId && <script defer src="https://cloud.umami.is/script.js" data-website-id={analytics.umamiId} />}
       </body>
     </html>

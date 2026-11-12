@@ -69,6 +69,12 @@ export const site = {
   },
 };
 
+/** ElevenLabs conversational agent (chat + voice). Leave agentId empty to hide it. Must be a public agent with this site's domain on its allowlist. */
+export const assistant = {
+  agentId: "agent_0001m77sacs1ech9x9pbwmw6nc5p",
+  label: "Ask my AI assistant",
+};
+
 export const analytics = {
   /** Umami Cloud website id (free tier). Leave empty for no analytics. https://umami.is */
   umamiId: process.env.NEXT_PUBLIC_UMAMI_ID ?? "",

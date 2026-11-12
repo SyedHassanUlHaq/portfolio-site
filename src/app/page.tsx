@@ -1,20 +1,16 @@
 import { NEEDS, PROJECT_TYPES } from "../../content/taxonomy";
 import { site } from "../../content/site";
 import Hero from "@/components/Hero";
-import { Arrow, NeedIcon } from "@/components/Icons";
-import { TONE } from "@/lib/tones";
-import ProjectCard from "@/components/ProjectCard";
 import ProjectExplorer from "@/components/ProjectExplorer";
 import { Section, SectionHead } from "@/components/Section";
 import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
-import { getFeatured, getListedProjects, toCard } from "@/lib/projects";
+import { getListedProjects, toCard } from "@/lib/projects";
 import { withBase } from "@/lib/url";
 
 export default function Home() {
   const projects = getListedProjects();
   const cards = projects.map(toCard);
-  const featured = getFeatured().map(toCard);
 
   const capabilities = Object.entries(NEEDS)
     .map(([id, n]) => ({ id, ...n, count: projects.filter((p) => p.needs.includes(id)).length }))
@@ -37,17 +33,6 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero availableNeeds={availableNeeds} />
 
-      {featured.length > 0 && (
-        <Section id="featured">
-          <SectionHead eyebrow="Selected work" title="A few things I've built" sub="Each one explains the problem, what I made, and exactly what I did." />
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {featured.map((p, i) => (
-              <ProjectCard key={p.slug} p={p} priority={i === 0} />
-            ))}
-          </div>
-        </Section>
-      )}
-
       <Section id="work" className="border-t border-line">
         <SectionHead
           eyebrow="Explore my work"
@@ -55,29 +40,6 @@ export default function Home() {
           sub="Pick what you need, or search. Every filtered view has its own link you can share."
         />
         <ProjectExplorer projects={cards} />
-      </Section>
-
-      <Section id="capabilities" className="border-t border-line">
-        <SectionHead eyebrow="What I can do" title="What could I take off your plate?" sub="Each one opens the projects where I've actually done it." />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {capabilities.map((c) => (
-            <a
-              key={c.id}
-              href={withBase(`/?needs=${c.id}#work`)}
-              {...ev("capability-click", { need: c.id })}
-              className={`group flex flex-col rounded-2xl p-6 transition hover:-translate-y-1 hover:shadow-[0_12px_32px_-12px_rgb(60_40_20/0.25)] ${TONE[c.tone].bg}`}
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/80 text-ink">
-                <NeedIcon id={c.id} className="h-6 w-6" />
-              </span>
-              <h3 className="mt-5 font-display text-2xl font-medium tracking-tight text-ink">{c.label}</h3>
-              <p className="mt-2 text-[15px] text-ink/70">{c.blurb}</p>
-              <p className="mt-auto flex items-center gap-1.5 pt-6 text-sm font-medium text-ink">
-                {c.count} {c.count === 1 ? "project" : "projects"} <Arrow className="h-4 w-4 transition group-hover:translate-x-1" />
-              </p>
-            </a>
-          ))}
-        </div>
       </Section>
 
       <Section id="about" className="border-t border-line">

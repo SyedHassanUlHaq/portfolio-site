@@ -6,7 +6,6 @@ import { withBase } from "@/lib/url";
 
 const nav = [
   { href: "/#work", label: "Work" },
-  { href: "/#capabilities", label: "What I can do" },
   { href: "/#about", label: "About" },
 ];
 

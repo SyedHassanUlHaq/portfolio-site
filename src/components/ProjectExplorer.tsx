@@ -11,6 +11,7 @@ import { Chevron, Close, NeedIcon, Search } from "./Icons";
 import ProjectCard from "./ProjectCard";
 
 const PARAMS: Facet[] = ["needs", "industries", "tech"];
+const INITIAL = 9;
 
 function readUrl(): { q: string; filters: Filters } {
   const sp = new URLSearchParams(window.location.search);
@@ -35,6 +36,7 @@ export default function ProjectExplorer({ projects }: { projects: ProjectCardDat
   const [q, setQ] = useState("");
   const [filters, setFilters] = useState<Filters>(emptyFilters);
   const [sort, setSort] = useState<"relevance" | "newest">("relevance");
+  const [expanded, setExpanded] = useState(false);
   const ready = useRef(false);
 
   // Restore state from a shared link like /?needs=calls#work
@@ -94,6 +96,9 @@ export default function ProjectExplorer({ projects }: { projects: ProjectCardDat
     setQ("");
     setFilters(emptyFilters());
   };
+  // Browsing starts with the strongest few; searching or filtering always shows every match.
+  const collapsed = !expanded && active === 0 && results.length > INITIAL;
+  const shown = collapsed ? results.slice(0, INITIAL) : results;
 
   const needIds = Object.keys(NEEDS).filter((id) => all.needs.has(id));
   const industryIds = Object.keys(INDUSTRIES).filter((id) => all.industries.has(id));
@@ -191,11 +196,26 @@ export default function ProjectExplorer({ projects }: { projects: ProjectCardDat
       </div>
 
       {results.length > 0 ? (
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((p) => (
-            <ProjectCard key={p.slug} p={p} />
-          ))}
-        </div>
+        <>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {shown.map((p) => (
+              <ProjectCard key={p.slug} p={p} />
+            ))}
+          </div>
+          {collapsed && (
+            <div className="mt-8 text-center">
+              <button
+                onClick={() => {
+                  setExpanded(true);
+                  track("show-all-projects");
+                }}
+                className="inline-flex h-12 items-center rounded-full border-2 border-ink/15 bg-surface px-7 font-medium text-ink transition hover:border-ink"
+              >
+                Show all {results.length} projects
+              </button>
+            </div>
+          )}
+        </>
       ) : (
         <div className="mt-6 rounded-2xl border border-dashed border-line bg-surface p-8 text-center">
           <p className="font-display text-2xl text-ink">Nothing matches that exactly.</p>
