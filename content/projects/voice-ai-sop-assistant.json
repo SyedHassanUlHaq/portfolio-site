@@ -1,0 +1,60 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "voice-ai-sop-assistant",
+  "title": "Voice AI Assistant for Internal SOP Questions, Always in Sync",
+  "summary": "Employees ask procedure questions out loud or by chat and get concise answers from the latest SOPs, which update themselves automatically.",
+  "headline": "Ask your SOPs out loud. Get the answer.",
+  "needs": [
+    "knowledge",
+    "calls"
+  ],
+  "types": [
+    "voice-ai",
+    "rag",
+    "ai-agents"
+  ],
+  "industries": [
+    "construction"
+  ],
+  "tech": [
+    "elevenlabs",
+    "n8n",
+    "smartsuite",
+    "openai"
+  ],
+  "problem": "Staff lost time searching long SOP documents, and answers drifted out of date whenever a procedure changed.",
+  "solution": "I built a conversational agent on a retrieval-augmented knowledge base. An n8n pipeline fetches the SOPs from SmartSuite on a schedule, cleans and structures them, then deletes and recreates the knowledge base so the agent always answers from the current version.",
+  "highlights": [
+    "Natural-language questions answered from SOPs",
+    "Scheduled sync from SmartSuite",
+    "Documents cleaned and chunked automatically",
+    "Old knowledge base replaced on each run, so answers stay current"
+  ],
+  "role": "Sole engineer. I built the agent, wrote its prompts and guardrails, and built the document synchronisation pipeline.",
+  "results": [
+    {
+      "label": "One place for staff to get SOP answers quickly"
+    },
+    {
+      "label": "Knowledge stays up to date with no manual re-indexing"
+    },
+    {
+      "label": "More consistent guidance for new and existing staff"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "agent-configuration.webp",
+      "alt": "Conversational SOP assistant agent configuration",
+      "caption": "Agent configuration",
+      "kind": "ui"
+    },
+    {
+      "src": "knowledge-base-sync-workflow.webp",
+      "alt": "n8n workflow that deletes and recreates the RAG knowledge base on a schedule",
+      "caption": "Scheduled knowledge base refresh",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

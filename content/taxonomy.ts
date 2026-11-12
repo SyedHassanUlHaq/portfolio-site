@@ -12,6 +12,86 @@ export type Term = {
   blurb?: string;
 };
 
+
+export type Tone = "peach" | "butter" | "sky" | "sage" | "lilac" | "rose" | "mint" | "sand" | "periwinkle" | "clay";
+
+/**
+ * What a client is trying to get done, in their words. This is the main way visitors browse the work.
+ * `phrase` completes the sentence "I want AI to ..." in the homepage picker.
+ */
+export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
+  calls: {
+    label: "Answer & make calls",
+    phrase: "answer and make my phone calls",
+    tone: "peach",
+    blurb: "AI receptionists and callers that sound human, book appointments and never miss a call.",
+    aliases: ["phone", "voice", "receptionist", "call", "calls", "caller", "voice agent"],
+  },
+  leads: {
+    label: "Get more leads",
+    phrase: "find and email new leads for me",
+    tone: "butter",
+    blurb: "Find the right prospects, research them and send personal outreach on autopilot.",
+    aliases: ["lead generation", "cold email", "outreach", "prospecting", "sales"],
+  },
+  crm: {
+    label: "Keep my CRM updated",
+    phrase: "keep my CRM and sales pipeline up to date",
+    tone: "sky",
+    blurb: "Calls, forms and deals land in your CRM with the right stage, every time.",
+    aliases: ["crm", "pipeline", "gohighlevel", "follow up", "follow-up", "sales"],
+  },
+  reports: {
+    label: "Stop manual reporting",
+    phrase: "build my reports for me",
+    tone: "sage",
+    blurb: "Dashboards and weekly reports that fill themselves, so nobody copies numbers by hand.",
+    aliases: ["report", "reporting", "dashboard", "analytics", "kpi", "metrics"],
+  },
+  knowledge: {
+    label: "Search company knowledge",
+    phrase: "answer questions from my documents",
+    tone: "lilac",
+    blurb: "Ask in plain English, get answers from your own SOPs and documents, with the latest version.",
+    aliases: ["knowledge base", "sop", "documents", "chatbot", "search", "rag", "assistant"],
+  },
+  social: {
+    label: "Handle customer replies",
+    phrase: "reply to my customers and comments",
+    tone: "rose",
+    blurb: "Chatbots and moderation that answer questions on social media and chat, politely and accurately.",
+    aliases: ["instagram", "social media", "comments", "chatbot", "support", "customer service", "moderation"],
+  },
+  connect: {
+    label: "Connect my tools",
+    phrase: "connect my tools so I stop copy-pasting",
+    tone: "mint",
+    blurb: "Slack, Asana, Teams, Sheets, Monday and more, talking to each other automatically.",
+    aliases: ["integration", "integrations", "sync", "zapier", "automation", "workflow", "api"],
+  },
+  data: {
+    label: "Collect data from the web",
+    phrase: "collect data from websites",
+    tone: "sand",
+    blurb: "Reliable scraping, form filling and data extraction, cleaned and ready to use.",
+    aliases: ["scraping", "scraper", "extraction", "forms", "web", "monitoring"],
+  },
+  app: {
+    label: "Build a custom app",
+    phrase: "run inside a custom app or dashboard",
+    tone: "periwinkle",
+    blurb: "A real product around the AI: login, database, dashboard and a clean interface.",
+    aliases: ["web app", "dashboard", "saas", "full stack", "frontend", "backend", "software"],
+  },
+  models: {
+    label: "Custom AI models",
+    phrase: "recognise things in audio, video or images",
+    tone: "clay",
+    blurb: "When off-the-shelf AI isn't accurate enough, a model trained for your problem.",
+    aliases: ["machine learning", "deep learning", "classifier", "detection", "computer vision", "deepfake"],
+  },
+};
+
 export const PROJECT_TYPES: Record<string, Term> = {
   "ai-agents": {
     label: "AI Agents",
@@ -43,6 +123,11 @@ export const PROJECT_TYPES: Record<string, Term> = {
     aliases: ["scraping", "scraper", "scrape", "crawler", "etl", "pipeline", "data extraction"],
     blurb: "Reliable data collection, extraction and structuring at scale.",
   },
+  "crm-automation": {
+    label: "CRM & Sales Automation",
+    aliases: ["crm", "gohighlevel", "ghl", "lead generation", "cold email", "outreach", "pipeline", "follow up", "follow-up", "sales"],
+    blurb: "Leads, calls and deals flowing through your CRM automatically, with nothing falling through the cracks.",
+  },
   "full-stack": {
     label: "Full-Stack Apps",
     aliases: ["full stack", "fullstack", "web app", "web application", "saas", "dashboard", "frontend", "backend"],
@@ -64,12 +149,15 @@ export const INDUSTRIES: Record<string, Term> = {
   finance: { label: "Finance", aliases: ["fintech", "equity", "investing", "banking"] },
   saas: { label: "SaaS", aliases: ["software", "b2b"] },
   restaurants: { label: "Restaurants", aliases: ["food", "hospitality"] },
+  legal: { label: "Legal", aliases: ["law", "contracts", "contract review", "compliance"] },
+  events: { label: "Events & Ticketing", aliases: ["event", "ticketing", "tickets", "instagram"] },
+  construction: { label: "Construction & Design", aliases: ["design build", "contractor", "renovation", "home services"] },
   "professional-services": { label: "Professional Services", aliases: ["agency", "consulting", "legal"] },
   media: { label: "Media & Security", aliases: ["deepfake", "video", "audio", "trust and safety"] },
   other: { label: "Other" },
 };
 
-export type TechGroup = "AI & LLM" | "Automation" | "Backend" | "Frontend" | "Data" | "Cloud & Tools";
+export type TechGroup = "AI & LLM" | "Automation" | "Backend" | "Frontend" | "Data" | "Apps & APIs" | "Cloud & Tools";
 
 export const TECH: Record<string, Term & { group: TechGroup }> = {
   // AI & LLM
@@ -110,11 +198,39 @@ export const TECH: Record<string, Term & { group: TechGroup }> = {
   docker: { label: "Docker", group: "Cloud & Tools" },
   aws: { label: "AWS", group: "Cloud & Tools" },
   cloudflare: { label: "Cloudflare", group: "Cloud & Tools" },
-  shopify: { label: "Shopify API", group: "Cloud & Tools", aliases: ["ecommerce"] },
-  "amazon-sp-api": { label: "Amazon API", group: "Cloud & Tools", aliases: ["amazon", "fba", "fbm"] },
-  "ebay-api": { label: "eBay API", group: "Cloud & Tools", aliases: ["ebay"] },
-  hubspot: { label: "HubSpot", group: "Cloud & Tools", aliases: ["crm"] },
-  gohighlevel: { label: "GoHighLevel", group: "Cloud & Tools", aliases: ["ghl", "highlevel", "crm"] },
+  shopify: { label: "Shopify API", group: "Apps & APIs", aliases: ["ecommerce"] },
+  "amazon-sp-api": { label: "Amazon API", group: "Apps & APIs", aliases: ["amazon", "fba", "fbm"] },
+  "ebay-api": { label: "eBay API", group: "Apps & APIs", aliases: ["ebay"] },
+  apollo: { label: "Apollo.io", group: "Apps & APIs", aliases: ["lead enrichment", "prospecting"] },
+  instantly: { label: "Instantly", group: "Apps & APIs", aliases: ["cold email", "outreach"] },
+  "google-sheets": { label: "Google Sheets", group: "Apps & APIs", aliases: ["sheets", "spreadsheet", "gsheets"] },
+  "google-apps-script": { label: "Apps Script", group: "Apps & APIs", aliases: ["google apps script", "gas"] },
+  "google-drive": { label: "Google Drive", group: "Apps & APIs" },
+  gmail: { label: "Gmail", group: "Apps & APIs", aliases: ["email"] },
+  outlook: { label: "Outlook", group: "Apps & APIs", aliases: ["microsoft", "email"] },
+  "microsoft-teams": { label: "Microsoft Teams", group: "Apps & APIs", aliases: ["teams", "microsoft"] },
+  slack: { label: "Slack", group: "Apps & APIs" },
+  asana: { label: "Asana", group: "Apps & APIs" },
+  monday: { label: "Monday.com", group: "Apps & APIs", aliases: ["monday crm"] },
+  smartsuite: { label: "SmartSuite", group: "Apps & APIs" },
+  wordpress: { label: "WordPress", group: "Apps & APIs", aliases: ["wp"] },
+  "instagram-api": { label: "Instagram API", group: "Apps & APIs", aliases: ["instagram", "meta", "graph api"] },
+  "facebook-api": { label: "Facebook API", group: "Apps & APIs", aliases: ["facebook", "meta", "graph api"] },
+  "linkedin-api": { label: "LinkedIn API", group: "Apps & APIs", aliases: ["linkedin"] },
+  webinarjam: { label: "WebinarJam", group: "Apps & APIs", aliases: ["webinar"] },
+  fathom: { label: "Fathom", group: "Apps & APIs", aliases: ["call recording", "transcripts"] },
+  apify: { label: "Apify", group: "Data", aliases: ["scraping", "actors", "web scraping"] },
+  browserless: { label: "Browserless", group: "Data", aliases: ["headless browser", "scraping", "browser automation"] },
+  beautifulsoup: { label: "BeautifulSoup", group: "Data", aliases: ["scraping", "bs4"] },
+  spacy: { label: "spaCy", group: "AI & LLM", aliases: ["nlp"] },
+  mistral: { label: "Mistral", group: "AI & LLM", aliases: ["llm"] },
+  lakera: { label: "Lakera Guard", group: "AI & LLM", aliases: ["guardrails", "safety", "moderation"] },
+  vite: { label: "Vite", group: "Frontend" },
+  tailwind: { label: "Tailwind CSS", group: "Frontend", aliases: ["tailwindcss"] },
+  tiptap: { label: "TipTap", group: "Frontend", aliases: ["rich text editor", "editor"] },
+  vercel: { label: "Vercel", group: "Cloud & Tools" },
+  hubspot: { label: "HubSpot", group: "Apps & APIs", aliases: ["crm"] },
+  gohighlevel: { label: "GoHighLevel", group: "Apps & APIs", aliases: ["ghl", "highlevel", "crm"] },
 };
 
 /**

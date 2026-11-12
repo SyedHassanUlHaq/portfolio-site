@@ -1,0 +1,53 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "ai-instagram-comment-replies",
+  "title": "AI Instagram Comment Replies with RAG and Spam Filtering",
+  "summary": "Reads comments on Instagram posts, understands intent, and replies like a person, using live event data and safety filters.",
+  "headline": "Instagram comments, answered like a human would",
+  "needs": [
+    "social"
+  ],
+  "types": [
+    "ai-agents",
+    "rag",
+    "ai-automation"
+  ],
+  "industries": [
+    "events",
+    "marketing"
+  ],
+  "tech": [
+    "n8n",
+    "openai",
+    "supabase",
+    "instagram-api",
+    "lakera"
+  ],
+  "problem": "A large volume of comments needed fast, accurate, friendly replies, and spam and abusive comments had to be handled safely.",
+  "solution": "A webhook receives each comment. The workflow checks sentiment and intent, flags spam and aggression with guardrails, escalates support requests, retrieves matching events by semantic search and writes a humanised reply with an OpenAI model.",
+  "highlights": [
+    "Spam and aggression detection",
+    "Support escalation logic",
+    "Comment thread analysis",
+    "Event matching validation",
+    "Humanised replies grounded in retrieved data"
+  ],
+  "role": "Sole engineer. I designed the logic and prompts and built the whole workflow.",
+  "results": [
+    {
+      "label": "Faster, more consistent audience replies"
+    },
+    {
+      "label": "Less manual moderation and support effort"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "reply-workflow.webp",
+      "alt": "n8n workflow for AI comment replies with branching logic",
+      "caption": "Reply workflow",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

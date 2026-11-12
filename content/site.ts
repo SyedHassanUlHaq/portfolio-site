@@ -12,10 +12,16 @@ export const site = {
   hero: {
     eyebrow: "AI Automation & Agent Engineer",
     headline: "I build AI agents and automations that take real work off your team.",
-    sub: "Two years shipping AI agents, voice systems, RAG and integrations for real businesses — plus the backend and apps that make them dependable in production.",
+    sub: "I build AI that answers your calls, finds your leads, writes your reports and connects your tools. Two years of delivering it for real businesses, solo, end to end.",
     primaryCta: "See work like yours",
     secondaryCta: "Start a conversation",
+    pickerPrefix: "I want AI to",
+    pickerPlaceholder: "choose a job…",
+    pickerButton: "Show me",
   },
+
+  /** Clickable example searches under the search box. */
+  searchExamples: ["voice agent", "lead generation", "dashboard", "instagram"],
 
   /** Intro video: a YouTube or Loom URL (`url`), or a self-hosted file (`src`, in public/ — wins if both are set). Leave all empty to hide the slot. */
   introVideo: {

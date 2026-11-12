@@ -16,6 +16,7 @@ const tpl = {
   slug,
   title: "",
   summary: "",
+  needs: [],
   types: [],
   industries: [],
   tech: [],

@@ -1,0 +1,61 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "ai-voice-receptionist-crm",
+  "featured": 1,
+  "title": "AI Voice Receptionist That Answers, Qualifies and Routes Inbound Calls",
+  "summary": "A human-sounding AI front desk that picks up inbound calls, captures lead details, helps existing clients and writes structured data into the CRM.",
+  "headline": "An AI receptionist that never misses a call",
+  "needs": [
+    "calls",
+    "crm"
+  ],
+  "types": [
+    "voice-ai",
+    "ai-agents",
+    "crm-automation"
+  ],
+  "industries": [
+    "construction"
+  ],
+  "tech": [
+    "elevenlabs",
+    "gohighlevel",
+    "openai"
+  ],
+  "problem": "Every inbound call needed a person at the front desk to work out why the caller was calling, collect their details and get them to the right place.",
+  "solution": "I built a conversational voice agent that answers like a real receptionist. It recognises existing clients from CRM data, qualifies new leads, collects project and contact details, and submits everything through webhook tools so the CRM stays clean. The prompt is built around natural phrasing, short turns, one question at a time, escalation rules and guardrails.",
+  "highlights": [
+    "Handles inbound calls naturally, with CRM-aware context",
+    "Captures and qualifies new leads",
+    "Assists existing clients differently from new callers",
+    "Escalates to a person when it should",
+    "Submits structured data to the CRM through webhook tools"
+  ],
+  "role": "Sole engineer. I designed the call flow and prompt architecture, built the CRM and webhook integrations, and tested and tuned the agent.",
+  "results": [
+    {
+      "label": "Inbound calls answered and routed without a human receptionist"
+    },
+    {
+      "label": "Leads captured with consistent, structured CRM data"
+    },
+    {
+      "label": "Same experience for every caller, around the clock"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "agent-configuration.webp",
+      "alt": "Voice agent configuration showing the receptionist system prompt",
+      "caption": "Agent configuration and system prompt",
+      "kind": "ui"
+    },
+    {
+      "src": "crm-call-routing-workflow.webp",
+      "alt": "CRM workflow that routes calls by type and creates opportunities",
+      "caption": "CRM workflow routing each call type",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "social-link-collector-youtube-monitor",
+  "title": "Social Video Link Collector and YouTube Channel Monitor",
+  "summary": "Collects video links from Facebook messages and monitors YouTube channels, saving metadata to a sheet and emailing new finds.",
+  "headline": "Track videos across YouTube, TikTok and Instagram",
+  "needs": [
+    "data"
+  ],
+  "types": [
+    "data-pipelines",
+    "ai-automation"
+  ],
+  "industries": [
+    "media",
+    "marketing"
+  ],
+  "tech": [
+    "n8n",
+    "google-sheets",
+    "gmail"
+  ],
+  "problem": "Finding and logging content across platforms took manual effort.",
+  "solution": "One workflow reads Facebook messages, extracts the link, identifies YouTube, TikTok or Instagram and saves its metadata. A second runs every three days, fetches new videos for a list of channels, stores their metadata and emails a summary of everything new.",
+  "highlights": [
+    "Platform detection",
+    "Metadata extraction",
+    "Scheduled channel monitoring",
+    "Email summary of new videos"
+  ],
+  "role": "Sole engineer. I built both workflows.",
+  "results": [
+    {
+      "label": "Content collected automatically across three platforms"
+    },
+    {
+      "label": "New videos reported by email without checking channels"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "link-collector-workflow.webp",
+      "alt": "n8n workflow for YouTube, TikTok and Instagram links",
+      "caption": "Link collector workflow",
+      "kind": "workflow"
+    },
+    {
+      "src": "youtube-monitor-workflow.webp",
+      "alt": "n8n workflow monitoring YouTube channels",
+      "caption": "YouTube channel monitor",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

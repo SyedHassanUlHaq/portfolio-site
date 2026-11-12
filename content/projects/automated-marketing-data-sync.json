@@ -1,0 +1,78 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "automated-marketing-data-sync",
+  "title": "Automated Weekly Marketing Data Sync from Webinars, Email and Social",
+  "summary": "n8n workflows that pull webinar, email, Facebook and LinkedIn metrics into one database every week, with no manual reporting.",
+  "headline": "Marketing reports that build themselves",
+  "needs": [
+    "reports",
+    "connect"
+  ],
+  "types": [
+    "integrations",
+    "ai-automation",
+    "data-pipelines"
+  ],
+  "industries": [
+    "marketing"
+  ],
+  "tech": [
+    "n8n",
+    "supabase",
+    "postgresql",
+    "webinarjam",
+    "gohighlevel",
+    "facebook-api",
+    "linkedin-api"
+  ],
+  "problem": "Marketing metrics lived in four different platforms and were collected by hand.",
+  "solution": "I built scheduled n8n workflows that call the WebinarJam, GoHighLevel, Facebook Graph and LinkedIn APIs, create or update the matching rows in Supabase, and keep everything current without anyone touching it.",
+  "highlights": [
+    "Webinar registrants and attendance from WebinarJam",
+    "Email campaign events from GoHighLevel",
+    "Post metrics from the Facebook Graph and LinkedIn APIs",
+    "Create-or-update logic so reruns never duplicate data"
+  ],
+  "role": "Sole engineer. I designed the data model and built every sync workflow.",
+  "results": [
+    {
+      "label": "Marketing data collected automatically every week"
+    },
+    {
+      "label": "Consistent, up-to-date numbers across all channels"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "social-sync-workflow.webp",
+      "alt": "n8n workflow syncing Facebook and LinkedIn posts",
+      "caption": "Facebook and LinkedIn sync",
+      "kind": "workflow"
+    },
+    {
+      "src": "webinar-sync-workflow.webp",
+      "alt": "n8n workflow syncing webinar registrants",
+      "caption": "Webinar registrants sync",
+      "kind": "workflow"
+    },
+    {
+      "src": "webinar-schedule-workflow.webp",
+      "alt": "n8n workflow fetching webinars on a schedule",
+      "caption": "Scheduled webinar fetch",
+      "kind": "workflow"
+    },
+    {
+      "src": "email-events-workflow.webp",
+      "alt": "CRM automation that records email opens",
+      "caption": "Email events capture",
+      "kind": "workflow"
+    },
+    {
+      "src": "edge-function-metrics.webp",
+      "alt": "Supabase edge function monitoring dashboard",
+      "caption": "Edge function monitoring",
+      "kind": "ui"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

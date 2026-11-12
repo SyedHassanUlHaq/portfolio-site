@@ -1,0 +1,62 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "crm-to-teams-onboarding-automation",
+  "title": "CRM-to-Microsoft Teams Client Onboarding Automation",
+  "summary": "A new client form creates the CRM record and a dedicated Teams channel, then posts a templated update whenever the client moves stage.",
+  "headline": "New client? Their Teams channel is ready",
+  "needs": [
+    "crm",
+    "connect"
+  ],
+  "types": [
+    "crm-automation",
+    "integrations"
+  ],
+  "industries": [
+    "professional-services"
+  ],
+  "tech": [
+    "gohighlevel",
+    "zapier",
+    "microsoft-teams",
+    "google-sheets"
+  ],
+  "problem": "Setting up a collaboration space for each new client, and keeping everyone updated on progress, was manual.",
+  "solution": "A form submission in GoHighLevel creates the contact and opportunity. Zapier then provisions a private Teams channel with a standard name and description. Each later stage change in the CRM posts a templated message to that client's channel automatically.",
+  "highlights": [
+    "Contact and opportunity created from a form",
+    "Dedicated Teams channel per client",
+    "Templated stage-update messages",
+    "Records logged in Google Sheets"
+  ],
+  "role": "Sole engineer. I designed the flow and built the CRM automations and Zapier integrations, including the Microsoft Graph calls.",
+  "results": [
+    {
+      "label": "Every client gets a collaboration space with no manual setup"
+    },
+    {
+      "label": "Team updated on client progress automatically"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "create-channel-zap.webp",
+      "alt": "Zapier flow creating a Teams channel and CRM records",
+      "caption": "Create Teams channel flow",
+      "kind": "workflow"
+    },
+    {
+      "src": "stage-change-zap.webp",
+      "alt": "Zapier flow posting a message per pipeline stage",
+      "caption": "Stage change messaging",
+      "kind": "workflow"
+    },
+    {
+      "src": "crm-stage-trigger.webp",
+      "alt": "CRM trigger on pipeline stage change",
+      "caption": "CRM stage trigger",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

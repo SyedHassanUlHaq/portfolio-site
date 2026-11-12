@@ -1,0 +1,53 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "automated-web-form-submission",
+  "title": "Automated Web Form Filling and Submission at Scale",
+  "summary": "Reads company data from sheets, finds each form's fields, fills them intelligently and submits them using a headless browser.",
+  "headline": "Web forms that fill themselves",
+  "needs": [
+    "data"
+  ],
+  "types": [
+    "ai-automation",
+    "data-pipelines"
+  ],
+  "industries": [
+    "marketing"
+  ],
+  "tech": [
+    "n8n",
+    "browserless",
+    "openai",
+    "google-sheets",
+    "python"
+  ],
+  "problem": "Submitting the same details to many different web forms by hand was slow.",
+  "solution": "n8n loads the rows from Google Sheets, scrapes each form's fields, and an AI agent maps the data to the fields. The result is submitted with Browserless. I built variants for generic web forms and for Typeform.",
+  "highlights": [
+    "Works across differently structured forms",
+    "AI field mapping",
+    "Headless browser submission",
+    "Typeform support"
+  ],
+  "role": "Sole engineer. I built both automations.",
+  "results": [
+    {
+      "label": "Bulk form submission without manual entry"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "web-form-workflow.webp",
+      "alt": "n8n workflow filling and submitting web forms",
+      "caption": "Web form automation",
+      "kind": "workflow"
+    },
+    {
+      "src": "typeform-workflow.webp",
+      "alt": "n8n workflow filling and submitting Typeforms",
+      "caption": "Typeform automation",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

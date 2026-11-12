@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { site } from "../../../../content/site";
-import Gallery from "@/components/Gallery";
-import { Back, External, Lock } from "@/components/Icons";
 import { Chip } from "@/components/Chip";
+import Cover from "@/components/Cover";
+import Gallery from "@/components/Gallery";
+import { Back, Chevron, External, Lock } from "@/components/Icons";
 import ProjectCard from "@/components/ProjectCard";
 import { Section } from "@/components/Section";
 import ShareButtons from "@/components/ShareButtons";
 import VideoFacade from "@/components/VideoFacade";
 import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
-import { industryLabel, techLabel, typeLabel } from "@/lib/labels";
+import { industryLabel, needLabel, techLabel, typeLabel } from "@/lib/labels";
 import { getAllProjects, getProject, getRelated, toCard } from "@/lib/projects";
 import { projectImg } from "@/lib/url";
 
@@ -34,14 +35,20 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
-const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="mb-3 text-xl font-semibold tracking-tight text-ink">{children}</h2>;
+const H2 = ({ children }: { children: React.ReactNode }) => <h2 className="mb-3 font-display text-2xl font-medium tracking-tight text-ink">{children}</h2>;
+const BEHIND = new Set(["workflow", "architecture"]);
 
 export default async function ProjectPage({ params }: { params: Promise<Params> }) {
   const p = getProject((await params).slug);
   if (!p) notFound();
 
   const related = getRelated(p).map(toCard);
-  const hero = p.screenshots[0];
+  // Product screenshots tell the story; workflow diagrams are for people who want the detail.
+  const visual = p.screenshots.filter((s) => !BEHIND.has(s.kind ?? ""));
+  const behind = p.screenshots.filter((s) => BEHIND.has(s.kind ?? ""));
+  // only a landscape screenshot works as a full-width header; phone screenshots go in the gallery instead
+  const hero = !p.loomId ? visual.find((s) => s.width >= s.height) : undefined;
+  const gallery = visual.filter((s) => s !== hero);
   const client = p.confidentiality === "public" ? p.clientName : p.clientAlias;
 
   const jsonLd = {
@@ -51,8 +58,8 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
     description: p.summary,
     url: `${site.url}/projects/${p.slug}`,
     author: { "@type": "Person", name: site.name },
-    keywords: [...p.types.map(typeLabel), ...p.industries.map(industryLabel), ...p.tech.map(techLabel)].join(", "),
-    ...(hero && { image: `${site.url}/projects/${p.slug}/${hero.src}` }),
+    keywords: [...p.needs.map(needLabel), ...p.types.map(typeLabel), ...p.industries.map(industryLabel), ...p.tech.map(techLabel)].join(", "),
+    ...(p.screenshots[0] && { image: `${site.url}/projects/${p.slug}/${p.screenshots[0].src}` }),
   };
 
   return (
@@ -64,11 +71,11 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
         </Link>
 
         <header className="mt-6 max-w-3xl">
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">{p.types.map(typeLabel).join(" · ")}</p>
-          <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">{p.title}</h1>
-          <p className="mt-4 text-lg text-muted">{p.summary}</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent">{p.needs.map(needLabel).join(" · ")}</p>
+          <h1 className="mt-3 font-display text-4xl font-medium leading-[1.08] tracking-tight text-ink sm:text-6xl">{p.title}</h1>
+          <p className="mt-5 text-xl text-muted">{p.summary}</p>
           {p.confidentiality !== "public" && (
-            <p className="mt-4 inline-flex items-center gap-2 rounded-md border border-line bg-surface px-3 py-1.5 text-sm text-muted">
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-sm text-muted">
               <Lock className="h-4 w-4" />
               {p.confidentiality === "nda" ? "Delivered under NDA. Details are limited; ask me for what I can share." : "Client details anonymized at their request."}
             </p>
@@ -80,7 +87,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
       </div>
 
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_20rem] lg:gap-14">
-        <div className="min-w-0 space-y-10">
+        <div className="min-w-0 space-y-12">
           {p.loomId && p.loom ? (
             <VideoFacade
               loomId={p.loomId}
@@ -90,31 +97,28 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               posterSrc={p.posterSrc ? projectImg(p.slug, p.posterSrc) : undefined}
               label={p.slug}
             />
+          ) : hero ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={projectImg(p.slug, hero.src)} alt={hero.alt} width={hero.width} height={hero.height} className={`w-full rounded-2xl border border-line ${hero.blur ? "blur-md" : ""}`} />
+          ) : p.thumbnail ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={projectImg(p.slug, "thumbnail.webp")} alt={p.headline ?? p.title} width={1280} height={720} className="w-full rounded-2xl border border-line" />
           ) : (
-            hero && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={projectImg(p.slug, hero.src)}
-                alt={hero.alt}
-                width={hero.width}
-                height={hero.height}
-                className={`w-full rounded-xl border border-line ${hero.blur ? "blur-md" : ""}`}
-              />
-            )
+            <Cover needs={p.needs} slug={p.slug} size="hero" />
           )}
 
           {p.problem && (
             <section>
               <H2>The problem</H2>
-              <p className="text-muted">{p.problem}</p>
+              <p className="text-lg text-muted">{p.problem}</p>
             </section>
           )}
           {p.solution && (
             <section>
               <H2>What I built</H2>
-              <p className="text-muted">{p.solution}</p>
+              <p className="text-lg text-muted">{p.solution}</p>
               {p.highlights && p.highlights.length > 0 && (
-                <ul className="mt-4 space-y-2 text-muted">
+                <ul className="mt-5 space-y-2.5 text-muted">
                   {p.highlights.map((h) => (
                     <li key={h} className="flex gap-3">
                       <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
@@ -128,56 +132,67 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           {p.role && (
             <section>
               <H2>My role</H2>
-              <p className="text-muted">{p.role}</p>
+              <p className="text-lg text-muted">{p.role}</p>
             </section>
           )}
           {p.results && p.results.length > 0 && (
             <section>
-              <H2>Results</H2>
+              <H2>What it achieves</H2>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {p.results.map((r) => (
-                  <li key={r.label} className="rounded-lg border border-line bg-surface p-4">
-                    {r.value && <p className="text-2xl font-semibold tracking-tight text-accent">{r.value}</p>}
-                    <p className="text-sm text-muted">{r.label}</p>
+                  <li key={r.label} className="rounded-2xl bg-tone-sage p-5">
+                    {r.value && <p className="font-display text-3xl font-medium tracking-tight text-ink">{r.value}</p>}
+                    <p className="text-[15px] text-ink/80">{r.label}</p>
                   </li>
                 ))}
               </ul>
             </section>
           )}
           {p.testimonial && (
-            <blockquote className="rounded-xl border border-line bg-surface p-6">
-              <p className="text-lg text-ink">“{p.testimonial.quote}”</p>
+            <blockquote className="rounded-2xl bg-tone-butter p-7">
+              <p className="font-display text-2xl leading-snug text-ink">“{p.testimonial.quote}”</p>
               {(p.testimonial.author || p.testimonial.source) && (
-                <footer className="mt-3 text-sm text-muted">{[p.testimonial.author, p.testimonial.source].filter(Boolean).join(" · ")}</footer>
+                <footer className="mt-3 text-sm text-ink/70">{[p.testimonial.author, p.testimonial.source].filter(Boolean).join(" · ")}</footer>
               )}
             </blockquote>
           )}
-          {p.screenshots.length > 0 && (
+          {gallery.length > 0 && (
             <section>
-              <H2>Screenshots</H2>
-              <Gallery slug={p.slug} shots={p.screenshots} />
+              <H2>See it in action</H2>
+              <Gallery slug={p.slug} shots={gallery} />
             </section>
           )}
-        </div>
 
-        <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-          <dl className="space-y-4 rounded-xl border border-line bg-surface p-5 text-sm">
-            <Row k="Industry">{p.industries.map(industryLabel).join(", ")}</Row>
-            <Row k="Type">{p.types.map(typeLabel).join(", ")}</Row>
-            {client && <Row k="Client">{client}</Row>}
-            {p.year && <Row k="Year">{p.year}</Row>}
-            {p.duration && <Row k="Duration">{p.duration}</Row>}
-            <div>
-              <dt className="mb-2 font-mono text-[11px] uppercase tracking-wider text-faint">Tech stack</dt>
-              <dd className="flex flex-wrap gap-1.5">
+          <details className="group rounded-2xl border border-line bg-surface">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 marker:hidden [&::-webkit-details-marker]:hidden">
+              <span>
+                <span className="font-display text-xl font-medium text-ink">Under the hood</span>
+                <span className="mt-0.5 block text-sm text-muted">The tools I used{behind.length > 0 ? " and the workflow diagrams" : ""}, for the technically curious.</span>
+              </span>
+              <Chevron className="h-5 w-5 shrink-0 text-muted transition group-open:rotate-180" />
+            </summary>
+            <div className="space-y-6 border-t border-line p-5">
+              <div className="flex flex-wrap gap-2">
                 {p.tech.map((t) => (
                   <Chip key={t}>{techLabel(t)}</Chip>
                 ))}
-              </dd>
+              </div>
+              {behind.length > 0 && <Gallery slug={p.slug} shots={behind} />}
             </div>
+          </details>
+        </div>
+
+        <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+          <dl className="space-y-4 rounded-2xl border border-line bg-surface p-5 text-sm">
+            <Row k="Industry">{p.industries.map(industryLabel).join(", ")}</Row>
+            <Row k="Solves">{p.needs.map(needLabel).join(", ")}</Row>
+            {client && <Row k="Client">{client}</Row>}
+            {p.year && <Row k="Year">{p.year}</Row>}
+            {p.duration && <Row k="Duration">{p.duration}</Row>}
+            <Row k="Built with">{p.tech.slice(0, 5).map(techLabel).join(", ")}{p.tech.length > 5 ? ` +${p.tech.length - 5} more` : ""}</Row>
             {p.links && p.links.length > 0 && (
               <div>
-                <dt className="mb-2 font-mono text-[11px] uppercase tracking-wider text-faint">Links</dt>
+                <dt className="mb-1.5 text-[11px] font-semibold uppercase tracking-wider text-faint">Links</dt>
                 <dd className="space-y-1.5">
                   {p.links.map((l) => (
                     <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer" {...ev("project-link", { project: p.slug, label: l.label })} className="flex items-center gap-1.5 text-accent hover:underline">
@@ -189,25 +204,30 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
             )}
           </dl>
 
-          <div className="rounded-xl border border-accent/30 bg-accent/5 p-5">
-            <p className="font-semibold text-ink">Need something like this?</p>
-            <p className="mt-1 text-sm text-muted">Tell me what you&apos;re trying to automate and I&apos;ll tell you how I&apos;d approach it.</p>
+          <div className="rounded-2xl bg-tone-peach p-6">
+            <p className="font-display text-xl font-medium text-ink">Need something like this?</p>
+            <p className="mt-1.5 text-[15px] text-ink/70">Tell me what you&apos;re trying to automate and I&apos;ll tell you how I&apos;d approach it.</p>
             <a
               href={site.contact.upwork || mailto(`Re: ${p.title}`)}
               {...(site.contact.upwork ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               {...ev("cta-click", { where: "project", project: p.slug })}
-              className="mt-4 inline-flex h-11 w-full items-center justify-center rounded-md bg-accent font-medium text-accent-ink hover:brightness-110"
+              className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-full bg-ink font-medium text-bg hover:bg-accent"
             >
               {site.contact.upwork ? "Message me on Upwork" : "Email me about this"}
             </a>
+            {site.contact.calendly && (
+              <a href={site.contact.calendly} target="_blank" rel="noopener noreferrer" {...ev("cta-click", { where: "project-calendly", project: p.slug })} className="mt-2 inline-flex h-12 w-full items-center justify-center rounded-full border-2 border-ink/15 bg-white/60 font-medium text-ink hover:border-ink">
+                Book a quick call
+              </a>
+            )}
           </div>
         </aside>
       </div>
 
       {related.length > 0 && (
         <Section className="border-t border-line">
-          <h2 className="mb-6 text-2xl font-semibold tracking-tight text-ink">Similar projects</h2>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <h2 className="mb-6 font-display text-3xl font-medium tracking-tight text-ink">Similar projects</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {related.map((r) => (
               <ProjectCard key={r.slug} p={r} />
             ))}
@@ -221,7 +241,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
 function Row({ k, children }: { k: string; children: React.ReactNode }) {
   return (
     <div>
-      <dt className="mb-1 font-mono text-[11px] uppercase tracking-wider text-faint">{k}</dt>
+      <dt className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-faint">{k}</dt>
       <dd className="text-ink">{children}</dd>
     </div>
   );

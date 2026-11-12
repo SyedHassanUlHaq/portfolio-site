@@ -1,0 +1,57 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "ai-workflow-operations-dashboard",
+  "title": "Operations Dashboard for Managing AI Workflows and Moderation",
+  "summary": "A secure control panel for turning workflows on and off, monitoring executions and moderating Instagram conversations.",
+  "headline": "One control panel for every AI workflow",
+  "needs": [
+    "app",
+    "social"
+  ],
+  "types": [
+    "full-stack",
+    "integrations"
+  ],
+  "industries": [
+    "events"
+  ],
+  "tech": [
+    "vite",
+    "supabase",
+    "n8n",
+    "vercel"
+  ],
+  "problem": "The team needed one place to run and watch many AI automations, without opening each tool.",
+  "solution": "I built a Vite dashboard hosted on Vercel with Supabase login. It activates and deactivates workflows, pins priorities, shows executions and logs, and tracks and moderates Instagram comments and threads.",
+  "highlights": [
+    "Secure authentication",
+    "Workflow activation and pinning",
+    "Execution monitoring and logs",
+    "Comment tracking, threads and deletion tools",
+    "Real-time operational view"
+  ],
+  "role": "Sole engineer. I built the entire dashboard and its integrations.",
+  "results": [
+    {
+      "label": "Central control over all automations"
+    },
+    {
+      "label": "Faster moderation of conversations"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "login.webp",
+      "alt": "Dashboard sign-in screen",
+      "caption": "Sign-in",
+      "kind": "ui"
+    },
+    {
+      "src": "overview-analytics.webp",
+      "alt": "Dashboard overview with conversations and responses over time",
+      "caption": "Overview and analytics",
+      "kind": "ui"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

@@ -60,10 +60,10 @@ export default function VideoFacade({ loomId, youtubeId, src, shareUrl, title, d
               // eslint-disable-next-line @next/next/no-img-element
               <img src={posterSrc} alt={posterAlt} className={`absolute inset-0 h-full w-full object-cover object-top transition group-hover:brightness-110 ${posterHasPlay ? "" : "opacity-70 group-hover:opacity-90"}`} />
             ) : (
-              <span className="bg-grid absolute inset-0" />
+              <span className="absolute inset-0 bg-tone-peach" />
             )}
             {posterHasPlay ? (
-              duration && <span className="absolute bottom-3 right-3 rounded bg-bg/80 px-2 py-1 font-mono text-xs text-muted">{duration}</span>
+              duration && <span className="absolute bottom-3 right-3 rounded bg-bg/80 px-2 py-1 text-xs text-muted">{duration}</span>
             ) : (
               <>
                 <span className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent" />
@@ -72,7 +72,7 @@ export default function VideoFacade({ loomId, youtubeId, src, shareUrl, title, d
                 </span>
                 <span className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-sm">
                   <span className="rounded bg-bg/80 px-2.5 py-1 font-medium text-ink">Watch {title}</span>
-                  {duration && <span className="rounded bg-bg/80 px-2 py-1 font-mono text-xs text-muted">{duration}</span>}
+                  {duration && <span className="rounded bg-bg/80 px-2 py-1 text-xs text-muted">{duration}</span>}
                 </span>
               </>
             )}

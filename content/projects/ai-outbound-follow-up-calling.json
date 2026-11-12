@@ -1,0 +1,62 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "ai-outbound-follow-up-calling",
+  "featured": 2,
+  "title": "AI Outbound Follow-Up Caller for Lead Re-engagement",
+  "summary": "A voice agent that phones leads, works out whether they want an estimate call, a later callback or nothing at all, and updates the CRM automatically.",
+  "headline": "AI that phones your leads for you",
+  "needs": [
+    "calls",
+    "crm"
+  ],
+  "types": [
+    "voice-ai",
+    "ai-agents",
+    "crm-automation"
+  ],
+  "industries": [
+    "construction"
+  ],
+  "tech": [
+    "elevenlabs",
+    "n8n",
+    "twilio",
+    "openai"
+  ],
+  "problem": "Following up with cold or stalled leads by phone was manual, repetitive work, and the outcomes were not always recorded consistently.",
+  "solution": "I built an outbound agent that behaves like a calm internal team member, not a pushy sales bot. n8n pulls the leads, triggers the calls through ElevenLabs and Twilio, handles voicemail, and writes the outcome back to the CRM: schedule an overview call, reconnect later or not interested.",
+  "highlights": [
+    "Short, natural calls with strict conversational guardrails",
+    "Voicemail handling",
+    "Detects intent: book, call back later, or not interested",
+    "CRM status updated automatically from the call outcome",
+    "Appointment scheduling workflow"
+  ],
+  "role": "Sole engineer. I wrote the voice agent prompt and guardrails, built the n8n workflows that fetch leads and place calls, and connected call outcomes back to the CRM.",
+  "results": [
+    {
+      "label": "Leads re-engaged by phone without manual dialling"
+    },
+    {
+      "label": "Every call outcome recorded in the CRM automatically"
+    },
+    {
+      "label": "Follow-up conversations standardised across leads"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "lead-fetching-workflow.webp",
+      "alt": "n8n workflow that fetches nurture leads on a schedule and starts calls",
+      "caption": "n8n workflow: fetch leads, start AI calls",
+      "kind": "workflow"
+    },
+    {
+      "src": "agent-prompt.webp",
+      "alt": "Outbound follow-up agent configuration and prompt",
+      "caption": "Agent personality and rules",
+      "kind": "ui"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "ai-team-productivity-reports",
+  "title": "AI-Generated Weekly & Quarterly Team Productivity Reports from Asana",
+  "summary": "Task data is pulled from Asana, stored for history, analysed by an AI model and emailed to stakeholders every week and every quarter.",
+  "headline": "AI reports on how your team is really doing",
+  "needs": [
+    "reports"
+  ],
+  "types": [
+    "ai-automation",
+    "integrations"
+  ],
+  "industries": [
+    "professional-services"
+  ],
+  "tech": [
+    "n8n",
+    "asana",
+    "supabase",
+    "openai",
+    "outlook"
+  ],
+  "problem": "Understanding who completed what, what was delayed and why meant manual reporting.",
+  "solution": "n8n pulls task data from the Asana API into Supabase, tracking creations, completions, delays and due-date changes. Every week it computes completion rates and workload per person, an OpenAI model writes the analysis and recommendations, and the report is emailed. A quarterly run does the same for long-term trends.",
+  "highlights": [
+    "Task lifecycle tracked in Supabase",
+    "Completion rate and pending workload per user",
+    "Delayed tasks with reasons",
+    "AI-written summaries and recommendations",
+    "Weekly and quarterly schedules"
+  ],
+  "role": "Sole engineer. I built the data pipeline, the analysis logic, the AI prompts and the email delivery.",
+  "results": [
+    {
+      "label": "Manual reporting eliminated"
+    },
+    {
+      "label": "Bottlenecks and delays visible every week"
+    },
+    {
+      "label": "Long-term productivity trends tracked quarterly"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "weekly-report-workflow.webp",
+      "alt": "n8n workflow with an AI agent generating weekly report data",
+      "caption": "Weekly AI report workflow",
+      "kind": "workflow"
+    },
+    {
+      "src": "quarterly-workflow.webp",
+      "alt": "n8n workflow for quarterly aggregation",
+      "caption": "Quarterly aggregation workflow",
+      "kind": "workflow"
+    },
+    {
+      "src": "task-sync-workflow.webp",
+      "alt": "n8n workflow syncing Asana tasks into the database",
+      "caption": "Asana task sync",
+      "kind": "workflow"
+    }
+  ],
+  "confidentiality": "anonymized"
+}

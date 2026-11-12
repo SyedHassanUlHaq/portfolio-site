@@ -19,7 +19,10 @@ export type ProjectSource = {
   slug: string; // REQUIRED — must match the file name
   title: string; // REQUIRED — outcome-oriented, e.g. "AI Voice Receptionist for Real Estate Lead Qualification"
   summary: string; // REQUIRED — one line, shown on cards and in link previews
-  types: string[]; // REQUIRED — ids from content/taxonomy.ts → PROJECT_TYPES
+  /** Short benefit-first hook printed on the generated thumbnail, e.g. "An AI receptionist that never misses a call". Defaults to the title. */
+  headline?: string;
+  needs: string[]; // REQUIRED — what the client wanted, ids from NEEDS (first one picks the cover colour and icon)
+  types: string[]; // REQUIRED — technical categories, ids from PROJECT_TYPES
   industries: string[]; // REQUIRED — ids from INDUSTRIES
   tech: string[]; // REQUIRED — ids from TECH
 
@@ -75,6 +78,8 @@ export type Project = Omit<ProjectSource, "screenshots" | "clientName"> & {
   loomId?: string;
   posterSrc?: string;
   confidentiality: "public" | "anonymized" | "nda";
+  /** true when public/projects/<slug>/thumbnail.webp exists (run `npm run thumbnails`) */
+  thumbnail?: boolean;
 };
 
 /** Lightweight version sent to the client-side explorer. */
@@ -82,6 +87,7 @@ export type ProjectCardData = {
   slug: string;
   title: string;
   summary: string;
+  needs: string[];
   types: string[];
   industries: string[];
   tech: string[];
@@ -89,7 +95,7 @@ export type ProjectCardData = {
   year?: number;
   loomDuration?: string;
   hasLoom: boolean;
-  thumb?: { src: string; width: number; height: number; alt: string; blur?: boolean };
+  thumb?: { src: string; alt: string };
   confidentiality: Project["confidentiality"];
   /** pre-computed lowercase search fields, see lib/search.ts */
   index: Record<"title" | "labels" | "keywords" | "text", string>;
