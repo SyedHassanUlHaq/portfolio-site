@@ -5,6 +5,7 @@ import { mailto } from "@/lib/contact";
 import { loomId } from "@/lib/loom";
 import { youtubeId } from "@/lib/video";
 import { withBase } from "@/lib/url";
+import AssistantLink from "./AssistantLink";
 import NeedPicker from "./NeedPicker";
 import VideoFacade from "./VideoFacade";
 
@@ -36,7 +37,9 @@ export default function Hero({ availableNeeds }: { availableNeeds: string[] }) {
                 className="font-medium text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent"
               >
                 {contact.upwork ? "view my Upwork profile" : "message me directly"}
-              </a>
+              </a>{" "}
+              or{" "}
+              <AssistantLink className="font-medium text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent" />
               .
             </p>
           </div>

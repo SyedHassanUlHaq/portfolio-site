@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { industryLabel, techLabel } from "@/lib/labels";
+import { industryLabel } from "@/lib/labels";
 import type { ProjectCardData } from "@/lib/types";
 import { withBase } from "@/lib/url";
 import Cover from "./Cover";
 import { Play } from "./Icons";
 
 export default function ProjectCard({ p, from }: { p: ProjectCardData; priority?: boolean; from?: string }) {
-  const tools = p.tech.slice(0, 3).map(techLabel);
-  const more = p.tech.length - tools.length;
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition duration-200 hover:-translate-y-1 hover:shadow-[0_12px_32px_-12px_rgb(60_40_20/0.25)]">
       <div className="relative">
@@ -17,13 +15,16 @@ export default function ProjectCard({ p, from }: { p: ProjectCardData; priority?
         ) : (
           <Cover needs={p.needs} slug={p.slug} />
         )}
+        {p.featured && p.featured <= 3 && (
+          <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink shadow-sm">Featured</span>
+        )}
         {p.hasLoom && (
           <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-ink shadow-sm">
             <Play className="h-3 w-3" /> Watch{p.loomDuration ? ` · ${p.loomDuration}` : ""}
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-2.5 p-5">
+      <div className="flex flex-1 flex-col gap-2.5 p-5 pb-6">
         <p className="text-xs font-medium uppercase tracking-wider text-faint">{p.industries.map(industryLabel).join(" · ")}</p>
         <h3 className="font-display text-xl font-medium leading-snug tracking-tight text-ink">
           <Link
@@ -33,11 +34,7 @@ export default function ProjectCard({ p, from }: { p: ProjectCardData; priority?
             {p.title}
           </Link>
         </h3>
-        <p className="line-clamp-3 text-[15px] text-muted">{p.summary}</p>
-        <p className="mt-auto pt-2 text-[13px] text-faint">
-          Built with {tools.join(", ")}
-          {more > 0 ? ` +${more} more` : ""}
-        </p>
+        <p className="line-clamp-2 text-[15px] text-muted">{p.summary}</p>
       </div>
     </article>
   );
