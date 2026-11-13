@@ -86,7 +86,7 @@ export const seo = {
   homeDescription:
     "Freelance AI automation engineer building AI voice agents, chatbots, CRM automations and n8n workflows. See real projects, demo videos and book a call.",
   /** Google Search Console HTML-tag verification token (the content="…" value). Leave empty until you have one. */
-  googleVerification: process.env.NEXT_PUBLIC_GSC_TOKEN ?? "",
+  googleVerification: process.env.NEXT_PUBLIC_GSC_TOKEN ?? "xvC3-XVQbEqL06ObdzwySDN9-rwThpGFSJ0X0BlqMsA",
 };
 
 export const analytics = {
