@@ -29,6 +29,11 @@ export const site = {
     url: "https://youtu.be/j4idL0ATPPM",
     duration: "2:22",
     title: "intro video",
+    // used for search-engine video markup
+    seoName: "Syed Hassan | Full-Stack Developer & AI Automation Engineer",
+    seoDescription: "A two-minute introduction to Syed Hassan Ul Haq, an AI automation and agent engineer: what he builds, who he helps and how to get started.",
+    uploadDate: "2026-10-08T04:03:58-07:00",
+    durationIso: "PT2M22S",
     poster: "/images/intro-poster.webp", // file in public/
     posterHasPlay: true, // the thumbnail already has a play button drawn on it
   },
@@ -73,6 +78,15 @@ export const site = {
 export const assistant = {
   agentId: "agent_0001m77sacs1ech9x9pbwmw6nc5p",
   label: "Ask my AI assistant",
+};
+
+/** Search-engine settings. */
+export const seo = {
+  homeTitle: "Syed Hassan Ul Haq | AI Automation & AI Agent Developer",
+  homeDescription:
+    "Freelance AI automation engineer building AI voice agents, chatbots, CRM automations and n8n workflows. See real projects, demo videos and book a call.",
+  /** Google Search Console HTML-tag verification token (the content="…" value). Leave empty until you have one. */
+  googleVerification: process.env.NEXT_PUBLIC_GSC_TOKEN ?? "",
 };
 
 export const analytics = {

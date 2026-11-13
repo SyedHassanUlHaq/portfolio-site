@@ -14,6 +14,7 @@ import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
 import { industryLabel, needLabel, techLabel, typeLabel } from "@/lib/labels";
 import { getAllProjects, getProject, getRelated, toCard } from "@/lib/projects";
+import { abs, crumbs, metaDescription, ogImageUrl, pageTitle, homeOgImageUrl } from "@/lib/seo";
 import { projectImg } from "@/lib/url";
 
 type Params = { slug: string };
@@ -24,14 +25,17 @@ export const generateStaticParams = () => getAllProjects().map((p) => ({ slug: p
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const p = getProject((await params).slug);
   if (!p) return {};
-  const url = `${site.url.replace(/\/$/, "")}/projects/${p.slug}`;
+  const url = abs(`/projects/${p.slug}`);
+  const title = pageTitle(p.seoTitle ?? p.title);
+  const description = metaDescription(p.summary);
+  const image = p.thumbnail ? ogImageUrl(p.slug) : homeOgImageUrl;
   return {
-    title: p.title,
-    description: p.summary,
+    title: { absolute: title },
+    description,
     alternates: { canonical: url },
     robots: p.unlisted ? { index: false, follow: false } : undefined,
-    openGraph: { type: "article", title: p.title, description: p.summary, url },
-    twitter: { title: p.title, description: p.summary },
+    openGraph: { type: "article", title, description, url, images: [{ url: image, width: 1200, height: 630, alt: p.title }] },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 }
 
@@ -53,20 +57,25 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: p.title,
-    description: p.summary,
-    url: `${site.url}/projects/${p.slug}`,
-    author: { "@type": "Person", name: site.name },
-    keywords: [...p.needs.map(needLabel), ...p.types.map(typeLabel), ...p.industries.map(industryLabel), ...p.tech.map(techLabel)].join(", "),
-    ...(p.screenshots[0] && { image: `${site.url}/projects/${p.slug}/${p.screenshots[0].src}` }),
+    "@graph": [
+      {
+        "@type": "CreativeWork",
+        name: p.title,
+        description: p.summary,
+        url: abs(`/projects/${p.slug}`),
+        author: { "@id": abs("/#person"), "@type": "Person", name: site.name },
+        keywords: [...p.needs.map(needLabel), ...p.types.map(typeLabel), ...p.industries.map(industryLabel), ...p.tech.map(techLabel)].join(", "),
+        image: p.thumbnail ? ogImageUrl(p.slug) : homeOgImageUrl,
+      },
+      crumbs([{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }, { name: p.title, path: `/projects/${p.slug}` }]),
+    ],
   };
 
   return (
     <article>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="mx-auto max-w-6xl px-4 pt-8 sm:px-6 sm:pt-12">
-        <Link href="/#work" className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink">
+        <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink">
           <Back className="h-4 w-4" /> All projects
         </Link>
 

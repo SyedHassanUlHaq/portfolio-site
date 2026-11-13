@@ -29,6 +29,10 @@
       "type": "string",
       "description": "One line. Shown on cards and link previews."
     },
+    "seoTitle": {
+      "type": "string",
+      "description": "Search-result title, ideally under 40 characters. Defaults to the title."
+    },
     "headline": {
       "type": "string",
       "description": "Short benefit-first hook printed on the thumbnail, e.g. An AI receptionist that never misses a call"

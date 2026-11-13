@@ -4,6 +4,7 @@
   "title": "CRM-to-Microsoft Teams Client Onboarding Automation",
   "summary": "A new client form creates the CRM record and a dedicated Teams channel, then posts a templated update whenever the client moves stage.",
   "headline": "New client? Their Teams channel is ready",
+  "seoTitle": "GoHighLevel to Teams Onboarding Automation",
   "needs": [
     "crm",
     "connect"

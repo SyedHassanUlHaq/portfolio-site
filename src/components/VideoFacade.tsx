@@ -26,7 +26,7 @@ type Props = {
  * Click-to-load video (Loom embed or self-hosted mp4). Nothing heavy loads until someone presses play,
  * so the video never hurts page speed. Loom embeds fall back to a plain link if embedding is blocked.
  */
-export default function VideoFacade({ loomId, youtubeId, src, shareUrl, title, duration, posterSrc, posterAlt = "", posterHasPlay, label }: Props) {
+export default function VideoFacade({ loomId, youtubeId, src, shareUrl, title, duration, posterSrc, posterAlt = "", posterHasPlay, label, priority }: Props) {
   const [playing, setPlaying] = useState(false);
 
   return (
@@ -54,11 +54,11 @@ export default function VideoFacade({ loomId, youtubeId, src, shareUrl, title, d
               track("video-play", { video: label });
             }}
             className="group absolute inset-0 flex h-full w-full items-center justify-center"
-            aria-label={`Play video: ${title}`}
+            aria-label={`Play video: ${title}${duration ? `, ${duration}` : ""}`}
           >
             {posterSrc ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={posterSrc} alt={posterAlt} className={`absolute inset-0 h-full w-full object-cover object-top transition group-hover:brightness-110 ${posterHasPlay ? "" : "opacity-70 group-hover:opacity-90"}`} />
+              <img src={posterSrc} alt={posterAlt} fetchPriority={priority ? "high" : undefined} className={`absolute inset-0 h-full w-full object-cover object-top transition group-hover:brightness-110 ${posterHasPlay ? "" : "opacity-70 group-hover:opacity-90"}`} />
             ) : (
               <span className="absolute inset-0 bg-tone-peach" />
             )}

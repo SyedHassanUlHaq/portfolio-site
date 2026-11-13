@@ -4,6 +4,7 @@
   "title": "Financial Data Scraping and AI Classification Pipeline",
   "summary": "Automates the browser, gets past Cloudflare protection, cleans and classifies financial content with an LLM, and stores structured results in MongoDB.",
   "headline": "Financial data, collected and classified for you",
+  "seoTitle": "Financial Data Scraping & AI Classification",
   "needs": [
     "data"
   ],

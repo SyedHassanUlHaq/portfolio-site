@@ -5,6 +5,7 @@
   "title": "AI Voice Receptionist That Answers, Qualifies and Routes Inbound Calls",
   "summary": "A human-sounding AI front desk that picks up inbound calls, captures lead details, helps existing clients and writes structured data into the CRM.",
   "headline": "An AI receptionist that never misses a call",
+  "seoTitle": "AI Voice Receptionist for Inbound Calls",
   "needs": [
     "calls",
     "crm"

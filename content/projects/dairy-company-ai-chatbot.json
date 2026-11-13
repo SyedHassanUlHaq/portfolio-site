@@ -4,6 +4,7 @@
   "title": "AI Chatbot That Finds Matching Providers and Replies With Their Details",
   "summary": "A chatbot for a dairy company that finds the right providers for each message, gathers their details automatically and replies with a ready answer.",
   "headline": "A chatbot that researches before it replies",
+  "seoTitle": "AI Chatbot with Apify Provider Research",
   "needs": [
     "social",
     "data"

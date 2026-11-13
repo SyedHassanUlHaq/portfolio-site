@@ -21,6 +21,8 @@ export type ProjectSource = {
   summary: string; // REQUIRED — one line, shown on cards and in link previews
   /** Short benefit-first hook printed on the generated thumbnail, e.g. "An AI receptionist that never misses a call". Defaults to the title. */
   headline?: string;
+  /** Page title for search results, ideally under 40 characters (the site name is appended when it fits in 60). Defaults to the title. */
+  seoTitle?: string;
   needs: string[]; // REQUIRED — what the client wanted, ids from NEEDS (first one picks the cover colour and icon)
   types: string[]; // REQUIRED — technical categories, ids from PROJECT_TYPES
   industries: string[]; // REQUIRED — ids from INDUSTRIES

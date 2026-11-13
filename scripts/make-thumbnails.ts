@@ -95,6 +95,19 @@ ${visual}
 <div class="by"><img src="${avatar}"><span>${site.name}</span></div>`;
 }
 
+/** Social preview for the homepage itself (shown when the site link is shared on LinkedIn, Upwork, Slack…). */
+function homeHtml() {
+  return `<!doctype html><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@600&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0}body{width:1280px;height:720px;background:#faf7f2;position:relative;overflow:hidden;font-family:Inter,sans-serif;color:#1f1a17}
+.a,.b{position:absolute;border-radius:50%}.a{width:620px;height:620px;right:-150px;top:-200px;background:#fde3d3}.b{width:380px;height:380px;left:-120px;bottom:-170px;background:#fbefc4}
+.pill{position:absolute;left:72px;top:64px;background:#fff;padding:10px 22px;border-radius:999px;font-size:22px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;border:1px solid #e8e0d3}
+h1{position:absolute;left:72px;top:150px;width:720px;font-family:Fraunces,serif;font-weight:500;font-size:74px;line-height:1.06;letter-spacing:-.02em}
+.who{position:absolute;left:72px;bottom:56px;font-size:28px;font-weight:600}
+.photo{position:absolute;right:96px;top:120px;width:380px;height:380px;border-radius:50%;object-fit:cover;border:10px solid #fff;box-shadow:0 36px 70px -24px rgba(60,40,20,.5)}</style>
+<div class="a"></div><div class="b"></div><div class="pill">${site.role}</div>
+<h1>${site.hero.headline}</h1><img class="photo" src="${avatar}"><div class="who">${site.name}</div>`;
+}
+
 async function main() {
   const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? "/usr/bin/google-chrome", args: ["--no-sandbox", "--allow-file-access-from-files"] });
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
@@ -109,7 +122,17 @@ async function main() {
     fs.mkdirSync(dir, { recursive: true });
     await sharp(png).webp({ quality: 86 }).toFile(`${dir}/thumbnail.webp`);
     await sharp(png).resize({ width: 640 }).webp({ quality: 82 }).toFile(`${dir}/thumbnail-sm.webp`);
+    // JPEG at the 1.91:1 size social networks expect (LinkedIn and others are unreliable with WebP)
+    await sharp(png).resize(1200, 630, { fit: "cover", position: "top" }).jpeg({ quality: 86, mozjpeg: true }).toFile(`${dir}/thumbnail-og.jpg`);
     console.log("✓", p.slug);
+  }
+  if (!only) {
+    fs.writeFileSync(tmp, homeHtml());
+    await page.goto(`file://${tmp}`, { waitUntil: "networkidle" });
+    await page.evaluate(() => document.fonts.ready);
+    const png = await page.screenshot({ type: "png" });
+    await sharp(png).resize(1200, 630, { fit: "cover", position: "top" }).jpeg({ quality: 86, mozjpeg: true }).toFile("public/images/og-home.jpg");
+    console.log("✓ home social card");
   }
   fs.rmSync(tmp, { force: true });
   await browser.close();

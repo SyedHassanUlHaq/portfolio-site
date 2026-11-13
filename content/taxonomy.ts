@@ -19,8 +19,12 @@ export type Tone = "peach" | "butter" | "sky" | "sage" | "lilac" | "rose" | "min
  * What a client is trying to get done, in their words. This is the main way visitors browse the work.
  * `phrase` completes the sentence "I want AI to ..." in the homepage picker.
  */
-export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
+export const NEEDS: Record<string, Term & { phrase: string; tone: Tone; seoTitle: string; seoDescription: string; h1: string; intro: string }> = {
   calls: {
+    seoTitle: "AI Voice Agent Developer for Business Calls",
+    seoDescription: "Hire an AI voice agent developer: inbound AI receptionists and outbound follow-up callers built with ElevenLabs, Twilio and CRM integration. See real projects.",
+    h1: "AI voice agents that answer and make your calls",
+    intro: "I build AI phone agents that answer inbound calls like a real receptionist, follow up with leads by phone, qualify callers and write the outcome straight into your CRM. They run on ElevenLabs, Twilio and your existing tools, and I handle the whole build myself.",
     label: "Answer & make calls",
     phrase: "answer and make my phone calls",
     tone: "peach",
@@ -28,6 +32,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["phone", "voice", "receptionist", "call", "calls", "caller", "voice agent"],
   },
   leads: {
+    seoTitle: "AI Cold Email & Lead Generation Automation",
+    seoDescription: "Automated lead discovery, company research, personalised AI emails and smart follow-ups using n8n, Apollo and Instantly. See how I built it.",
+    h1: "Lead generation and cold email that runs itself",
+    intro: "I build systems that find prospects, research each company, write personalised emails with AI, enrol leads in email campaigns and follow up based on how each lead behaves. Below are the outbound and lead-generation systems I've built.",
     label: "Get more leads",
     phrase: "find and email new leads for me",
     tone: "butter",
@@ -35,6 +43,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["lead generation", "cold email", "outreach", "prospecting", "sales"],
   },
   crm: {
+    seoTitle: "CRM & Sales Automation Developer",
+    seoDescription: "CRM and sales automation with GoHighLevel, Monday.com, Zapier and n8n: calls, forms and deals synced to the right pipeline stage automatically.",
+    h1: "CRM and sales automation that keeps your pipeline current",
+    intro: "I connect calls, forms, call recordings and deals to your CRM so every lead lands at the right stage without manual data entry. My work spans GoHighLevel, Monday.com, Zapier and n8n.",
     label: "Keep my CRM updated",
     phrase: "keep my CRM and sales pipeline up to date",
     tone: "sky",
@@ -42,6 +54,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["crm", "pipeline", "gohighlevel", "follow up", "follow-up", "sales"],
   },
   reports: {
+    seoTitle: "Automated Reporting & Analytics Dashboards",
+    seoDescription: "Automated reporting and analytics dashboards that pull data from your marketing, sales and project tools, with AI-written summaries. See real projects.",
+    h1: "Reports and dashboards that fill themselves",
+    intro: "I build dashboards and scheduled reports that pull numbers from your marketing, sales and project tools, so nobody copies figures by hand. Some include AI-written summaries and recommendations.",
     label: "Stop manual reporting",
     phrase: "build my reports for me",
     tone: "sage",
@@ -49,6 +65,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["report", "reporting", "dashboard", "analytics", "kpi", "metrics"],
   },
   knowledge: {
+    seoTitle: "AI Knowledge Base & Document Chatbot (RAG)",
+    seoDescription: "Build an AI knowledge base or document chatbot (RAG) that answers from your SOPs and files, by chat or voice. See real projects and how they work.",
+    h1: "AI assistants that answer from your own documents",
+    intro: "I build chatbots and voice assistants that answer questions from a company's SOPs and documents, with knowledge that updates itself when the source changes. This is retrieval-augmented generation (RAG), explained in plain English in each project.",
     label: "Search company knowledge",
     phrase: "answer questions from my documents",
     tone: "lilac",
@@ -56,6 +76,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["knowledge base", "sop", "documents", "chatbot", "search", "rag", "assistant"],
   },
   social: {
+    seoTitle: "AI Chatbots & Social Media Reply Automation",
+    seoDescription: "AI chatbots and social media reply automation with spam filtering and escalation, grounded in your own data. See Instagram and chat bot projects.",
+    h1: "AI that replies to your customers and comments",
+    intro: "I build AI that answers customer questions on social media and chat, filters spam and abuse, escalates when a human is needed, and uses your real business data to reply accurately.",
     label: "Handle customer replies",
     phrase: "reply to my customers and comments",
     tone: "rose",
@@ -63,6 +87,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["instagram", "social media", "comments", "chatbot", "support", "customer service", "moderation"],
   },
   connect: {
+    seoTitle: "n8n, Zapier & API Integration Developer",
+    seoDescription: "n8n, Zapier and API integration work that connects Slack, Asana, Teams, Google Sheets, Monday.com and more. See real automation projects.",
+    h1: "Connect your tools so nobody copy-pastes",
+    intro: "I connect the apps your team already uses (Slack, Asana, Teams, Sheets, Monday and more) so information moves between them automatically, using n8n, Zapier and direct API work.",
     label: "Connect my tools",
     phrase: "connect my tools so I stop copy-pasting",
     tone: "mint",
@@ -70,6 +98,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["integration", "integrations", "sync", "zapier", "automation", "workflow", "api"],
   },
   data: {
+    seoTitle: "Web Scraping & Data Extraction Automation",
+    seoDescription: "Web scraping and data extraction automation with Playwright, Apify and LLM classification, including login and Cloudflare-protected sites.",
+    h1: "Reliable data collection from the web",
+    intro: "I build scraping, form-filling and data-extraction pipelines that handle logins, bot protection and messy pages, then clean and classify the results so they're ready to use.",
     label: "Collect data from the web",
     phrase: "collect data from websites",
     tone: "sand",
@@ -77,6 +109,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["scraping", "scraper", "extraction", "forms", "web", "monitoring"],
   },
   app: {
+    seoTitle: "Custom AI App & Dashboard Development",
+    seoDescription: "Custom AI app and dashboard development with React, Supabase and Python: login, database, admin panels and the AI behind them.",
+    h1: "A real product around the AI",
+    intro: "When an automation needs a proper interface, I build the full app: login, database, dashboard and the AI behind it, using React, Supabase and Python.",
     label: "Build a custom app",
     phrase: "run inside a custom app or dashboard",
     tone: "periwinkle",
@@ -84,6 +120,10 @@ export const NEEDS: Record<string, Term & { phrase: string; tone: Tone }> = {
     aliases: ["web app", "dashboard", "saas", "full stack", "frontend", "backend", "software"],
   },
   models: {
+    seoTitle: "Custom AI Model Development",
+    seoDescription: "Custom machine-learning model development, including AI-generated audio and video detection, with the pipeline or mobile app around it.",
+    h1: "Custom models when off-the-shelf AI isn't enough",
+    intro: "I train and ship models for problems standard APIs don't handle well, such as detecting AI-generated audio and video. Both projects below include the surrounding pipeline or app.",
     label: "Custom AI models",
     phrase: "recognise things in audio, video or images",
     tone: "clay",

@@ -4,6 +4,7 @@
   "title": "AI Legal Document Review: Key Terms and Summaries in Seconds",
   "summary": "Upload a contract as PDF or Word and get back its key terms and a plain-language summary of the clauses that matter.",
   "headline": "Contracts summarised in plain English",
+  "seoTitle": "LegalEase: AI Contract Review Tool",
   "needs": [
     "knowledge",
     "app"

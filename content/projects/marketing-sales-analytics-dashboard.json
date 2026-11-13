@@ -4,6 +4,7 @@
   "title": "Unified Marketing & Sales Analytics Dashboard",
   "summary": "One dashboard that brings webinars, email campaigns, social posts and sales calls together so leadership can see performance in one place.",
   "headline": "Every marketing and sales number on one screen",
+  "seoTitle": "Marketing & Sales Analytics Dashboard",
   "needs": [
     "reports",
     "app"

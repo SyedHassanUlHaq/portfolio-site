@@ -4,6 +4,7 @@
   "title": "AI-Generated Weekly & Quarterly Team Productivity Reports from Asana",
   "summary": "Task data is pulled from Asana, stored for history, analysed by an AI model and emailed to stakeholders every week and every quarter.",
   "headline": "AI reports on how your team is really doing",
+  "seoTitle": "AI Asana Productivity Reports",
   "needs": [
     "reports"
   ],

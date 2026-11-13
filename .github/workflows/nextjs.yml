@@ -72,6 +72,7 @@ jobs:
           # Remove NEXT_PUBLIC_BASE_PATH (and set NEXT_PUBLIC_SITE_URL) once you move to a custom domain.
           NEXT_PUBLIC_BASE_PATH: /portfolio-site
           NEXT_PUBLIC_UMAMI_ID: ${{ vars.UMAMI_ID }}
+          NEXT_PUBLIC_GSC_TOKEN: ${{ vars.GSC_TOKEN }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

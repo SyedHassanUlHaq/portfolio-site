@@ -4,6 +4,7 @@
   "title": "Event Data Sync and Vector Embeddings for AI Search",
   "summary": "Keeps event data in sync between Google Sheets and Supabase and maintains up-to-date embeddings for AI retrieval.",
   "headline": "Event data that keeps AI search fresh",
+  "seoTitle": "Event Data Sync & Vector Embeddings",
   "needs": [
     "knowledge",
     "connect"

@@ -13,14 +13,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" prefetch={false} className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={withBase("/images/hassan-avatar.webp")} alt="" width={36} height={36} className="h-9 w-9 rounded-full border border-line object-cover" />
           <span className="font-display text-lg font-medium tracking-tight text-ink">{site.name}</span>
         </Link>
         <nav aria-label="Primary" className="flex items-center gap-1 sm:gap-2">
           {nav.map((n) => (
-            <Link key={n.href} href={n.href} className="hidden rounded px-3 py-2 text-sm text-muted transition hover:text-ink sm:block">
+            <Link key={n.href} href={n.href} prefetch={false} className="hidden rounded px-3 py-2 text-sm text-muted transition hover:text-ink sm:block">
               {n.label}
             </Link>
           ))}

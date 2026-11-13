@@ -1,13 +1,18 @@
 import type { MetadataRoute } from "next";
-import { site } from "../../content/site";
+import { NEEDS } from "../../content/taxonomy";
 import { getListedProjects } from "@/lib/projects";
+import { abs } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = site.url.replace(/\/$/, "");
+  const projects = getListedProjects();
   return [
-    { url: `${base}/`, changeFrequency: "monthly", priority: 1 },
-    ...getListedProjects().map((p) => ({ url: `${base}/projects/${p.slug}`, changeFrequency: "yearly" as const, priority: 0.7 })),
+    { url: abs("/"), changeFrequency: "monthly", priority: 1 },
+    { url: abs("/projects"), changeFrequency: "monthly", priority: 0.8 },
+    ...Object.keys(NEEDS)
+      .filter((id) => projects.some((p) => p.needs.includes(id)))
+      .map((id) => ({ url: abs(`/solutions/${id}`), changeFrequency: "monthly" as const, priority: 0.8 })),
+    ...projects.map((p) => ({ url: abs(`/projects/${p.slug}`), changeFrequency: "yearly" as const, priority: 0.7 })),
   ];
 }

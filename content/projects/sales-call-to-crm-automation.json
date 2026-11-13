@@ -4,6 +4,7 @@
   "title": "Sales Call Recording to CRM Pipeline Automation",
   "summary": "Every discovery and sales call is recorded, classified and turned into an up-to-date CRM opportunity automatically.",
   "headline": "Every sales call lands in your CRM",
+  "seoTitle": "Sales Call to CRM Automation (Fathom)",
   "needs": [
     "crm",
     "connect"
