@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <AssistantWidget />
-        {analytics.umamiId && <script defer src="https://cloud.umami.is/script.js" data-website-id={analytics.umamiId} />}
+        {analytics.umamiId && <script defer src="https://cloud.umami.is/script.js" data-website-id={analytics.umamiId} data-domains={new URL(site.url).hostname} />}
       </body>
     </html>
   );

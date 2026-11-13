@@ -7,7 +7,7 @@ export const site = {
   shortName: "Hassan",
   role: "AI Automation & Agent Engineer",
   /** Production URL, used for canonical links, sitemap and social previews. Update when you get a custom domain. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://syedhassanulhaq.github.io/portfolio-site",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://syedhassanulhaq.github.io/portfolio-site",
 
   hero: {
     eyebrow: "AI Automation & Agent Engineer",
@@ -86,10 +86,11 @@ export const seo = {
   homeDescription:
     "Freelance AI automation engineer building AI voice agents, chatbots, CRM automations and n8n workflows. See real projects, demo videos and book a call.",
   /** Google Search Console HTML-tag verification token (the content="…" value). Leave empty until you have one. */
-  googleVerification: process.env.NEXT_PUBLIC_GSC_TOKEN ?? "",
+  googleVerification: process.env.NEXT_PUBLIC_GSC_TOKEN || "xvC3-XVQbEqL06ObdzwySDN9-rwThpGFSJ0X0BlqMsA",
 };
 
 export const analytics = {
   /** Umami Cloud website id (free tier). Leave empty for no analytics. https://umami.is */
-  umamiId: process.env.NEXT_PUBLIC_UMAMI_ID ?? "",
+  // the deploy passes unset GitHub variables as empty strings, so use || (not ??) to fall back
+  umamiId: process.env.NEXT_PUBLIC_UMAMI_ID || "d757292b-f978-4371-bf54-68435dba7d03",
 };
