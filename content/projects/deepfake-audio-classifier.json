@@ -4,6 +4,7 @@
   "title": "Synthetic Audio Detection Pipeline",
   "summary": "A deep-learning pipeline that classifies audio as real or synthetic.",
   "headline": "Real voice or synthetic? Find out.",
+  "seoTitle": "Synthetic Audio Detection Pipeline",
   "needs": [
     "models"
   ],

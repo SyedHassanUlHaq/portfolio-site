@@ -3,6 +3,7 @@
   "slug": "5dot-ai-media-detection",
   "title": "5dot: A Mobile App That Checks If Audio, Video or Lip-Sync Is AI-Generated",
   "headline": "Know what's real: check any clip in minutes",
+  "seoTitle": "5dot: AI-Generated Media Detection App",
   "summary": "Upload a file or paste a link from YouTube, TikTok, Instagram, Facebook or X, and get a clear verdict on whether the voice, the video and the lip-sync are real.",
   "needs": [
     "models",

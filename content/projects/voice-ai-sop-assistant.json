@@ -4,6 +4,7 @@
   "title": "Voice AI Assistant for Internal SOP Questions, Always in Sync",
   "summary": "Employees ask procedure questions out loud or by chat and get concise answers from the latest SOPs, which update themselves automatically.",
   "headline": "Ask your SOPs out loud. Get the answer.",
+  "seoTitle": "Voice AI Assistant for Company SOPs",
   "needs": [
     "knowledge",
     "calls"

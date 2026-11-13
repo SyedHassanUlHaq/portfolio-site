@@ -4,6 +4,7 @@
   "title": "Social Video Link Collector and YouTube Channel Monitor",
   "summary": "Collects video links from Facebook messages and monitors YouTube channels, saving metadata to a sheet and emailing new finds.",
   "headline": "Track videos across YouTube, TikTok and Instagram",
+  "seoTitle": "YouTube Channel Monitor & Link Collector",
   "needs": [
     "data"
   ],

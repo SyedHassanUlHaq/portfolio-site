@@ -5,6 +5,7 @@
   "title": "AI Outbound Follow-Up Caller for Lead Re-engagement",
   "summary": "A voice agent that phones leads, works out whether they want an estimate call, a later callback or nothing at all, and updates the CRM automatically.",
   "headline": "AI that phones your leads for you",
+  "seoTitle": "AI Outbound Follow-Up Calling Agent",
   "needs": [
     "calls",
     "crm"

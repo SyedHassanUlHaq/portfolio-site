@@ -4,6 +4,7 @@
   "title": "Automated Web Form Filling and Submission at Scale",
   "summary": "Reads company data from sheets, finds each form's fields, fills them intelligently and submits them using a headless browser.",
   "headline": "Web forms that fill themselves",
+  "seoTitle": "Automated Web Form Submission (n8n)",
   "needs": [
     "data"
   ],

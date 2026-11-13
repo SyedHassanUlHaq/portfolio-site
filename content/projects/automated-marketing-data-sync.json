@@ -4,6 +4,7 @@
   "title": "Automated Weekly Marketing Data Sync from Webinars, Email and Social",
   "summary": "n8n workflows that pull webinar, email, Facebook and LinkedIn metrics into one database every week, with no manual reporting.",
   "headline": "Marketing reports that build themselves",
+  "seoTitle": "Automated Marketing Data Sync (n8n)",
   "needs": [
     "reports",
     "connect"

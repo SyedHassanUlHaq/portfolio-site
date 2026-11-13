@@ -4,6 +4,7 @@
   "title": "AI Instagram Comment Replies with RAG and Spam Filtering",
   "summary": "Reads comments on Instagram posts, understands intent, and replies like a person, using live event data and safety filters.",
   "headline": "Instagram comments, answered like a human would",
+  "seoTitle": "AI Instagram Comment Reply Automation",
   "needs": [
     "social"
   ],

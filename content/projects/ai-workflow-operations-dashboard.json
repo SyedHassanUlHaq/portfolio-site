@@ -4,6 +4,7 @@
   "title": "Operations Dashboard for Managing AI Workflows and Moderation",
   "summary": "A secure control panel for turning workflows on and off, monitoring executions and moderating Instagram conversations.",
   "headline": "One control panel for every AI workflow",
+  "seoTitle": "AI Workflow Operations Dashboard",
   "needs": [
     "app",
     "social"

@@ -4,6 +4,7 @@
   "title": "AI Event Engagement Platform with Instagram Replies and Vector Search",
   "summary": "An end-to-end system that syncs event data, embeds it for semantic search and uses it to answer Instagram comments, with a dashboard to control it all.",
   "headline": "AI that answers your audience around the clock",
+  "seoTitle": "AI Event Engagement Platform",
   "needs": [
     "social",
     "knowledge"

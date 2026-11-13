@@ -4,6 +4,7 @@
   "title": "Internal Knowledge Chatbot That Answers From Company SOPs",
   "summary": "An AI chatbot for employees that searches company documents by meaning, answers accurately, and can take actions such as sending emails.",
   "headline": "A chatbot that knows your company playbook",
+  "seoTitle": "Internal Knowledge Chatbot (RAG)",
   "needs": [
     "knowledge"
   ],

@@ -4,6 +4,7 @@
   "title": "Two-Way Google Sheets and Monday.com Deal Sync",
   "summary": "Deal and transaction data stays in sync between Google Sheets and Monday.com, triggered from a custom Sheets menu.",
   "headline": "Sheets and Monday.com, always in sync",
+  "seoTitle": "Google Sheets & Monday.com Two-Way Sync",
   "needs": [
     "connect",
     "crm"

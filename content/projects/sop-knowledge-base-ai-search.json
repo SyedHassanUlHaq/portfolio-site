@@ -4,6 +4,7 @@
   "title": "Internal SOP Knowledge Base with AI Search",
   "summary": "A Notion-style document system for SOPs with folders, version history, a recycle bin, roles, and automatic embeddings so every document is searchable by meaning.",
   "headline": "A company knowledge base you can actually search",
+  "seoTitle": "SOP Knowledge Base with AI Search",
   "needs": [
     "knowledge",
     "app"

@@ -4,6 +4,7 @@
   "title": "Slack-to-Asana Marketing Campaign Setup Automation",
   "summary": "A request in Slack becomes a fully scheduled Asana campaign, with deadlines, email drafts and documents, built from the right template.",
   "headline": "From a Slack message to a full campaign plan",
+  "seoTitle": "Slack to Asana Campaign Automation",
   "needs": [
     "connect"
   ],

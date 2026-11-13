@@ -4,6 +4,7 @@
   "title": "Warehouse Logistics Platform for FBA/FBM Operations",
   "summary": "Full inventory, employee and customer management for a warehouse handling Amazon FBA and FBM fulfilment, connected to Shopify, eBay and Amazon.",
   "headline": "One system for the whole warehouse",
+  "seoTitle": "FBA/FBM Warehouse Management Platform",
   "needs": [
     "app",
     "connect"

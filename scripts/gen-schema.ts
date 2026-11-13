@@ -15,6 +15,7 @@ const schema = {
     slug: { type: "string", pattern: "^[a-z0-9]+(-[a-z0-9]+)*$", description: "Must match the file name. Becomes /projects/<slug>" },
     title: { ...str, description: "Outcome-oriented, e.g. 'AI Voice Receptionist for Real Estate Lead Qualification'" },
     summary: { ...str, description: "One line. Shown on cards and link previews." },
+    seoTitle: { ...str, description: "Search-result title, ideally under 40 characters. Defaults to the title." },
     headline: { ...str, description: "Short benefit-first hook printed on the thumbnail, e.g. An AI receptionist that never misses a call" },
     needs: { ...ids(NEEDS), description: "What the client wanted (first one sets the cover colour and icon)" },
     types: ids(PROJECT_TYPES),

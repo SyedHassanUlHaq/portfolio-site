@@ -1,12 +1,24 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { NEEDS, PROJECT_TYPES } from "../../content/taxonomy";
-import { site } from "../../content/site";
+import { seo, site } from "../../content/site";
 import Hero from "@/components/Hero";
 import ProjectExplorer from "@/components/ProjectExplorer";
 import { Section, SectionHead } from "@/components/Section";
 import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
 import { getListedProjects, toCard } from "@/lib/projects";
+import { abs, baseUrl, homeOgImageUrl } from "@/lib/seo";
+import { youtubeId } from "@/lib/video";
 import { withBase } from "@/lib/url";
+
+export const metadata: Metadata = {
+  title: { absolute: seo.homeTitle },
+  description: seo.homeDescription,
+  alternates: { canonical: `${baseUrl}/` },
+  openGraph: { type: "website", title: seo.homeTitle, description: seo.homeDescription, url: `${baseUrl}/`, images: [{ url: homeOgImageUrl, width: 1200, height: 630, alt: `${site.name}: ${site.role}` }] },
+  twitter: { card: "summary_large_image", title: seo.homeTitle, description: seo.homeDescription, images: [homeOgImageUrl] },
+};
 
 export default function Home() {
   const projects = getListedProjects();
@@ -17,15 +29,38 @@ export default function Home() {
     .filter((c) => c.count > 0);
   const availableNeeds = capabilities.map((c) => c.id);
 
+  const v = site.introVideo;
+  const yt = youtubeId(v.url);
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: site.name,
-    jobTitle: site.role,
-    url: site.url,
-    email: site.contact.email,
-    sameAs: [site.contact.github, site.contact.linkedin, site.contact.upwork].filter(Boolean),
-    knowsAbout: Object.values(PROJECT_TYPES).map((t) => t.label),
+    "@graph": [
+      { "@type": "WebSite", "@id": abs("/#website"), url: `${baseUrl}/`, name: site.name, description: seo.homeDescription, inLanguage: "en" },
+      {
+        "@type": "Person",
+        "@id": abs("/#person"),
+        name: site.name,
+        alternateName: "Hassan Ul Haq",
+        jobTitle: site.role,
+        description: seo.homeDescription,
+        url: `${baseUrl}/`,
+        image: abs("/images/hassan-avatar.webp"),
+        email: site.contact.email,
+        sameAs: [site.contact.github, site.contact.linkedin, site.contact.upwork].filter(Boolean),
+        knowsAbout: [...Object.values(NEEDS).map((n) => n.label), ...Object.values(PROJECT_TYPES).map((t) => t.label), "n8n", "ElevenLabs", "OpenAI"],
+      },
+      ...(yt
+        ? [{
+            "@type": "VideoObject",
+            name: v.seoName,
+            description: v.seoDescription,
+            thumbnailUrl: [`https://i.ytimg.com/vi/${yt}/hqdefault.jpg`, abs(v.poster)],
+            uploadDate: v.uploadDate,
+            duration: v.durationIso,
+            embedUrl: `https://www.youtube-nocookie.com/embed/${yt}`,
+            contentUrl: `https://www.youtube.com/watch?v=${yt}`,
+          }]
+        : []),
+    ],
   };
 
   return (
@@ -40,6 +75,13 @@ export default function Home() {
           sub="Pick what you need, or search. Every filtered view has its own link you can share."
         />
         <ProjectExplorer projects={cards} />
+        <p className="mt-6 text-center text-sm text-muted">
+          Prefer a plain list?{" "}
+          <Link href="/projects" className="font-medium text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent">
+            Browse every project
+          </Link>
+          .
+        </p>
       </Section>
 
       <Section id="about" className="border-t border-line">

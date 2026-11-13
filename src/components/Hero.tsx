@@ -57,6 +57,7 @@ export default function Hero({ availableNeeds }: { availableNeeds: string[] }) {
               duration={introVideo.duration}
               posterSrc={introVideo.poster ? withBase(introVideo.poster) : undefined}
               label="intro"
+              priority
             />
           )}
           <div className="mt-5 flex items-center gap-4">
@@ -69,10 +70,9 @@ export default function Hero({ availableNeeds }: { availableNeeds: string[] }) {
           </div>
           <dl className="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5">
             {trust.map((t) => (
-              <div key={t.label}>
-                <dt className="sr-only">{t.label}</dt>
+              <div key={t.label} className="flex flex-col-reverse justify-end">
+                <dt className="mt-0.5 text-xs leading-snug text-muted">{t.label}</dt>
                 <dd className="font-display text-2xl font-medium tracking-tight text-ink">{t.value}</dd>
-                <p className="mt-0.5 text-xs leading-snug text-muted">{t.label}</p>
               </div>
             ))}
           </dl>

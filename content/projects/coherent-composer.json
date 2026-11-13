@@ -4,6 +4,7 @@
   "title": "LLM-Powered Data Extraction from Diverse Structured Datasets",
   "summary": "Uses LLMs to pull consistent, usable data out of datasets that all look different.",
   "headline": "Messy datasets in, clean data out",
+  "seoTitle": "LLM Data Extraction from Datasets",
   "needs": [
     "data"
   ],
