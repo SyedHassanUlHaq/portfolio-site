@@ -19,8 +19,7 @@
   "tech": [
     "python"
   ],
-  "draft": true,
-  "updated": "2026-11-13",
+  "updated": "2026-11-16",
   "problem": "Reading long contracts, agreements and legal opinions is slow, and the important clauses are easy to miss, especially for non-lawyers.",
   "solution": "LegalEase uses natural language processing to extract and summarise the key details from legal documents. Users upload a PDF or DOCX and receive concise summaries that highlight the critical clauses and terms.",
   "highlights": [
