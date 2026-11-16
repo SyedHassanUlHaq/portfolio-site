@@ -34,6 +34,7 @@
       "url": "https://github.com/SyedHassanUlHaq/finchat-scrapper"
     }
   ],
+  "updated": "2026-11-13",
   "solution": "Playwright drives the browser while preserving user sessions and getting past Cloudflare protections with open-source tools. HTML is parsed and cleaned with BeautifulSoup, spaCy handles text processing and extraction, and Mistral LLM APIs classify the data, with live monitoring for new inputs. Results are structured as JSON, stored in MongoDB, and files are managed through Cloudflare R2.",
   "highlights": [
     "Browser automation that keeps user sessions",

@@ -30,6 +30,7 @@
     "fathom",
     "zapier"
   ],
+  "updated": "2026-11-13",
   "problem": "Performance data was spread across webinar, email, social and call tools, so getting a clear picture meant manual tracking.",
   "solution": "I built a Vite and React dashboard on Supabase that aggregates data from each channel. n8n and Zapier workflows keep the data fresh, and the dashboard turns it into clear KPIs and charts for each department.",
   "highlights": [

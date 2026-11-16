@@ -21,6 +21,7 @@
     "google-sheets",
     "monday"
   ],
+  "updated": "2026-11-13",
   "problem": "The same deal data was kept in two places and updated by hand.",
   "solution": "Using Apps Script and the Monday.com GraphQL API, I built a bidirectional sync with batch processing and API retries, plus custom menus in Sheets so users run updates themselves.",
   "highlights": [

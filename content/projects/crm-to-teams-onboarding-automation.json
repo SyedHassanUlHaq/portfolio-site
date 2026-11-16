@@ -22,6 +22,7 @@
     "microsoft-teams",
     "google-sheets"
   ],
+  "updated": "2026-11-13",
   "problem": "Setting up a collaboration space for each new client, and keeping everyone updated on progress, was manual.",
   "solution": "A form submission in GoHighLevel creates the contact and opportunity. Zapier then provisions a private Teams channel with a standard name and description. Each later stage change in the CRM posts a templated message to that client's channel automatically.",
   "highlights": [

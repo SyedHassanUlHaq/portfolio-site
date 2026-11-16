@@ -24,6 +24,7 @@
     "n8n",
     "supabase"
   ],
+  "updated": "2026-11-13",
   "problem": "Call outcomes, pricing discussions and objections were not reliably making it into the CRM.",
   "solution": "When a call finishes in Fathom, a Zapier flow updates the contact in GoHighLevel. A CRM automation then creates or updates the opportunity, and an n8n workflow classifies the call as discovery or sales and records the lead status, pricing and objections in Supabase.",
   "highlights": [

@@ -22,6 +22,7 @@
     "openai",
     "outlook"
   ],
+  "updated": "2026-11-13",
   "problem": "Understanding who completed what, what was delayed and why meant manual reporting.",
   "solution": "n8n pulls task data from the Asana API into Supabase, tracking creations, completions, delays and due-date changes. Every week it computes completion rates and workload per person, an OpenAI model writes the analysis and recommendations, and the report is emailed. A quarterly run does the same for long-term trends.",
   "highlights": [

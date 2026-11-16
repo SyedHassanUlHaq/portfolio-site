@@ -22,6 +22,7 @@
     "n8n",
     "vercel"
   ],
+  "updated": "2026-11-13",
   "problem": "The team needed one place to run and watch many AI automations, without opening each tool.",
   "solution": "I built a Vite dashboard hosted on Vercel with Supabase login. It activates and deactivates workflows, pins priorities, shows executions and logs, and tracks and moderates Instagram comments and threads.",
   "highlights": [

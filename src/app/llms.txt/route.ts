@@ -1,5 +1,5 @@
 import { NEEDS } from "../../../content/taxonomy";
-import { seo, site } from "../../../content/site";
+import { faq, seo, site, testimonials } from "../../../content/site";
 import { getListedProjects } from "@/lib/projects";
 import { abs } from "@/lib/seo";
 
@@ -18,8 +18,13 @@ export function GET() {
     "## Services",
     ...Object.entries(NEEDS)
       .filter(([id]) => projects.some((p) => p.needs.includes(id)))
-      .map(([id, n]) => `- [${n.seoTitle}](${abs(`/solutions/${id}`)}): ${n.seoDescription}`),
+      .map(([id, n]) => `- [${n.seoTitle}](${abs(`/solutions/${id}`)}): ${n.answer}`),
     "",
+    "## Client reviews (from Upwork)",
+    ...testimonials.map((t) => `> ${t.quote.replace(/\n+/g, " ")} (Upwork client, ${t.job}, ${t.when})`),
+    "",
+    "## Common questions",
+    ...faq.flatMap((f) => [`### ${f.q}`, f.a, ""]),
     "## Projects",
     ...projects.map((p) => `- [${p.seoTitle ?? p.title}](${abs(`/projects/${p.slug}`)}): ${p.summary}`),
     "",

@@ -24,6 +24,7 @@
     "twilio",
     "openai"
   ],
+  "updated": "2026-11-13",
   "problem": "Following up with cold or stalled leads by phone was manual, repetitive work, and the outcomes were not always recorded consistently.",
   "solution": "I built an outbound agent that behaves like a calm internal team member, not a pushy sales bot. n8n pulls the leads, triggers the calls through ElevenLabs and Twilio, handles voicemail, and writes the outcome back to the CRM: schedule an overview call, reconnect later or not interested.",
   "highlights": [

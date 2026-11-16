@@ -25,6 +25,7 @@
     "google-sheets",
     "wordpress"
   ],
+  "updated": "2026-11-13",
   "problem": "Outbound sales meant a lot of manual work: finding prospects, researching them, writing emails, loading campaigns and chasing replies.",
   "solution": "I built the whole outbound pipeline in n8n. Leads are discovered and enriched through Apollo, each company is researched, Claude writes a personalised email, and prospects are enrolled in Instantly campaigns. Leads are then categorised by behaviour (opened, clicked, ignored) so follow-ups match what they did, and a report is generated for each campaign.",
   "highlights": [

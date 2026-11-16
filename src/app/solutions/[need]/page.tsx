@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NEEDS } from "../../../../content/taxonomy";
-import { site } from "../../../../content/site";
+import { lastUpdated, site } from "../../../../content/site";
+import Faq from "@/components/Faq";
 import { Arrow } from "@/components/Icons";
 import ProjectCard from "@/components/ProjectCard";
 import { Section } from "@/components/Section";
 import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
 import { getListedProjects, toCard } from "@/lib/projects";
-import { abs, crumbs, homeOgImageUrl, pageTitle } from "@/lib/seo";
+import { abs, crumbs, faqSchema, homeOgImageUrl, monthYear, pageTitle } from "@/lib/seo";
 
 type Params = { need: string };
 
@@ -52,6 +53,18 @@ export default async function Solution({ params }: { params: Promise<Params> }) 
         areaServed: "Worldwide",
         provider: { "@type": "Person", "@id": abs("/#person"), name: site.name, url: abs("/") },
       },
+      {
+        "@type": "WebPage",
+        "@id": abs(`/solutions/${need}`),
+        url: abs(`/solutions/${need}`),
+        name: n.seoTitle,
+        description: n.seoDescription,
+        dateModified: lastUpdated,
+        inLanguage: "en",
+        isPartOf: { "@id": abs("/#website") },
+        about: { "@id": abs("/#person") },
+      },
+      faqSchema(n.faq),
       crumbs([{ name: "Home", path: "/" }, { name: n.label, path: `/solutions/${need}` }]),
     ],
   };
@@ -64,7 +77,12 @@ export default async function Solution({ params }: { params: Promise<Params> }) 
           <Link href="/" prefetch={false} className="hover:text-ink">Home</Link> <span aria-hidden>/</span> <span className="text-ink">{n.label}</span>
         </nav>
         <h1 className="mt-5 max-w-4xl font-display text-4xl font-medium leading-[1.08] tracking-tight text-ink sm:text-6xl">{n.h1}</h1>
+        <p className="mt-6 max-w-3xl rounded-2xl bg-accent-soft p-5 text-lg text-ink sm:p-6 sm:text-xl">
+          <span className="font-semibold">In short: </span>
+          {n.answer}
+        </p>
         <p className="mt-6 max-w-2xl text-xl text-muted">{n.intro}</p>
+        <p className="mt-3 text-sm text-faint">Last updated {monthYear(lastUpdated)}</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
             href={site.contact.calendly || mailto(`Question about: ${n.label}`)}
@@ -91,6 +109,11 @@ export default async function Solution({ params }: { params: Promise<Params> }) 
             <ProjectCard key={p.slug} p={toCard(p)} />
           ))}
         </div>
+      </Section>
+
+      <Section className="border-t border-line pt-12 sm:pt-16">
+        <h2 className="mb-6 font-display text-3xl font-medium tracking-tight text-ink">Common questions</h2>
+        <Faq items={n.faq} />
       </Section>
 
       <Section className="border-t border-line pt-12 sm:pt-16">

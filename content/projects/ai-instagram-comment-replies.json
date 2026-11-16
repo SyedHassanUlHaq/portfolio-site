@@ -24,6 +24,7 @@
     "instagram-api",
     "lakera"
   ],
+  "updated": "2026-11-13",
   "problem": "A large volume of comments needed fast, accurate, friendly replies, and spam and abusive comments had to be handled safely.",
   "solution": "A webhook receives each comment. The workflow checks sentiment and intent, flags spam and aggression with guardrails, escalates support requests, retrieves matching events by semantic search and writes a humanised reply with an OpenAI model.",
   "highlights": [
