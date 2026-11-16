@@ -22,6 +22,7 @@
     "google-sheets",
     "openai"
   ],
+  "updated": "2026-11-13",
   "problem": "Every customer message needed someone to work out which providers were relevant and collect their details before replying.",
   "solution": "When the chatbot receives a message, an Apify actor discovers the providers that fit it, a second actor extracts their relevant information, and the results are stored in a new Google Sheet. A reply to the original message is then generated from that data.",
   "highlights": [

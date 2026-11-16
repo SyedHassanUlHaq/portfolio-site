@@ -40,3 +40,7 @@ export function NeedIcon({ id, className }: { id: string; className?: string }) 
     </svg>
   );
 }
+
+export const Star = ({ className }: { className?: string }) => (
+  <svg {...base} fill="currentColor" stroke="none" className={className}><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.4 6.3L12 16.8l-5.7 3.2 1.4-6.3-4.8-4.3 6.4-.7L12 2.8Z" /></svg>
+);

@@ -14,7 +14,7 @@ import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
 import { industryLabel, needLabel, techLabel, typeLabel } from "@/lib/labels";
 import { getAllProjects, getProject, getRelated, toCard } from "@/lib/projects";
-import { abs, crumbs, metaDescription, ogImageUrl, pageTitle, homeOgImageUrl } from "@/lib/seo";
+import { abs, crumbs, metaDescription, monthYear, ogImageUrl, pageTitle, homeOgImageUrl } from "@/lib/seo";
 import { projectImg } from "@/lib/url";
 
 type Params = { slug: string };
@@ -66,6 +66,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
         author: { "@id": abs("/#person"), "@type": "Person", name: site.name },
         keywords: [...p.needs.map(needLabel), ...p.types.map(typeLabel), ...p.industries.map(industryLabel), ...p.tech.map(techLabel)].join(", "),
         image: p.thumbnail ? ogImageUrl(p.slug) : homeOgImageUrl,
+        ...(p.updated && { dateModified: p.updated }),
       },
       crumbs([{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }, { name: p.title, path: `/projects/${p.slug}` }]),
     ],
@@ -176,7 +177,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 marker:hidden [&::-webkit-details-marker]:hidden">
               <span>
                 <span className="font-display text-xl font-medium text-ink">Under the hood</span>
-                <span className="mt-0.5 block text-sm text-muted">The tools I used{behind.length > 0 ? " and the workflow diagrams" : ""}, for the technically curious.</span>
+                <span className="mt-0.5 block text-sm text-muted">The tools I used{p.challenges?.length ? ", the hard problems I solved" : ""}{behind.length > 0 ? " and the workflow diagrams" : ""}, for the technically curious.</span>
               </span>
               <Chevron className="h-5 w-5 shrink-0 text-muted transition group-open:rotate-180" />
             </summary>
@@ -186,6 +187,19 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                   <Chip key={t}>{techLabel(t)}</Chip>
                 ))}
               </div>
+              {p.challenges && p.challenges.length > 0 && (
+                <div>
+                  <h3 className="mb-3 font-display text-lg font-medium text-ink">Problems I solved along the way</h3>
+                  <ul className="space-y-4">
+                    {p.challenges.map((c) => (
+                      <li key={c.title} className="rounded-xl bg-raised p-4">
+                        <p className="font-medium text-ink">{c.title}</p>
+                        <p className="mt-1 text-[15px] text-muted">{c.text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               {behind.length > 0 && <Gallery slug={p.slug} shots={behind} />}
             </div>
           </details>
@@ -198,6 +212,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
             {client && <Row k="Client">{client}</Row>}
             {p.year && <Row k="Year">{p.year}</Row>}
             {p.duration && <Row k="Duration">{p.duration}</Row>}
+            {p.updated && <Row k="Last updated">{monthYear(p.updated)}</Row>}
             <Row k="Built with">{p.tech.slice(0, 5).map(techLabel).join(", ")}{p.tech.length > 5 ? ` +${p.tech.length - 5} more` : ""}</Row>
             {p.links && p.links.length > 0 && (
               <div>

@@ -26,6 +26,7 @@
     "google-sheets",
     "browserless"
   ],
+  "updated": "2026-11-13",
   "problem": "Answering a high volume of audience comments about events took manual effort, and the answers depended on event details that changed often.",
   "solution": "I built the ecosystem from three connected parts: automated event ingestion and embeddings, an AI workflow that replies to Instagram comments using retrieval, and a dashboard to monitor and moderate everything.",
   "highlights": [

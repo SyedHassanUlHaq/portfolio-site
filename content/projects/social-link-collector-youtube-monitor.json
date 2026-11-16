@@ -21,6 +21,7 @@
     "google-sheets",
     "gmail"
   ],
+  "updated": "2026-11-13",
   "problem": "Finding and logging content across platforms took manual effort.",
   "solution": "One workflow reads Facebook messages, extracts the link, identifies YouTube, TikTok or Instagram and saves its metadata. A second runs every three days, fetches new videos for a list of channels, stores their metadata and emails a summary of everything new.",
   "highlights": [

@@ -22,6 +22,7 @@
     "n8n",
     "gmail"
   ],
+  "updated": "2026-11-13",
   "problem": "Employees depended on manually searching documents for the right procedure, which was slow and inconsistent.",
   "solution": "I built a chatbot on top of the SOP knowledge base. It runs semantic search over Supabase vector embeddings to find the relevant passages, answers with an OpenAI model, and uses n8n tools to do things for the user, such as drafting and sending an email.",
   "highlights": [

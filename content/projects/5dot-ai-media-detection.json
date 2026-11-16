@@ -1,42 +1,80 @@
 {
   "$schema": "../schema/project.schema.json",
   "slug": "5dot-ai-media-detection",
-  "title": "5dot: A Mobile App That Checks If Audio, Video or Lip-Sync Is AI-Generated",
+  "title": "5dot: A Cross-Platform Mobile App That Detects AI-Generated Voice, Video and Lip-Sync",
   "headline": "Know what's real: check any clip in minutes",
-  "seoTitle": "5dot: AI-Generated Media Detection App",
-  "summary": "Upload a file or paste a link from YouTube, TikTok, Instagram, Facebook or X, and get a clear verdict on whether the voice, the video and the lip-sync are real.",
+  "seoTitle": "5dot: AI Media Detection Mobile App",
+  "summary": "A React Native app for iOS and Android that checks a video or audio clip for AI-cloned voices, deepfake video and lip-sync tampering, and explains the verdict in plain language.",
   "needs": [
-    "models",
     "app"
   ],
   "types": [
-    "machine-learning",
-    "full-stack"
+    "mobile-apps",
+    "integrations"
   ],
   "industries": [
     "media"
   ],
   "tech": [
+    "expo",
     "react-native",
-    "python",
-    "fastapi"
+    "typescript",
+    "firebase"
   ],
-  "problem": "AI-generated and edited media spreads fast, and ordinary people have no simple way to check whether a clip is genuine.",
-  "solution": "5dot is a mobile app backed by deep-learning detection. Users upload a video or audio file, or paste a link, and get one verdict built from three separate checks: AI voice, AI-generated video and lip-sync mismatch. Each check shows a score against its threshold and a per-segment chart over time, and the result can be exported as a PDF.",
+  "keywords": [
+    "ios",
+    "android",
+    "app store",
+    "google play",
+    "expo",
+    "push notifications",
+    "sign in with apple",
+    "deepfake",
+    "react native developer"
+  ],
+  "updated": "2026-11-16",
+  "problem": "AI-generated and edited media spreads fast, and ordinary people have no simple way to check whether a clip is genuine. The client needed a polished consumer app for iOS and Android, from first screen to app-store release.",
+  "solution": "I built the entire mobile app: 10 screens and 6 shared components, implemented from Figma designs. Users upload a video or audio file or paste a link, pick which checks to run (AI voice, AI video, lip-sync), and get a plain-language verdict with a confidence score. An expandable, per-segment chart shows the raw signal for anyone who wants to see it. The detection itself runs on a Python API built by a separate backend developer; I connected the app to it and handled everything on the device and in the release pipeline.",
   "highlights": [
-    "Three signals, one verdict: AI voice, AI video and lip-sync",
-    "Upload a file or paste a link from YouTube, TikTok, Instagram, Facebook or X",
-    "Plain-language result with technical details one tap away",
-    "Score over time for every segment of the clip",
-    "PDF export and a \"Wrong?\" button to report bad results",
-    "Sign in with Google or email, with a free plan and usage tracking"
+    "Upload or link a video or audio file, then run one or more detectors",
+    "Plain-language verdict with a filterable per-segment score chart, drawn with custom SVG",
+    "Sign in with email and one-time code, Google, or Apple, with tokens kept in the device's secure storage and refreshed silently",
+    "Scan history you can filter by verdict, detection type and status, plus weekly usage and quota tracking",
+    "Free, Pro and Team plans with feature gating",
+    "Push notifications on iOS and Android, crash reporting, and a remote switch to force old app versions to update",
+    "Built, signed and submitted for both the App Store and Google Play"
   ],
+  "role": "Sole mobile and full-stack engineer on an extended freelance engagement. I owned the whole React Native app end to end, the native build and release pipeline for both app stores, the third-party integrations, and ongoing features and fixes. A separate backend developer built the Python API; I worked alongside them.",
   "results": [
     {
-      "label": "Anyone can check a suspicious clip from their phone"
+      "label": "Release pipelines for both iOS and Android working end to end"
     },
     {
-      "label": "A clear verdict, with the evidence behind it, instead of a bare score"
+      "label": "Google Play's new 16 KB memory-page requirement resolved, unblocking new releases"
+    },
+    {
+      "label": "Push notifications live on both iOS and Android"
+    },
+    {
+      "label": "Sign in with Apple, Google or email, with secure token storage"
+    }
+  ],
+  "challenges": [
+    {
+      "title": "Google Play rejected new releases",
+      "text": "Prebuilt native libraries from an older Expo SDK weren't compiled with the 16 KB memory-page alignment Android now requires. I scoped and carried out an Expo SDK 52 to 54 upgrade, and confirmed it was enough by inspecting the alignment inside the compiled Android bundle instead of guessing."
+    },
+    {
+      "title": "The iOS build broke after the upgrade",
+      "text": "Five separate native toolchain problems stacked up: outdated per-library iOS deployment targets, an incompatible Kotlin and NDK pin, a Clang non-modular-include error under static framework linking, Firebase's move to Swift Package Manager clashing with that linking, and React Native's new prebuilt core failing to link one dependency. I diagnosed each from the raw Xcode and Gradle logs and fixed them with targeted Expo config plugins and build-time settings, without rolling the upgrade back."
+    },
+    {
+      "title": "The Android build broke on the Firebase upgrade",
+      "text": "The Firebase library's own bundled Kotlin code passed a nullable value into a React Native API that now requires a non-null one. I patched the three affected lines with patch-package and hooked it into postinstall, so the fix survives the fresh installs on every future cloud build."
+    },
+    {
+      "title": "The new logo had no transparent version",
+      "text": "A 3D-rendered brand refresh came with no cutout, and its dark background was almost the same colour as the logo's own empty space. I separated the mark from the background programmatically by its colour saturation (vivid rings against a grey backdrop) instead of asking for a redo."
     }
   ],
   "screenshots": [
@@ -70,17 +108,5 @@
       "caption": "Sign in",
       "kind": "ui"
     }
-  ],
-  "links": [
-    {
-      "label": "Source on GitHub",
-      "url": "https://github.com/SyedHassanUlHaq/fAIk-App"
-    }
-  ],
-  "keywords": [
-    "deepfake",
-    "deep learning",
-    "video",
-    "mobile app"
   ]
 }

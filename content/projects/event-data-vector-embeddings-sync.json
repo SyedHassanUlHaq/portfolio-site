@@ -23,6 +23,7 @@
     "openai",
     "google-sheets"
   ],
+  "updated": "2026-11-13",
   "problem": "AI answers depend on fresh data, but event details changed in a spreadsheet and had to be reflected in the database and search index.",
   "solution": "A scheduled n8n workflow reads new and changed events, detects duplicates, updates rows, builds combined text from titles, descriptions, venues and SEO data, creates OpenAI embeddings and refreshes them in the Supabase vector store.",
   "highlights": [

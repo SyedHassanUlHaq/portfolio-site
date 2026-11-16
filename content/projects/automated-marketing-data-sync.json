@@ -26,6 +26,7 @@
     "facebook-api",
     "linkedin-api"
   ],
+  "updated": "2026-11-13",
   "problem": "Marketing metrics lived in four different platforms and were collected by hand.",
   "solution": "I built scheduled n8n workflows that call the WebinarJam, GoHighLevel, Facebook Graph and LinkedIn APIs, create or update the matching rows in Supabase, and keep everything current without anyone touching it.",
   "highlights": [

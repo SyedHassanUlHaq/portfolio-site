@@ -23,6 +23,7 @@
     "gohighlevel",
     "openai"
   ],
+  "updated": "2026-11-13",
   "problem": "Every inbound call needed a person at the front desk to work out why the caller was calling, collect their details and get them to the right place.",
   "solution": "I built a conversational voice agent that answers like a real receptionist. It recognises existing clients from CRM data, qualifies new leads, collects project and contact details, and submits everything through webhook tools so the CRM stays clean. The prompt is built around natural phrasing, short turns, one question at a time, escalation rules and guardrails.",
   "highlights": [

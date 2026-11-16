@@ -27,6 +27,7 @@
     "n8n",
     "openai"
   ],
+  "updated": "2026-11-13",
   "problem": "The team's SOPs lived in scattered documents that were hard to search, with no history of changes, and nothing ready to power an AI assistant.",
   "solution": "I built a full-stack rich-content editor with nested folders, media embedding, auto-save, role-based access and a recycle bin. Every save triggers an n8n workflow that creates or refreshes the document's embeddings, and deleting a document removes them, so AI search never goes stale.",
   "highlights": [

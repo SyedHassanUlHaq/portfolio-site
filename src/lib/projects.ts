@@ -28,6 +28,7 @@ function validate(file: string, p: ProjectSource): string[] {
   checkIds("types", PROJECT_TYPES, "PROJECT_TYPES");
   checkIds("industries", INDUSTRIES, "INDUSTRIES");
   checkIds("tech", TECH, "TECH");
+  if (p.updated && !/^\d{4}-\d{2}-\d{2}$/.test(p.updated)) e(`"updated" must look like 2026-11-16`);
   if (p.loom && !loomId(p.loom.url)) e(`loom.url must look like https://www.loom.com/share/<id>`);
   return errs;
 }

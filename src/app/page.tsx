@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { NEEDS, PROJECT_TYPES } from "../../content/taxonomy";
-import { seo, site } from "../../content/site";
+import { faq, lastUpdated, seo, site } from "../../content/site";
+import Faq from "@/components/Faq";
+import Testimonials from "@/components/Testimonials";
 import Hero from "@/components/Hero";
 import ProjectExplorer from "@/components/ProjectExplorer";
 import { Section, SectionHead } from "@/components/Section";
 import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
 import { getListedProjects, toCard } from "@/lib/projects";
-import { abs, baseUrl, homeOgImageUrl } from "@/lib/seo";
+import { abs, baseUrl, faqSchema, homeOgImageUrl } from "@/lib/seo";
 import { youtubeId } from "@/lib/video";
 import { withBase } from "@/lib/url";
 
@@ -47,7 +49,24 @@ export default function Home() {
         email: site.contact.email,
         sameAs: [site.contact.github, site.contact.linkedin, site.contact.upwork].filter(Boolean),
         knowsAbout: [...Object.values(NEEDS).map((n) => n.label), ...Object.values(PROJECT_TYPES).map((t) => t.label), "n8n", "ElevenLabs", "OpenAI"],
+        award: "Google Summer of Code 2024 mentee, Chips Alliance (Zvk support in T1, a RISC-V vector coprocessor)",
+        makesOffer: capabilities.map((c) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: c.seoTitle, url: abs(`/solutions/${c.id}`) },
+        })),
       },
+      {
+        "@type": "WebPage",
+        "@id": `${baseUrl}/`,
+        url: `${baseUrl}/`,
+        name: seo.homeTitle,
+        description: seo.homeDescription,
+        dateModified: lastUpdated,
+        inLanguage: "en",
+        isPartOf: { "@id": abs("/#website") },
+        about: { "@id": abs("/#person") },
+      },
+      faqSchema(faq),
       ...(yt
         ? [{
             "@type": "VideoObject",
@@ -84,6 +103,10 @@ export default function Home() {
         </p>
       </Section>
 
+      <Section id="reviews" className="border-t border-line">
+        <Testimonials />
+      </Section>
+
       <Section id="about" className="border-t border-line">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <div>
@@ -111,6 +134,11 @@ export default function Home() {
             </div>
           </a>
         </div>
+      </Section>
+
+      <Section id="faq" className="border-t border-line">
+        <SectionHead eyebrow="Common questions" title="Before you get in touch" sub="Short answers to what people usually ask first." />
+        <Faq items={faq} />
       </Section>
 
       <Section id="contact" className="border-t border-line">

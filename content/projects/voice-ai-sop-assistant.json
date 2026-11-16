@@ -23,6 +23,7 @@
     "smartsuite",
     "openai"
   ],
+  "updated": "2026-11-13",
   "problem": "Staff lost time searching long SOP documents, and answers drifted out of date whenever a procedure changed.",
   "solution": "I built a conversational agent on a retrieval-augmented knowledge base. An n8n pipeline fetches the SOPs from SmartSuite on a schedule, cleans and structures them, then deletes and recreates the knowledge base so the agent always answers from the current version.",
   "highlights": [

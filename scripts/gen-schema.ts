@@ -25,9 +25,11 @@ const schema = {
     draft: { type: "boolean", description: "Hidden in production builds" },
     unlisted: { type: "boolean", description: "Reachable by URL only; noindex; not in lists or sitemap" },
     year: { type: "integer" },
+    updated: { type: "string", pattern: "^\\d{4}-\\d{2}-\\d{2}$", description: "Last meaningful content change, YYYY-MM-DD" },
     duration: str,
     problem: str,
     solution: str,
+    challenges: { type: "array", description: "Hard problems you solved; shown under Under the hood", items: { type: "object", required: ["title", "text"], additionalProperties: false, properties: { title: str, text: str } } },
     highlights: { type: "array", items: str },
     role: { ...str, description: "What YOU personally handled" },
     results: {

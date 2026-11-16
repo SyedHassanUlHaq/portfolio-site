@@ -35,11 +35,15 @@ export type ProjectSource = {
   /** Reachable by URL but not listed, not in sitemap, noindex. For per-client private links. */
   unlisted?: boolean;
   year?: number;
+  /** Last meaningful content change, YYYY-MM-DD. Shown on the page and used as dateModified. */
+  updated?: string;
   duration?: string; // "3 weeks"
 
   problem?: string;
   solution?: string;
   highlights?: string[]; // "What it does" bullets
+  /** Hard technical problems you solved. Shown under "Under the hood" for technical readers. */
+  challenges?: { title: string; text: string }[];
   role?: string; // what YOU personally handled
   /** Only real numbers. No metric? Describe the practical outcome instead (value can be omitted). */
   results?: { value?: string; label: string }[];
