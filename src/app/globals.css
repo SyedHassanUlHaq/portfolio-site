@@ -11,6 +11,8 @@
   --color-accent: #c8431f;
   --color-accent-ink: #ffffff;
   --color-accent-soft: #fbe6dd;
+  /* deeper accent for small text on tinted backgrounds (meets 4.5:1) */
+  --color-accent-strong: #a43518;
 
   --color-tone-peach: #fde3d3;
   --color-tone-peach-deep: #f9c8ad;
@@ -43,7 +45,9 @@ html {
   scroll-padding-top: 5rem;
 }
 body {
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  /* faint paper grain */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .3 0 0 0 0 .25 0 0 0 0 .2 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   color: var(--color-ink);
   font-family: var(--font-sans);
   line-height: 1.65;

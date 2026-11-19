@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { NEEDS, PROJECT_TYPES } from "../../content/taxonomy";
 import { faq, lastUpdated, seo, site } from "../../content/site";
+import CtaBand from "@/components/CtaBand";
 import Faq from "@/components/Faq";
 import Testimonials from "@/components/Testimonials";
 import Hero from "@/components/Hero";
 import ProjectExplorer from "@/components/ProjectExplorer";
-import { Section, SectionHead } from "@/components/Section";
+import Chapter, { ChapterTitle } from "@/components/Chapter";
+import { Arrow } from "@/components/Icons";
 import { ev } from "@/lib/analytics";
-import { mailto } from "@/lib/contact";
 import { getListedProjects, toCard } from "@/lib/projects";
 import { abs, baseUrl, faqSchema, homeOgImageUrl } from "@/lib/seo";
 import { youtubeId } from "@/lib/video";
@@ -87,81 +88,71 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Hero availableNeeds={availableNeeds} />
 
-      <Section id="work" className="border-t border-line">
-        <SectionHead
-          eyebrow="Explore my work"
-          title="Find work like yours"
-          sub="Pick what you need, or search. Every filtered view has its own link you can share."
-        />
+      <Chapter id="solve" n="01" label="What I solve" note="Ten kinds of problem, each with its own page.">
+        <ChapterTitle>What could I take off your plate?</ChapterTitle>
+        <ol className="grid border-t border-ink/20 md:grid-cols-2 md:gap-x-12">
+          {capabilities.map((c, i) => (
+            <li key={c.id} className="border-b border-ink/15">
+              <Link href={`/solutions/${c.id}`} {...ev("capability-click", { need: c.id })} className="group flex items-baseline gap-4 py-4 transition-colors hover:bg-white/50">
+                <span aria-hidden className="w-7 shrink-0 text-sm tabular-nums text-faint">{String(i + 1).padStart(2, "0")}</span>
+                <span className="flex-1 font-display text-xl font-medium text-ink">{c.label}</span>
+                <span className="text-sm text-faint">{c.count}</span>
+                <Arrow className="h-4 w-4 self-center text-faint transition group-hover:translate-x-1 group-hover:text-accent" />
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </Chapter>
+
+      <Chapter id="work" n="02" label="Work" note={`${projects.length} projects, indexed by need, industry and tool. Search anything.`}>
+        <ChapterTitle sub="Pick what you need, or search. Every filtered view has its own link you can share.">Find work like yours</ChapterTitle>
         <ProjectExplorer projects={cards} />
-        <p className="mt-6 text-center text-sm text-muted">
-          Prefer a plain list?{" "}
+        <p className="mt-6 text-sm text-muted">
+          Prefer one long list?{" "}
           <Link href="/projects" className="font-medium text-ink underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent">
-            Browse every project
+            Open the full index
           </Link>
           .
         </p>
-      </Section>
+      </Chapter>
 
-      <Section id="reviews" className="border-t border-line">
+      <Chapter id="reviews" n="03" label="Reviews" note="Real words from real clients, via Upwork.">
+        <ChapterTitle>Five stars, in their words</ChapterTitle>
         <Testimonials />
-      </Section>
+      </Chapter>
 
-      <Section id="about" className="border-t border-line">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+      <Chapter id="about" n="04" label="About" note="Who is behind the work.">
+        <div className="grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-14">
           <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={withBase("/images/hassan-avatar.webp")} alt={site.name} width={160} height={160} loading="lazy" className="h-32 w-32 rounded-3xl border border-line object-cover shadow-sm sm:h-40 sm:w-40" />
-            <p className="mt-8 text-xs font-semibold uppercase tracking-widest text-accent">About</p>
-            <h2 className="mt-3 font-display text-3xl font-medium tracking-tight text-ink sm:text-[2.6rem] sm:leading-[1.1]">{site.about.heading}</h2>
-            <div className="mt-5 space-y-4 text-muted">
-              {site.about.paragraphs.map((t) => (
-                <p key={t}>{t}</p>
+            <ChapterTitle>{site.about.heading}</ChapterTitle>
+            <div className="space-y-4 text-lg text-muted">
+              {site.about.paragraphs.map((t, i) => (
+                <p key={t} className={i === 0 ? "font-display text-2xl leading-snug text-ink sm:text-[1.7rem]" : ""}>
+                  {t}
+                </p>
               ))}
             </div>
           </div>
-          <a
-            href={withBase(site.about.credential.image)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block self-start overflow-hidden rounded-xl border border-line bg-surface"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={withBase(site.about.credential.image)} alt={site.about.credential.imageAlt} width={1200} height={848} loading="lazy" decoding="async" className="w-full border-b border-line" />
-            <div className="p-5">
-              <h3 className="font-display text-lg font-medium text-ink">{site.about.credential.title}</h3>
-              <p className="mt-1 text-sm text-muted">{site.about.credential.text}</p>
-            </div>
-          </a>
-        </div>
-      </Section>
-
-      <Section id="faq" className="border-t border-line">
-        <SectionHead eyebrow="Common questions" title="Before you get in touch" sub="Short answers to what people usually ask first." />
-        <Faq items={faq} />
-      </Section>
-
-      <Section id="contact" className="border-t border-line">
-        <div className="rounded-3xl bg-tone-peach p-8 text-center sm:p-16">
-          <h2 className="font-display text-3xl font-medium tracking-tight text-ink sm:text-5xl">{site.cta.heading}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-ink/70">{site.cta.text}</p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href={mailto("Project inquiry")} {...ev("cta-click", { where: "footer" })} className="inline-flex h-12 items-center justify-center rounded-full bg-ink px-7 font-medium text-bg hover:bg-accent">
-              Email me
+          <figure className="self-start">
+            <a href={withBase(site.about.credential.image)} target="_blank" rel="noopener noreferrer" className="block border border-ink/20 bg-surface p-2 shadow-[0_18px_36px_-22px_rgb(60_40_20/0.45)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={withBase(site.about.credential.image)} alt={site.about.credential.imageAlt} width={1200} height={848} loading="lazy" decoding="async" className="w-full" />
             </a>
-            {site.contact.calendly && (
-              <a href={site.contact.calendly} target="_blank" rel="noopener noreferrer" {...ev("cta-click", { where: "footer-calendly" })} className="inline-flex h-12 items-center justify-center rounded-full border-2 border-ink/15 bg-white/60 px-7 font-medium text-ink hover:border-ink">
-                Book a call
-              </a>
-            )}
-            {site.contact.upwork && (
-              <a href={site.contact.upwork} target="_blank" rel="noopener noreferrer" {...ev("cta-click", { where: "footer-upwork" })} className="inline-flex h-12 items-center justify-center rounded-full border-2 border-ink/15 bg-white/60 px-7 font-medium text-ink hover:border-ink">
-                Hire me on Upwork
-              </a>
-            )}
-          </div>
+            <figcaption className="mt-3 text-sm text-muted">
+              <span className="font-semibold text-ink">Fig. 1</span> · {site.about.credential.title}. {site.about.credential.text}
+            </figcaption>
+          </figure>
         </div>
-      </Section>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={withBase("/images/hassan-avatar.webp")} alt={site.name} width={96} height={96} loading="lazy" className="mt-10 h-20 w-20 rounded-full border border-ink/15 object-cover" />
+      </Chapter>
+
+      <Chapter id="faq" n="05" label="Q&A" note="Short answers to what people ask first.">
+        <ChapterTitle>Before you get in touch</ChapterTitle>
+        <Faq items={faq} />
+      </Chapter>
+
+      <CtaBand id="contact" eyebrow="06 · The last page" heading={site.cta.heading} text={site.cta.text} where="footer" />
     </>
   );
 }

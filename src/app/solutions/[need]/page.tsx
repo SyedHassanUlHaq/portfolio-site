@@ -5,7 +5,8 @@ import { NEEDS } from "../../../../content/taxonomy";
 import { lastUpdated, site } from "../../../../content/site";
 import Faq from "@/components/Faq";
 import { Arrow } from "@/components/Icons";
-import ProjectCard from "@/components/ProjectCard";
+import CtaBand from "@/components/CtaBand";
+import ProjectRow from "@/components/ProjectRow";
 import { Section } from "@/components/Section";
 import { ev } from "@/lib/analytics";
 import { mailto } from "@/lib/contact";
@@ -104,11 +105,11 @@ export default async function Solution({ params }: { params: Promise<Params> }) 
         <h2 className="font-display text-3xl font-medium tracking-tight text-ink">
           {projects.length} {projects.length === 1 ? "project" : "projects"} like this
         </h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} p={toCard(p)} />
+        <ol className="mt-8 border-t border-ink/20">
+          {projects.map((p, i) => (
+            <ProjectRow key={p.slug} p={toCard(p)} n={i + 1} />
           ))}
-        </div>
+        </ol>
       </Section>
 
       <Section className="border-t border-line pt-12 sm:pt-16">
@@ -127,6 +128,7 @@ export default async function Solution({ params }: { params: Promise<Params> }) 
           <Link href="/projects" className="rounded-full border border-ink/20 px-4 py-2 text-sm font-medium text-ink hover:border-ink">All projects</Link>
         </div>
       </Section>
+      <CtaBand eyebrow="Next step" heading="Let's talk about yours" text="Describe what you need and I'll tell you honestly how I'd approach it, and which of these projects is closest." where="solution" />
     </>
   );
 }

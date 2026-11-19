@@ -17,6 +17,8 @@ function mount(): Promise<void> {
       if (!document.querySelector("elevenlabs-convai")) {
         const el = document.createElement("elevenlabs-convai");
         el.setAttribute("agent-id", assistant.agentId);
+        // a big "Need help?" card would cover the page on a phone, so start as a small button there
+        if (window.matchMedia("(max-width: 640px)").matches) el.setAttribute("variant", "tiny");
         document.body.appendChild(el);
       }
       resolve();

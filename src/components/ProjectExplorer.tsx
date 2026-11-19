@@ -8,10 +8,10 @@ import { mailto } from "@/lib/contact";
 import { emptyFilters, facetCounts, filterAndRank, type Facet, type Filters } from "@/lib/search";
 import type { ProjectCardData } from "@/lib/types";
 import { Chevron, Close, NeedIcon, Search } from "./Icons";
-import ProjectCard from "./ProjectCard";
+import ProjectRow from "./ProjectRow";
 
 const PARAMS: Facet[] = ["needs", "industries", "tech"];
-const INITIAL = 9;
+const INITIAL = 10;
 
 function readUrl(): { q: string; filters: Filters } {
   const sp = new URLSearchParams(window.location.search);
@@ -197,11 +197,11 @@ export default function ProjectExplorer({ projects }: { projects: ProjectCardDat
 
       {results.length > 0 ? (
         <>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {shown.map((p) => (
-              <ProjectCard key={p.slug} p={p} />
+          <ol className="mt-4 border-t border-ink/20">
+            {shown.map((p, i) => (
+              <ProjectRow key={p.slug} p={p} n={i + 1} />
             ))}
-          </div>
+          </ol>
           {collapsed && (
             <div className="mt-8 text-center">
               <button
