@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { NEEDS } from "../../../content/taxonomy";
 import { site } from "../../../content/site";
-import ProjectCard from "@/components/ProjectCard";
+import CtaBand from "@/components/CtaBand";
+import ProjectRow from "@/components/ProjectRow";
 import { Section } from "@/components/Section";
 import { getListedProjects, toCard } from "@/lib/projects";
 import { abs, crumbs, homeOgImageUrl } from "@/lib/seo";
@@ -32,6 +33,7 @@ export default function AllProjects() {
   };
 
   return (
+    <>
     <Section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">All projects</p>
@@ -47,11 +49,13 @@ export default function AllProjects() {
           </Link>
         ))}
       </div>
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {cards.map((p) => (
-          <ProjectCard key={p.slug} p={p} />
+      <ol className="mt-10 border-t border-ink/20">
+        {cards.map((p, i) => (
+          <ProjectRow key={p.slug} p={p} n={i + 1} />
         ))}
-      </div>
+      </ol>
     </Section>
+      <CtaBand eyebrow="Next step" heading="Don't see your problem here?" text="Describe it anyway. I've probably built something close, and if not I'll tell you honestly whether I'm the right fit." where="projects" />
+    </>
   );
 }

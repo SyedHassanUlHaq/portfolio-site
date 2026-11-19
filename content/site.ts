@@ -12,12 +12,13 @@ export const site = {
   hero: {
     eyebrow: "AI Automation & Agent Engineer",
     headline: "I build AI agents and automations that take real work off your team.",
-    sub: "I build AI that answers your calls, finds your leads, writes your reports and connects your tools. Two years of delivering it for real businesses, solo, end to end.",
+    sub: "AI that answers your calls, finds your leads, writes your reports and connects your tools. Built solo, end to end, for real businesses.",
     primaryCta: "See work like yours",
     secondaryCta: "Start a conversation",
     pickerPrefix: "I want AI to",
-    pickerPlaceholder: "choose a job…",
-    pickerButton: "Show me",
+    pickerPlaceholder: "pick a task…",
+    pickerButton: "Show examples",
+    pickerButtonEmpty: "Browse all work",
   },
 
   /** Clickable example searches under the search box. */

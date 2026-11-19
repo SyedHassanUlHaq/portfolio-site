@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { site } from "../../../../content/site";
 import { Chip } from "@/components/Chip";
 import Cover from "@/components/Cover";
+import CtaBand, { InlineCta } from "@/components/CtaBand";
 import Gallery from "@/components/Gallery";
 import { Back, Chevron, External, Lock } from "@/components/Icons";
 import ProjectCard from "@/components/ProjectCard";
@@ -139,6 +140,10 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               )}
             </section>
           )}
+          <div className="lg:hidden">
+            <InlineCta where="project" />
+          </div>
+
           {p.role && (
             <section>
               <H2>My role</H2>
@@ -249,7 +254,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
       </div>
 
       {related.length > 0 && (
-        <Section className="border-t border-line">
+        <Section className="border-t border-ink/15">
           <h2 className="mb-6 font-display text-3xl font-medium tracking-tight text-ink">Similar projects</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {related.map((r) => (
@@ -258,6 +263,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           </div>
         </Section>
       )}
+      <CtaBand eyebrow="Next step" heading="Want something like this for your business?" text="Send me a short description of the problem. I'll reply with how I'd approach it and point to the closest thing I've already built." where="project" />
     </article>
   );
 }

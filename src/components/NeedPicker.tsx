@@ -7,13 +7,12 @@ import { Arrow, Chevron } from "./Icons";
 type Option = { id: string; phrase: string };
 
 /** "I want AI to [ … ▾ ] [Show me]" — filters the project library and scrolls to it. */
-export default function NeedPicker({ options, prefix, placeholder, button }: { options: Option[]; prefix: string; placeholder: string; button: string }) {
+export default function NeedPicker({ options, prefix, placeholder, button, buttonEmpty }: { options: Option[]; prefix: string; placeholder: string; button: string; buttonEmpty: string }) {
   const [id, setId] = useState("");
 
   const go = () => {
-    if (!id) return;
-    track("need-picked", { need: id });
-    window.dispatchEvent(new CustomEvent("portfolio:filter", { detail: { needs: [id] } }));
+    track("need-picked", { need: id || "all" });
+    window.dispatchEvent(new CustomEvent("portfolio:filter", { detail: { needs: id ? [id] : [] } }));
     document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -49,10 +48,9 @@ export default function NeedPicker({ options, prefix, placeholder, button }: { o
         </div>
         <button
           type="submit"
-          disabled={!id}
-          className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-accent px-6 text-base font-medium text-accent-ink transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-45"
+          className="inline-flex h-14 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-accent px-6 text-base font-medium text-accent-ink transition hover:brightness-110"
         >
-          {button} <Arrow className="h-4 w-4" />
+          {id ? button : buttonEmpty} <Arrow className="h-4 w-4" />
         </button>
       </div>
     </form>
